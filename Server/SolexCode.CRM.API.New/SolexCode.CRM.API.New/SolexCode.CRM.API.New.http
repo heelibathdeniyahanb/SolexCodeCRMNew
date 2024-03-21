@@ -1,0 +1,6 @@
+@SolexCode.CRM.API.New_HostAddress = http://localhost:5241
+
+GET {{SolexCode.CRM.API.New_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
