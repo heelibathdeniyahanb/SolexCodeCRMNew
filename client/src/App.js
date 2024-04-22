@@ -26,6 +26,7 @@ import AdminEvent from './Pages/Admin/AdminEvent';
 import AdminTask from './Pages/Admin/AdminTask';
 import ClientLeadProgress from './Pages/Client/ClientLeadProgress';
 import AdminCalendar from './Pages/Admin/AdminCalendar';
+import Login from './Components/login/Login'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
+          <Route path='/login' element={<Login/>}></Route>
           <Route path='/' element={<RootPage/>}></Route>
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
           <Route path='/clientcalendar' element={<ClientCalendar/>}></Route>
