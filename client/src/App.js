@@ -28,6 +28,15 @@ import ClientLeadProgress from './Pages/Client/ClientLeadProgress';
 import AdminCalendar from './Pages/Admin/AdminCalendar';
 import Login from './Components/login/Login'
 
+import TicketingSystem from './Pages/Client/TicketingSystem';
+import QuickGuid from './Pages/Client/QuickGuid';
+import CreateTickets from './Pages/Client/CreateTickets';
+import DeligateListPage from './Pages/Client/DeligateListPage';
+import EditTicketPage from './Pages/Client/EditTicketPage';
+import ViewTicketPage from './Pages/Client/ViewTicketPage';
+
+
+
 function App() {
   return (
     <div className='App'>
@@ -58,6 +67,15 @@ function App() {
           <Route path='/clientcall' element={<ClientCall/>}></Route>
           <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route>
           <Route path='/clientevent' element={<ClientEvent/>}></Route>
+          
+          <Route path='/quickguid' element={<QuickGuid/>}></Route>
+          <Route path='/ticketingsystem' element={<TicketingSystem/>}></Route>
+          <Route path='/createtickets' element={<CreateTickets/>}></Route>
+          <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
+          <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
+          <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
+
+          
         </Routes>
        
         </BrowserRouter>
