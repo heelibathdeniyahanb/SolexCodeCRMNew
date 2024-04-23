@@ -43,8 +43,10 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<Login/>}></Route>
-          <Route path='/' element={<RootPage/>}></Route>
+        
+         <Route path='/' element={<RootPage/>}></Route>
+         <Route path='/login' element={<Login/>}></Route>
+        
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
           <Route path='/clientcalendar' element={<ClientCalendar/>}></Route>
           <Route path='/customersupportercalendar' element={<CustomerSupporterCalendar/>}></Route>
