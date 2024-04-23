@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LAPMART\\Documents\\Projects\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj": {}
+    "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LAPMART\\Documents\\Projects\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj": {
+    "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LAPMART\\Documents\\Projects\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
+        "projectUniqueName": "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
         "projectName": "SolexCode.CRM.API.New",
-        "projectPath": "C:\\Users\\LAPMART\\Documents\\Projects\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
+        "projectPath": "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
         "packagesPath": "C:\\Users\\LAPMART\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LAPMART\\Documents\\Projects\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\obj\\",
+        "outputPath": "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
