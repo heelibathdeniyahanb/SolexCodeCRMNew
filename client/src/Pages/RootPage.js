@@ -6,9 +6,9 @@ const RootPage = () => {
         <div>
        
            
-           <Link to = './admincalendar' className=''>Admin</Link> <br></br>
-           <Link to= './salesrepcalendar' >Salesrep</Link><br></br>
-           <Link to='./clientcalendar'>Client</Link><br></br>
+           <Link to = '/admindashboard' className=''>Admin</Link> <br></br>
+           <Link to= '/salesrepdashboard' >Salesrep</Link><br></br>
+           <Link to='/clientdashboard'>Client</Link><br></br>
            <Link to= '/customersupportercalendar'>customer supporter</Link><br></br>
         </div>
     );
