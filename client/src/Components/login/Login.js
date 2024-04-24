@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import { useNavigate } from 'react-router-dom';
 import img2 from './2.png';
 import img3 from './3.png';
@@ -52,10 +52,10 @@ const Login = () => {
         
 
           {/* Log in button */}
-          <div className="flex items-center justify-center"> 
+          <div className="flex items-center justify-center"> <Link to = './rootpage' className=''>
             <button type="submit"  className="p-2 mt-4 bg-teal-800 border border-gray-300 hover:bg-teal-600 hover:text-black w-36 h-14 rounded-xl">
               Log in
-            </button>
+            </button></Link>
           </div>
         </form>
       </div>

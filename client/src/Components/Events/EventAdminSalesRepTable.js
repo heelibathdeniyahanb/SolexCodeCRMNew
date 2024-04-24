@@ -8,7 +8,7 @@ const EventAdminSalesRepTable = () => {
           date:'2024.02.05',
           time: '09.00 AM',
           type:'Onsite',
-          venue:'Shrangila',
+          venue:'UoM',
           priority: 'high',
           participants : '',
          

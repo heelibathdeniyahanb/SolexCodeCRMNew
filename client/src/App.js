@@ -34,6 +34,13 @@ import CreateTickets from './Pages/Client/CreateTickets';
 import DeligateListPage from './Pages/Client/DeligateListPage';
 import EditTicketPage from './Pages/Client/EditTicketPage';
 import ViewTicketPage from './Pages/Client/ViewTicketPage';
+import AdminSideNavBar from './Pages/Admin/AdminSideNavBar';
+import ClientSideNavBar from './Components/Client/ClientSideNavBar';
+import AdminDashboard from './Pages/Admin/AdminDashboard';
+import AddUsers from './Components/AdminCompo/AddUser';
+import SalesRepNavBar from './Components/SalesRep/SalesRepNavBar';
+import SalesRepDashboard from './Pages/SalesRep/SalesRepDashboard';
+import AddUserPage from './Pages/Admin/AddUserPage';
 
 
 
@@ -44,13 +51,23 @@ function App() {
       <BrowserRouter>
         <Routes>
         
-         <Route path='/' element={<RootPage/>}></Route>
-         <Route path='/login' element={<Login/>}></Route>
-        
+         <Route path='/' element={<Login/>}></Route>
+         <Route path='/rootpage' element={<RootPage/>}></Route>
+
+         <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
+         <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
+
+         <Route path='adduser' element={<AddUsers/>}></Route>
+         <Route path='/adduserpage' element={<AddUserPage/>}></Route>
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
           <Route path='/clientcalendar' element={<ClientCalendar/>}></Route>
           <Route path='/customersupportercalendar' element={<CustomerSupporterCalendar/>}></Route>
           <Route path='/admincalendar' element = {<AdminCalendar/>}></Route>
+
+          <Route path='/adminSideNavBar' element ={<AdminSideNavBar/>}></Route>
+          <Route path='/clientsidenavbar' element = {<ClientSideNavBar/>}></Route>
+          <Route path='/salesrepnavbar' element= {<SalesRepNavBar/>}></Route>
+          
          
           <Route path='/task' element={<Task/>}></Route>
           <Route path='/event' element={<Event/>}></Route>

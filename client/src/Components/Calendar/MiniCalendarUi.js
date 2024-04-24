@@ -15,10 +15,10 @@ const MiniCalendarUi = () => {
 
 
     return (
-    <div className='flex justify-end'>
+    <div className='flex h-full mr-1'>
 
     
-     <div className=' w-1/4  divide-y-2 gap-y-10' >
+     <div className='  divide-y-2 gap-y-10' >
 
         <div className='w-25 h-25'>
             <div className='flex justify-between'>
