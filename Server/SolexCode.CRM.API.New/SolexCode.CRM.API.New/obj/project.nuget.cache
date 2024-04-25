@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e3P42m3tWT8QfGSsdbXkgVZ6awlrA1g2Xfl3jpIH0xZTgs9/QL2X40E1aZXzbsmza8BLSVMFnD8aMX5hrrhPMw==",
+  "dgSpecHash": "yf9VI4u7+SX3pVgqeRWpM+ESkyMqGSL4IBRzweK6bWG78P0Pw0/2A2BI6bSvCBYOcIDnrjR4WMNhPvkEHn6ZKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LAPMART\\Documents\\GitHub\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
+  "projectFilePath": "C:\\Users\\LAPMART\\Desktop\\GitCRM\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LAPMART\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
