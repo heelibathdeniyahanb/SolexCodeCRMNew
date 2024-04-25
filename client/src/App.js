@@ -41,6 +41,12 @@ import AddUsers from './Components/AdminCompo/AddUser';
 import SalesRepNavBar from './Components/SalesRep/SalesRepNavBar';
 import SalesRepDashboard from './Pages/SalesRep/SalesRepDashboard';
 import AddUserPage from './Pages/Admin/AddUserPage';
+import AdminDashboardCard from './Components/AdminCompo/AdminDashboardCard';
+import AdminDashboardCard2 from './Components/AdminCompo/AdminDashboardCard2';
+import AdminDashboardCard3 from './Components/AdminCompo/AdminDashboardCard3';
+import AdminDashboardLatestClients from './Components/AdminCompo/AdminDashboardLatestClients';
+import AdminDashboardSheduledEventsTasks from './Components/AdminCompo/AdminDashboardSheduledEventsTasks';
+import AdminDashboardOngoingLeads from './Components/AdminCompo/AdninDashboardOngoingLeads';
 
 
 
@@ -55,6 +61,12 @@ function App() {
          <Route path='/rootpage' element={<RootPage/>}></Route>
 
          <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
+         <Route path='/admindashboardcard' element={<AdminDashboardCard/>}></Route>
+         <Route path='/admindashboardcard2' element={<AdminDashboardCard2/>}></Route>
+         <Route path='/admindashboardcard3' element={<AdminDashboardCard3/>}></Route>
+         <Route path='/admindashboardlatestclients' element={<AdminDashboardLatestClients/>}></Route>
+         <Route path='/admindashboardseduledeventstasks' element={<AdminDashboardSheduledEventsTasks/>}></Route>
+         <Route path='/admindashboardongoingleads' element={<AdminDashboardOngoingLeads/>}></Route>
          <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
 
          <Route path='adduser' element={<AddUsers/>}></Route>
