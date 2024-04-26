@@ -17,7 +17,7 @@ import ClientCalendar from './Pages/Client/ClientCalendar';
 import ClientCall from './Pages/ClientCall';
 
 import ClientEvent from './Pages/Client/ClientEvent';
-import TaskDetailsPage from './Pages/TaskDetailsPage';
+
 import CustomerSupporterCalendar from './Pages/CustomerSupporter/CustomerSupporterCalendar';
 import AdminAddEvent from './Pages/Admin/AdminAddEvent';
 import AdminAddTask from './Pages/Admin/AdminAddTask';
@@ -91,7 +91,7 @@ function App() {
           <Route path='/addtask' element={<AddTask/>}></Route>
           <Route path='/addevent' element={<AddEvent/>}></Route>
           <Route path='/addcall' element={<AddCall/>}></Route>
-          <Route path='/Pages/taskdetailspage' element={<TaskDetailsPage/>}></Route>
+          
           <Route path='clientcalendar' element = {<ClientCalendar/>}></Route>
           <Route path='event' element = {<Event/>}></Route>
 
