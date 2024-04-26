@@ -7,7 +7,7 @@ import AdminDashboardCard3 from '../../Components/AdminCompo/AdminDashboardCard3
 import AdminDashboardLatestClients from '../../Components/AdminCompo/AdminDashboardLatestClients';
 import AdminDashboardOngoingLeads from '../../Components/AdminCompo/AdninDashboardOngoingLeads';
 import AdminDashboardSheduledEventsTasks from '../../Components/AdminCompo/AdminDashboardSheduledEventsTasks';
-
+import AdminDashboardRevenue from '../../Components/AdminCompo/AdminDashboardRevenue';
 
 export default function AdminDashboard() {
   return (
@@ -31,7 +31,7 @@ export default function AdminDashboard() {
           </div>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-3">
             <AdminDashboardSheduledEventsTasks />
-           
+            <AdminDashboardRevenue />
           </div>
         </div>
       </div>
