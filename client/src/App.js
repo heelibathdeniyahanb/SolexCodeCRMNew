@@ -53,6 +53,7 @@ import SalesAdminListView from './Pages/Admin/SalesAdminListView';
 
 
 
+
 function App() {
   return (
     <div className='App'>
@@ -111,7 +112,7 @@ function App() {
 
           <Route path='/kanbanboard' element={<AdminKanbanView/>}></Route>
           <Route path='/addLeadForm' element={<AdminAddLeadForm/>}></Route>
-          <Route path='/listTable' element={<SalesAdminListView/>}></Route>
+  <Route path='/listTable' element={<SalesAdminListView/>}></Route>
 
           
         </Routes>
