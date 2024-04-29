@@ -47,6 +47,9 @@ import AdminDashboardCard3 from './Components/AdminCompo/AdminDashboardCard3';
 import AdminDashboardLatestClients from './Components/AdminCompo/AdminDashboardLatestClients';
 import AdminDashboardSheduledEventsTasks from './Components/AdminCompo/AdminDashboardSheduledEventsTasks';
 import AdminDashboardOngoingLeads from './Components/AdminCompo/AdninDashboardOngoingLeads';
+import AdminKanbanView from './Pages/Admin/AdminKanbanView';
+import AdminAddLeadForm from './Pages/Admin/AdminAddLeadForm';
+import SalesAdminListView from './Pages/Admin/SalesAdminListView';
 
 
 
@@ -105,6 +108,10 @@ function App() {
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
           <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
           <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
+
+          <Route path='/kanbanboard' element={<AdminKanbanView/>}></Route>
+          <Route path='/addLeadForm' element={<AdminAddLeadForm/>}></Route>
+          <Route path='/listTable' element={<SalesAdminListView/>}></Route>
 
           
         </Routes>
