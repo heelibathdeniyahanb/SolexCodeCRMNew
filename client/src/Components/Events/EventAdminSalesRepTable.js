@@ -103,7 +103,7 @@ const EventAdminSalesRepTable = () => {
 
 
                      
-                      <td className=" px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-red-500 ">
+                      <td className=" px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-500 ">
                          {event.priority}
                       </td>
 
