@@ -1,4 +1,4 @@
-﻿namespace CRM.Modals
+﻿namespace SolexCode.CRM.API.New.Models
 {
     public class Lead
     {

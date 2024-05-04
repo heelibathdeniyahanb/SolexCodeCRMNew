@@ -50,6 +50,7 @@ import AdminDashboardOngoingLeads from './Components/AdminCompo/AdninDashboardOn
 import AdminKanbanView from './Pages/Admin/AdminKanbanView';
 import AdminAddLeadForm from './Pages/Admin/AdminAddLeadForm';
 import SalesAdminListView from './Pages/Admin/SalesAdminListView';
+import ClientDashboard from './Pages/Client/ClientDashboard';
 
 
 
@@ -72,6 +73,7 @@ function App() {
          <Route path='/admindashboardseduledeventstasks' element={<AdminDashboardSheduledEventsTasks/>}></Route>
          <Route path='/admindashboardongoingleads' element={<AdminDashboardOngoingLeads/>}></Route>
          <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
+         <Route path='/clientdashboard' element={<ClientDashboard/>}></Route>
 
          <Route path='adduser' element={<AddUsers/>}></Route>
          <Route path='/adduserpage' element={<AddUserPage/>}></Route>
