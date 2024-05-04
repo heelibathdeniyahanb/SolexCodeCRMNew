@@ -40,7 +40,7 @@ const LeadForm1 = () => {
                   };
             
                   axios
-                    .post('https://localhost:7166/api/Lead', leadData)
+                    .post('https://localhost:7143/api/leads', leadData)
                     .then((response) => {
                         window.alert("success");
                         console.log("Data Submitted successfully", response.data);

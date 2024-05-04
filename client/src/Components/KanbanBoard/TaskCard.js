@@ -36,7 +36,7 @@ function TaskCard({ task, deleteTask, updateTask, taskData }) {
   const handleDeleteTask = async () => {
     try {
       // Send a DELETE request to the backend to delete the lead
-      await axios.delete(`http://localhost:5000/api/lead/${task.id}`);
+      await axios.delete(`https://localhost:7143/api/Lead/${task.id}`);
       
       // If the request is successful, delete the task from the frontend
       deleteTask(task.id);

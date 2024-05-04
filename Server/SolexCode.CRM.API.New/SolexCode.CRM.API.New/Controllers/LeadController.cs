@@ -1,10 +1,10 @@
-﻿using CRM.Data;
-using CRM.Modals;
+﻿using SolexCode.CRM.API.New.Data;
+using SolexCode.CRM.API.New.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace CRM.Controllers
+namespace SolexCode.CRM.API.New.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +31,7 @@ namespace CRM.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Modals.Lead>> GetLead()
+        public ActionResult<IEnumerable<Models.Lead>> GetLead()
         {
             return _context.Lead.ToList();
         }
@@ -39,7 +39,7 @@ namespace CRM.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<CRM.Modals.Lead>> CreateTask(CRM.Modals.Lead lead)
+        public async Task<ActionResult<Models.Lead>> CreateTask(Models.Lead lead)
         {
             _context.Lead.Add(lead);
             await _context.SaveChangesAsync();
