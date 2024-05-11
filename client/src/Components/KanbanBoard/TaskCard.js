@@ -50,16 +50,20 @@ function TaskCard({ task, deleteTask, updateTask }) {
 
 
   const handleDeleteTask = async () => {
-    try {
-      const confirmDelete = window.confirm("Are you sure you want to delete this task?");
-      if (confirmDelete) {
-        await axios.delete(`https://localhost:7166/api/Lead/${task.id}`);
-        deleteTask(task.id);
-      }
-    } catch (error) {
-      console.error("Error deleting task:", error);
+  try {
+    const confirmDelete = window.confirm("Are you sure you want to delete this task?");
+    if (confirmDelete) {
+      // Send a DELETE request to the backend to delete the lead
+      await axios.delete(`https://localhost:7143/api/Lead/${task.id}`);
+      
+      // If the request is successful, delete the task from the frontend
+      deleteTask(task.id);
     }
-  };
+  } catch (error) {
+    console.error("Error deleting task:", error);
+  }
+};
+
 
   const handleChange = (e) => {
     setFormData({

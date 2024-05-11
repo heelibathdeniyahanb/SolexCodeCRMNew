@@ -1,12 +1,14 @@
-﻿using CRM.Data;
-using CRM.Modals; // Typo: should be Models
+
+using SolexCode.CRM.API.New.Data;
+using SolexCode.CRM.API.New.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CRM.Controllers
+namespace SolexCode.CRM.API.New.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,12 +32,25 @@ namespace CRM.Controllers
 
         // GET: api/lead
         [HttpGet]
-        public ActionResult<IEnumerable<Lead>> GetLead()
+
+        public ActionResult<IEnumerable<Models.Lead>> GetLead()
         {
             return _context.Lead.ToList();
         }
 
-        // DELETE: api/lead/{id}
+ // POST: api/lead
+        [HttpPost]
+        public async Task<ActionResult<Models.Lead>> CreateTask(Models.Lead lead)
+        {
+            _context.Lead.Add(lead);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetLead), new { id = lead.Id }, lead);
+        }
+
+
+
+    // DELETE: api/lead/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLead(int id)
         {

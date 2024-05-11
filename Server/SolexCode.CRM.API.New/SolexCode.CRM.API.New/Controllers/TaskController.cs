@@ -23,6 +23,7 @@ namespace SolexCode.CRM.API.New.Controllers
         }
 
         [HttpGet("{id}")]
+
         public async Task<ActionResult<SolexCode.CRM.API.New.Models.Task>> GetTask(int id) // Specify the fully qualified name
         {
             var task = await _context.Task.FindAsync(id);

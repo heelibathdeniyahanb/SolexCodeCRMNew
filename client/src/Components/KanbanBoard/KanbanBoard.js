@@ -73,7 +73,7 @@ function KanbanBoard() {
 
     useEffect(() => {
         axios
-          .get(`https://localhost:7166/api/Lead`)
+          .get(`https://localhost:7143/api/Lead`)
           .then((response) => {
             const taskcData = response.data;
             console.log(taskcData);
