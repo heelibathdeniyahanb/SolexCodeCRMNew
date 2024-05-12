@@ -1,4 +1,4 @@
-
+﻿
 using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
 
@@ -37,17 +37,6 @@ namespace SolexCode.CRM.API.New.Controllers
         {
             return _context.Lead.ToList();
         }
-
- // POST: api/lead
-        [HttpPost]
-        public async Task<ActionResult<Models.Lead>> CreateTask(Models.Lead lead)
-        {
-            _context.Lead.Add(lead);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetLead), new { id = lead.Id }, lead);
-        }
-
 
 
     // DELETE: api/lead/{id}
