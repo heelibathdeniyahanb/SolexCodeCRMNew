@@ -3,56 +3,55 @@ import axios from "axios";
 import dayjs from 'dayjs';
 
 const LeadForm1 = () => {
-
-
-    const [LeadStatus, setSelectedLeadStatus] = useState("");
-    const [LeadName,setLead] = useState("");
-    const [CompanyName,setCompanyName] = useState("");
-    const [StartDate,setStartDate] = useState(dayjs());
-    const [EndDate,setEndDate] = useState(dayjs());
-    const [SalesPipeline,setPipelineStage] = useState("");
-    const [SalesRef,setSalesRef] = useState("");
-
+    const [leadStatus, setSelectedLeadStatus] = useState("");
+    const [leadName, setLeadName] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [startDate, setStartDate] = useState(dayjs());
+    const [endDate, setEndDate] = useState(dayjs());
+    const [salesPipeline, setPipelineStage] = useState("");
+    const [salesRep, setSalesRep] = useState("");
     const [clicked,setClicked] = useState(true);
     const [click,setClick] = useState(true);
 
-    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
+        const startDateString = startDate.format('YYYY-MM-DD');
+        const endDateString = endDate.format('YYYY-MM-DD');
 
-           const startDate=`${StartDate}`;
-           const endDate=`${EndDate}`;
+        if (!leadName || !companyName || !startDateString || !endDateString || !salesRep || !salesPipeline || !leadStatus) {
+            window.alert('Fill all the fields');
+            return;
+        }
 
-           if(!LeadName|| !CompanyName|| !startDate|| !endDate|| !SalesRef || !SalesPipeline || !LeadStatus){
-            window.alert("Fill all the fields");
-            }
-            else{
-                const leadData = {
-               
-                    LeadName: LeadName,
-                    CompanyName: CompanyName,
-                    StartDate: new Date(startDate).toISOString(),
-                    EndDate: new Date(endDate).toISOString(),
-                    SalesRep: SalesRef,
-                    SalesPipeline: SalesPipeline,
-                    LeadStatus: LeadStatus
-                  };
-            
-                  axios
-                    .post('https://localhost:7143/api/leads', leadData)
-                    .then((response) => {
-                        window.alert("success");
-                        console.log("Data Submitted successfully", response.data);
-                    })
-                    .catch((error) => {
-                        console.log(leadData);
-                        window.alert("error");
-                        console.log("Data submitting failed", error.response.data);
-                    });
-            }
-
+        const leadData = {
+            leadName,
+            companyName,
+            startDate: startDateString,
+            endDate: endDateString,
+            salesRep,
+            salesPipeline,
+            leadStatus
         };
+
+        try {
+            console.log('Request payload:', leadData);
+            const response = await axios.post('https://localhost:7143/api/Lead', leadData);
+            console.log('Data Submitted successfully', response.data);
+            window.alert('Success!');
+        } catch (error) {
+            console.error('Data submitting failed', error);
+            window.alert('Error submitting data');
+        }
+    };
+
+    const handleStartDateChange = (e) => {
+        setStartDate(dayjs(e.target.value));
+    };
+
+    const handleEndDateChange = (e) => {
+        setEndDate(dayjs(e.target.value));
+    };
 
 
 
@@ -68,32 +67,50 @@ const LeadForm1 = () => {
                 <div class="col-start-5 ml-80 ">
                     <label for="lead_name" class="flex text-sm font-medium text-gray-600 mr-80 ">Lead Name :</label>
                     <div class="mt-2">
-                        <input  value={LeadName} onChange={ (e) => setLead(e.target.value)} type="text" name="lead-name" id="lead-name" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        <input  value={leadName} onChange={ (e) => setLeadName(e.target.value)} type="text" name="lead-name" id="lead-name" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                     </div>
                     <div class="mt-5">
                         <label for="company_name" class="flex text-sm font-medium text-gray-600 mr-80">Company Name :</label>
                         <div class="mt-2">
-                            <input value={CompanyName} onChange={ (e) => setCompanyName(e.target.value)} type="text" name="company-name" id="company-name" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <input value={companyName} onChange={ (e) => setCompanyName(e.target.value)} type="text" name="company-name" id="company-name" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
 
                     <div class="mt-5">
-                        <label for="start-date" class="flex text-sm font-medium text-gray-600 mr-80">start Date :</label>
-                        <div class="mt-2">
-                            <input value={StartDate} onChange={ (e) => setStartDate(e.target.value)} type="date" name="start-date" id="start-date" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                        </div>
-                    </div>
-                    <div class="mt-5">
-                        <label for="end-date" class="flex text-sm font-medium text-gray-600 mr-80">End Date :</label>
-                        <div class="mt-2">
-                            <input value={EndDate} onChange={ (e) => setEndDate(e.target.value)} type="date" name="end-date" id="end-date" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                        </div>
-                    </div>
+            <label htmlFor="start-date" className="flex text-sm font-medium text-gray-600 mr-80">
+                Start Date :
+            </label>
+            <div className="mt-2">
+                <input
+                    value={startDate.format('YYYY-MM-DD')}
+                    onChange={handleStartDateChange}
+                    type="date"
+                    name="start-date"
+                    id="start-date"
+                    className="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+            </div>
+        </div>
+        <div className="mt-5">
+            <label htmlFor="end-date" className="flex text-sm font-medium text-gray-600 mr-80">
+                End Date :
+            </label>
+            <div className="mt-2">
+                <input
+                    value={endDate.format('YYYY-MM-DD')}
+                    onChange={handleEndDateChange}
+                    type="date"
+                    name="end-date"
+                    id="end-date"
+                    className="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+            </div>
+        </div>
 
                     <div class="mt-5">
                         <label for="pipeline-stages" class="flex text-sm font-medium text-gray-600 mr-80">Pipeline Stages:</label>
                         <div class="mt-2">
-                            <select value={SalesPipeline} 
+                            <select value={salesPipeline} 
                             onChange={ (e) => {
                                 setClicked(false);
                                 setPipelineStage(e.target.value);}} id="pipeline-stages" name="pipeline-stages" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -111,14 +128,14 @@ const LeadForm1 = () => {
                     <div class="mt-5">
                         <label for="sales-ref" class="flex text-sm font-medium text-gray-600 mr-80 ">Sales Ref :</label>
                         <div class="mt-2">
-                            <input value={SalesRef} onChange={ (e) => setSalesRef(e.target.value)} type="text" name="sales-ref" id="sales-ref" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <input value={salesRep} onChange={ (e) => setSalesRep(e.target.value)} type="text" name="sales-ref" id="sales-ref" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                         </div>
                     </div>
 
                     <div className="mt-5">
                         <label className="flex text-sm font-medium text-gray-600 mr-80">Lead Status:</label>
                         <div class="mt-2">
-                            <select value={LeadStatus} 
+                            <select value={leadStatus} 
                             onChange={ (e) => 
                             {   setClick(false);
                                 setSelectedLeadStatus(e.target.value);}} id="pipeline-stages" name="pipeline-stages" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">

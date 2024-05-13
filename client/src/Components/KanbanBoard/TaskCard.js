@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TrashIcon from '../Icons/TrashIcon';
+import { FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -212,7 +212,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
 
       {mouseIsOver && (
         <button onClick={handleDeleteTask} className="stroke-black absolute right-4 top-1/2 -translate-y-1/2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100">
-          <TrashIcon />
+          <FaTrash />
         </button>
       )}
 
