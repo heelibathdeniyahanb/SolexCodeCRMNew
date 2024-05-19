@@ -7,6 +7,7 @@ import View from './View';
 
 const TaskTable = () => {
     const [tasks, setTasks] = useState([]);
+    const [filterTasks,setFilterTasks]=useState([]);
     const [editTaskId, setEditTaskId] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showModal1, setShowModal1] = useState(false);
@@ -19,12 +20,15 @@ const TaskTable = () => {
     const fetchTasks = () => {
         axios.get('https://localhost:7143/api/Task')
             .then(response => {
-                setTasks(response.data);
+                setTasks(response.data)
+                setFilterTasks(response.data);
             })
             .catch(error => {
                 console.error('Error fetching tasks:', error);
             });
     }
+
+    
 
     const handleViewTask = (taskId) => {
         setSelectedTaskId(taskId);
@@ -58,6 +62,9 @@ const TaskTable = () => {
                 });
         }
     }
+    const Filter= (event) =>{
+        setFilterTasks(tasks.filter(f=>f.taskName.toLowerCase().includes(event.target.value)))
+    }
 
     return (
         <div>
@@ -68,6 +75,7 @@ const TaskTable = () => {
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                            <input type="text" className="form-control border px-4 rounded-lg" onChange={Filter} placeholder="Search..."></input>
                             <table className="min-w-full divide-y divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
@@ -84,7 +92,7 @@ const TaskTable = () => {
                                             Priority
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Related To
+                                           Lead Name
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Created By
@@ -101,7 +109,7 @@ const TaskTable = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {tasks.map(task => {
+                                    {filterTasks.map(task => {
                                         const datetimeParts = task.dueDate.split("T");
                                         const dueDate = datetimeParts[0];
                                         const priority = task.priority === true;
@@ -125,7 +133,7 @@ const TaskTable = () => {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{task.relatedTo}</div>
+                                                    <div className="text-sm text-gray-900">{task.leadName}</div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="text-sm text-gray-900">{task.createdBy}</div>

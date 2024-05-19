@@ -1,7 +1,7 @@
 import React from 'react'
-import SideNav from '../../Components/Sidebar/SideNav'
+import SideNav from '../../Components/Client/Ticket/TicketSideNav'
 import Header from '../../Components/Header/Header'
-import CreateTicket from '../../Components/Client/CreateTicket'
+import CreateTicket from '../../Components/Client/Ticket/CreateTicket'
 
 export default function CreateTickets() {
   return (

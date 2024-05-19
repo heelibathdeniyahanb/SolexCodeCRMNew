@@ -1,15 +1,16 @@
 import React from 'react';
 import ClientCalendarLogin from '../../Components/Client/ClientCalendarLogin';
-import ClientCustomerSupporterEventTable from '../../Components/Events/ClientCustomerSupporterEventTable';
+
 
 import EventSearchBar from '../../Components/Events/EventSearchBar';
+import EventAdminSalesRepTable from '../../Components/Events/EventAdminSalesRepTable';
 
 const ClientEvent = () => {
     return (
         <div>
          <ClientCalendarLogin/>
          <EventSearchBar/>
-         <ClientCustomerSupporterEventTable/>
+        <EventAdminSalesRepTable/>
         
 
         </div>

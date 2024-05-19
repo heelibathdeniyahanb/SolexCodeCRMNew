@@ -29,7 +29,7 @@ import AdminCalendar from './Pages/Admin/AdminCalendar';
 import Login from './Components/login/Login'
 
 import TicketingSystem from './Pages/Client/TicketingSystem';
-import QuickGuid from './Pages/Client/QuickGuid';
+import QuickGuide from './Pages/Client/QuickGuide';
 import CreateTickets from './Pages/Client/CreateTickets';
 import DeligateListPage from './Pages/Client/DeligateListPage';
 import EditTicketPage from './Pages/Client/EditTicketPage';
@@ -52,6 +52,17 @@ import AdminAddLeadForm from './Pages/Admin/AdminAddLeadForm';
 import SalesAdminListView from './Pages/Admin/SalesAdminListView';
 import ClientDashboard from './Pages/Client/ClientDashboard';
 
+import SendEmail from './Components/AdminCompo/SendEmail';
+import Email from './Pages/Admin/Email';
+
+import AnalysePage from './Components/AnalyzingCompo/Analysepage';
+import RectangularCard from './Components/AnalyzingCompo/RectangularCard';
+import ReportMenu from './Components/AnalyzingCompo/ReportMenu';
+import Report from './Components/AnalyzingCompo/Report';
+import Charts from './Components/AnalyzingCompo/Charts';
+import KPI from './Components/AnalyzingCompo/KPI';
+import Comparator from './Components/AnalyzingCompo/Comparator';
+import MyProjects from './Pages/Client/MyProjects';
 
 
 
@@ -97,15 +108,18 @@ function App() {
           <Route path='/addtask' element={<AddTask/>}></Route>
           <Route path='/addevent' element={<AddEvent/>}></Route>
           <Route path='/addcall' element={<AddCall/>}></Route>
+          <Route path='/sendemail' element={<SendEmail/>}></Route>
+         <Route path='/email' element={<Email/>}></Route>
           
-          <Route path='clientcalendar' element = {<ClientCalendar/>}></Route>
+          <Route path='/clientcalendar' element = {<ClientCalendar/>}></Route>
           <Route path='event' element = {<Event/>}></Route>
 
           <Route path='/clientcall' element={<ClientCall/>}></Route>
           <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route>
           <Route path='/clientevent' element={<ClientEvent/>}></Route>
+          <Route path='myprojects' element={<MyProjects/>}></Route>
           
-          <Route path='/quickguid' element={<QuickGuid/>}></Route>
+          <Route path='/quickguide' element={<QuickGuide/>}></Route>
           <Route path='/ticketingsystem' element={<TicketingSystem/>}></Route>
           <Route path='/createtickets' element={<CreateTickets/>}></Route>
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
@@ -114,7 +128,16 @@ function App() {
 
           <Route path='/kanbanboard' element={<AdminKanbanView/>}></Route>
           <Route path='/addLeadForm' element={<AdminAddLeadForm/>}></Route>
-  <Route path='/listTable' element={<SalesAdminListView/>}></Route>
+          <Route path='/listTable' element={<SalesAdminListView/>}></Route>
+
+          <Route path='/analysepage' element={<AnalysePage/>}></Route>
+          <Route path='/rectangularcard' element={<RectangularCard/>}></Route>
+          <Route path='/reportmenu' element={<ReportMenu/>}></Route>
+          <Route path='/report' element={<Report/>}></Route>
+          <Route path='/button' element={<button/>}></Route>
+          <Route path='/charts' element={<Charts/>}></Route>
+          <Route path='/kpi' element={<KPI/>}></Route>
+          <Route path='/comparator' element={<Comparator/>}></Route>
 
           
         </Routes>

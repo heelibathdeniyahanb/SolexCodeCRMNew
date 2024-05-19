@@ -14,12 +14,10 @@ const SalesRepCalendar = () => {
             <div>
             <SalesRepNavBar/>
             </div>
-            <div>
+            <div className='w-full lg:w-4/5 overflow-y-auto'>
             <BigCalendarUi/>
             </div>
-            <div className=''>
-            <MiniCalendarUi/>
-            </div>
+           
            </div>
           
            

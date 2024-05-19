@@ -98,7 +98,33 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
-    "Method": "GetLead",
+    "Method": "CreateLead",
+    "RelativePath": "api/Lead",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leadFormData",
+        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetLeads",
     "RelativePath": "api/Lead",
     "HttpMethod": "GET",
     "IsController": true,
@@ -118,15 +144,15 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
-    "Method": "CreateTask",
-    "RelativePath": "api/Lead",
-    "HttpMethod": "POST",
+    "Method": "GetLeadById",
+    "RelativePath": "api/Lead/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "lead",
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -144,7 +170,7 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
-    "Method": "DeleteTask",
+    "Method": "DeleteLead",
     "RelativePath": "api/Lead/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -160,14 +186,19 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
-    "Method": "CreateLead",
-    "RelativePath": "api/leads",
-    "HttpMethod": "POST",
+    "Method": "UpdateLead",
+    "RelativePath": "api/Lead/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "leadFormData",
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "lead",
         "Type": "SolexCode.CRM.API.New.Models.Lead",
         "IsRequired": true
       }

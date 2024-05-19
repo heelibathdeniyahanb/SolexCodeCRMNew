@@ -1,9 +1,9 @@
 import React from 'react';
-import SideNav from '../../Components/Sidebar/SideNav';
-import Ticketpage1 from '../../Components/Client/TicketPage';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
+import Ticketpage1 from '../../Components/Client/Ticket/TicketPage';
 import Header from '../../Components/Header/Header';
 
-export default function QuickGuid() {
+export default function QuickGuide() {
     return (
         <div className='flex h-screen'>
           {/* SideNav Container */}

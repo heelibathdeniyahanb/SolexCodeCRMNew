@@ -10,7 +10,7 @@ const ClientCalendarLogin = () => {
                     <Link to = '/clientcalendar' className='hover:text-green-900 active:text-blue-600'>Calendar</Link>
                 </div>
                 <div className='mx-3'>
-                    <Link to = '/clienttask' className='hover:text-green-900 active:text-blue-600'>Project Progress</Link>
+                    <Link to = '/myprojects' className='hover:text-green-900 active:text-blue-600'>Project Progress</Link>
                 </div>
                 <div className='mx-3'>
                     <Link to = '/clientevent' className='hover:text-green-900 active:text-blue-600'>Event</Link>

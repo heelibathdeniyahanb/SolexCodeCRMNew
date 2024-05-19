@@ -1,8 +1,8 @@
 import React from 'react';
-import SideNav from '../../Components/Sidebar/SideNav';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 //import Ticketpage1 from '../../Components/Client/TicketPage';
 import Header from '../../Components/Header/Header';
-import ViewTicket from '../../Components/Client/ViewTicket';
+import ViewTicket from '../../Components/Client/Ticket/ViewTicket';
 
 const ViewTicketPage = () => {
   return (
