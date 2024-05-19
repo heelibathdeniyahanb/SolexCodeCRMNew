@@ -1,5 +1,4 @@
-﻿
-using SolexCode.CRM.API.New.Data;
+﻿using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
 
 using Microsoft.AspNetCore.Mvc;
@@ -25,21 +24,38 @@ namespace SolexCode.CRM.API.New.Controllers
         [HttpPost]
         public async Task<ActionResult<Lead>> CreateLead([FromBody] Lead leadFormData)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Lead.Add(leadFormData);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetLead), new { id = leadFormData.Id }, leadFormData);
+            return CreatedAtAction(nameof(GetLeadById), new { id = leadFormData.Id }, leadFormData);
         }
 
         // GET: api/lead
         [HttpGet]
-
-        public ActionResult<IEnumerable<Models.Lead>> GetLead()
+        public async Task<ActionResult<IEnumerable<Lead>>> GetLeads()
         {
-            return _context.Lead.ToList();
+            return await _context.Lead.ToListAsync();
         }
 
+        // GET: api/lead/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Lead>> GetLeadById(int id)
+        {
+            var lead = await _context.Lead.FindAsync(id);
 
-    // DELETE: api/lead/{id}
+            if (lead == null)
+            {
+                return NotFound();
+            }
+
+            return lead;
+        }
+
+        // DELETE: api/lead/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLead(int id)
         {
@@ -62,6 +78,11 @@ namespace SolexCode.CRM.API.New.Controllers
             if (id != lead.Id)
             {
                 return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
 
             _context.Entry(lead).State = EntityState.Modified;
@@ -91,4 +112,3 @@ namespace SolexCode.CRM.API.New.Controllers
         }
     }
 }
-

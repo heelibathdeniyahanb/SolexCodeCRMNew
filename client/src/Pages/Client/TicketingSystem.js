@@ -1,8 +1,8 @@
 import React from 'react';
-import SideNav from '../../Components/Sidebar/SideNav';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 //import Ticketpage1 from '../../Components/Client/TicketPage';
 import Header from '../../Components/Header/Header';
-import TicketClient from '../../Components/Client/TicketClient';
+import TicketClient from '../../Components/Client/Ticket/TicketClient';
 
 const TicketingSystem = () => {
   return (

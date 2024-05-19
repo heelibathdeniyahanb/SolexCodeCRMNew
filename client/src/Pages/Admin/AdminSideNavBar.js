@@ -66,17 +66,20 @@ export default function AdminSideNavBar() {
                 </li></Link>
 
                 <li>
+                    <Link to='/email'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdEmail  size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Email</label></div>
                     </div>  
+                    </Link>
                 </li>
 
                 <li>
+                    <Link to='/analysepage'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdAnalytics size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Analytics</label></div>
-                    </div>
+                    </div></Link>
                 </li>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>

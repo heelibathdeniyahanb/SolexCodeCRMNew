@@ -1,7 +1,7 @@
 import React from 'react';
-import SideNav from '../../Components/Sidebar/SideNav';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 import Header from '../../Components/Header/Header';
-import DeligateList from '../../Components/CustomerSupporter/DeligateList';
+import DeligateList from '../../Components/Client/Ticket/DeligateList';
 
 export default function DeligateListPage() {
   return (
