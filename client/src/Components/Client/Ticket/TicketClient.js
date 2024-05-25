@@ -1,18 +1,52 @@
 // App.js
 
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 
-const TicketClient= () => {
+
+
+const TicketClient = () => {
+  
+  const [message, setMessage] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
+
+  const handleDelete = () => {
+    setMessage('Successfully deleted');
+    setShowDialog(true);
+  };
+
+  const closeDialog = () => {
+    setShowDialog(false);
+    setMessage('');
+  };
+  
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="pb-2 mb-4 text-2xl font-bold border-b-2 underline-offset-4">Support Request</h1>
+    <div className="container px-4 mx-auto mt-8">
+      <h1 className="pb-2 mb-4 text-2xl text-[#294D61] font-bold underline border-b-2">Support Request</h1>
+
+      {showDialog && (
+        <div className="fixed top-0 left-0 right-0 flex items-center justify-center p-4 bg-gray-800 bg-opacity-75">
+          <div className="w-full max-w-md p-6 bg-white rounded-md shadow-md">
+            <div className="text-lg font-semibold">{message}</div>
+            <button
+              className="px-4 py-2 mt-4 text-white bg-[#294D61] rounded-md"
+              onClick={closeDialog}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      
+    
+      
 
       <table className="w-full space-y-reverse border ">
         <thead>
           <div></div>
-          <tr className="bg-neutral-400">
+          <tr className="bg-[#294d61a9]">
             <th className="p-2 font-bold border-b"># Ticket no.</th>
             <th className="p-2 font-bold border-b">Topic</th>
             <th className="p-2 font-bold border-b">Helpdesk contact</th>
@@ -37,11 +71,13 @@ const TicketClient= () => {
               <button className="px-4 py-2 rounded text-sky-500 bg-slate-100">Edit</button>
             </Link></td>
             <td className="p-2 border">
-            <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
-            </div>
-            </td>
-          </tr>
+              <div className="flex items-center justify-center px-4 py-2 rounded">
+                <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
+  </div>
+</td>
+         </tr>
           
           <tr className="bg-neutral-300">
             <td className="p-2 border">#2344</td>
@@ -57,7 +93,9 @@ const TicketClient= () => {
             </td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+    <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
@@ -76,7 +114,9 @@ const TicketClient= () => {
             </td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+            <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
@@ -94,7 +134,9 @@ const TicketClient= () => {
             </Link></td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+            <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
@@ -112,7 +154,9 @@ const TicketClient= () => {
             </td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+            <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
@@ -131,7 +175,9 @@ const TicketClient= () => {
             </td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+            <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
@@ -149,13 +195,15 @@ const TicketClient= () => {
             </Link></td>
             <td className="p-2 border">
             <div class="flex items-center justify-center px-4 py-2 rounded">
-    <div class='mr-8'><MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+            <button className="mr-8" onClick={handleDelete}>
+                  <MdDelete size={20} className="opacity-25 sm:w-6 sm:h-6" />
+                </button>
             </div>
             </td>
           </tr>
           
           <Link to='/createtickets'>
-          <button className="absolute px-4 py-2 text-black bg-blue-500 rounded bottom-4 right-4">
+          <button className="absolute px-4 py-2 text-white bg-[#294D61] rounded bottom-4 right-4">
         Create New Ticket
       </button>
           </Link>
@@ -167,4 +215,4 @@ const TicketClient= () => {
   );
 };
 
-export default TicketClient
+export default TicketClient;

@@ -64,27 +64,32 @@ export default function SideNav() {
                     </div>
                 </li>
 
+                <Link to='/ServiceLevelAgreement'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><GiSatelliteCommunication size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>SLAs</label></div>
                     </div>
                 </li>
-
+                </Link>
+                
+                <Link to='/CustomerSurvey'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><BiBook size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Customer Survey</label></div>
                     </div>  
                 </li>
+                </Link>
 
+                <Link to='/ServiceAnalytics'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdAnalytics size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Servise Analytics</label></div>
                     </div>
                 </li>
-
+                </Link>
                 
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
@@ -106,15 +111,12 @@ export default function SideNav() {
             <div className='flex items-center justify-center '>
 
 
-
 </div>  
                 
         </nav>
-        
+        </div> 
     
       
      
-        </div>      
-  
-  )
+             )
 }

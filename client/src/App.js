@@ -34,6 +34,11 @@ import CreateTickets from './Pages/Client/CreateTickets';
 import DeligateListPage from './Pages/Client/DeligateListPage';
 import EditTicketPage from './Pages/Client/EditTicketPage';
 import ViewTicketPage from './Pages/Client/ViewTicketPage';
+import CustomerSurvey from './Pages/Client/CustomerSurvey';
+import ServiceAnalytics from './Pages/Client/ServiceAnalytics';
+
+
+
 import AdminSideNavBar from './Pages/Admin/AdminSideNavBar';
 import ClientSideNavBar from './Components/Client/ClientSideNavBar';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
@@ -51,6 +56,7 @@ import AdminKanbanView from './Pages/Admin/AdminKanbanView';
 import AdminAddLeadForm from './Pages/Admin/AdminAddLeadForm';
 import SalesAdminListView from './Pages/Admin/SalesAdminListView';
 import ClientDashboard from './Pages/Client/ClientDashboard';
+import ServicelevelAgreement from './Pages/Admin/ServiceLevelAgreement';
 
 import SendEmail from './Components/AdminCompo/SendEmail';
 import Email from './Pages/Admin/Email';
@@ -125,7 +131,10 @@ function App() {
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
           <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
           <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
-
+          <Route path='/ServiceLevelAgreement' element={<ServicelevelAgreement/>}></Route>
+          <Route path='/CustomerSurvey' element={<CustomerSurvey/>}></Route>
+          <Route path='/ServiceAnalytics' element={<ServiceAnalytics/>}></Route>
+          
           <Route path='/kanbanboard' element={<AdminKanbanView/>}></Route>
           <Route path='/addLeadForm' element={<AdminAddLeadForm/>}></Route>
           <Route path='/listTable' element={<SalesAdminListView/>}></Route>
