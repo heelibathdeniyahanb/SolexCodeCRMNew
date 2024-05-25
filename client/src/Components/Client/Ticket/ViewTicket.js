@@ -1,53 +1,88 @@
 import React from 'react';
 
-    
-const ViewTicket = ({ uploadedImage }) => {
+const TicketDetails = () => {
   return (
-    <div className="p-8">
-      <h1 className="mb-4 text-2xl font-bold">Your Ticket...</h1>
-      <div className="mb-4">
-        <p className="font-bold">Subject:</p>
-        <p>How can I invite my friend</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Ticket Date:</p>
-        <p>2024-03-26</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Tracker:</p>
-        <p>Sales</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Helpdesk Contact:</p>
-        <p>Mr. Malith</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Email:</p>
-        <p>rohan001@gmail.com</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Contact Number:</p>
-        <p>0777494713</p>
-      </div>
-      <div className="mb-4">
-        <p className="font-bold">Issue:</p>
-        <p>
-          How can I effectively invite my friend to engage with our Skill
-          Spinzer System? I want to ensure the invitation is engaging and
-          informative. Could you provide guidance on crafting an enticing
-          message that highlights the benefits of our system and encourages my
-          friend to explore its features? Additionally, are there any specific
-          strategies or persuasive techniques I should incorporate to increase
-          the likelihood of their participation? Thank you for your assistance
-          in making this invitation compelling and impactful.
-        </p><br></br>
-        <div className="mb-4">
-        <p className="font-bold">Attached photos:</p>
-        <img src={uploadedImage} alt="Uploaded image" className="max-w-full" />
-      </div>
+    <div className="max-w-4xl p-6 mx-auto bg-[#294d618b] border rounded-lg shadow-md">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="p-2 bg-gray-300 border">
+          <strong>Request by</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Louise Mountaine
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Priority</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Average
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Request on</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          2024 - 03 - 26
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Subject</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Show Error Message
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Tracker</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Sales
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Email</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Louise123@gmail.com
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Tracker</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          077 669 9950
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Helpdesk Contact</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Mr. Nishan Wikramarathna
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Ticket Type</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Private
+        </div>
+
+        <div className="p-2 bg-gray-300 border">
+          <strong>Ticket Status</strong>
+        </div>
+        <div className="p-2 bg-gray-200 border">
+          Pending
+        </div>
+
+        <div className="col-span-2 p-2 bg-gray-300 border">
+          <strong>Issue</strong>
+        </div>
+        <div className="col-span-2 p-2 bg-gray-200 border">
+          This normally occurs when many users are on-line. Some times it shows error message like the below screenshot I attached. And the system is very sluggish, and opening a chart report takes more than 3 minutes. It usually took less than 10 seconds.
+        </div>
       </div>
     </div>
   );
 };
 
-export default ViewTicket;
+export default TicketDetails;
