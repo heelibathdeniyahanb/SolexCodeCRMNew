@@ -69,6 +69,10 @@ import Charts from './Components/AnalyzingCompo/Charts';
 import KPI from './Components/AnalyzingCompo/KPI';
 import Comparator from './Components/AnalyzingCompo/Comparator';
 import MyProjects from './Pages/Client/MyProjects';
+import { UserProvider } from './Components/login/UserContext';
+import Users from './Components/Users';
+import Image from './Components/Image';
+import SuperAdmin from './Pages/Admin/SuperAdmin';
 
 
 
@@ -77,6 +81,8 @@ function App() {
     <div className='App'>
       
       <BrowserRouter>
+      <UserProvider>
+
         <Routes>
         
          <Route path='/' element={<Login/>}></Route>
@@ -91,9 +97,12 @@ function App() {
          <Route path='/admindashboardongoingleads' element={<AdminDashboardOngoingLeads/>}></Route>
          <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
          <Route path='/clientdashboard' element={<ClientDashboard/>}></Route>
+         <Route path='/superadmin' element={<SuperAdmin/>}></Route>
 
          <Route path='adduser' element={<AddUsers/>}></Route>
          <Route path='/adduserpage' element={<AddUserPage/>}></Route>
+         <Route path='/users' element={<Users/>}></Route>
+         <Route path='/image' element={<Image/>}></Route>
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
           <Route path='/clientcalendar' element={<ClientCalendar/>}></Route>
           <Route path='/customersupportercalendar' element={<CustomerSupporterCalendar/>}></Route>
@@ -148,8 +157,11 @@ function App() {
           <Route path='/kpi' element={<KPI/>}></Route>
           <Route path='/comparator' element={<Comparator/>}></Route>
 
+         
+
           
         </Routes>
+        </UserProvider>
        
         </BrowserRouter>
     </div>

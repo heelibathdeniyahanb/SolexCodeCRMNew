@@ -315,6 +315,198 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/user/ChangePassword/{id}/ChangePassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/user/DeleteUser/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "GetAsync",
+    "RelativePath": "api/user/Get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "GetUserImage",
+    "RelativePath": "api/user/GetUserImage/{id}/GetUserImage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/user/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginRequest",
+        "Type": "SolexCode.CRM.API.New.Controllers.UserController\u002BLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/user/UpdateUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "SolexCode.CRM.API.New.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "UpdateUserImage",
+    "RelativePath": "api/user/UpdateUserImage/UpdateUserImage/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "UserImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
+    "Method": "UserRegister",
+    "RelativePath": "api/user/UserRegister",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MobileNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Continent",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Country",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Industry",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Role",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChangePassword",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

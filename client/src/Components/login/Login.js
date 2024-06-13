@@ -1,15 +1,86 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import img2 from './2.png';
 import img3 from './3.png';
 import img1 from './1.png';
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { useUser } from './UserContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { setUserData } = useUser();
+  const [showPassword, setShowPassword] = useState(false); 
+
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      if (username === 'super' && password === 'super') {
+        toast.success("Login successful!");
+        setTimeout(() => {
+          navigate('/superadmin');
+        }, 6000); 
+        return;
+      }
   
+      const response = await axios.post('https://localhost:7143/api/user/Login', {
+        username,
+        password
+      });
+  
+      if (response.status === 200) {
+        const userData = response.data.userData;
+        setUserData(userData);
+        console.log(userData);
+        sessionStorage.setItem('UserId', userData.id);
+  
+        if (userData.changePassword === false) {
+          toast.success("Login successful!");
+          setTimeout(() => {
+            switch (userData.role) {
+              case 'Admin':
+                navigate('/admin-dashboard');
+                break;
+              case 'User':
+                navigate('/user-dashboard');
+                break;
+              case 'Sales Leader':
+                navigate('/sales-leader-dashboard');
+                break;
+              case 'Customer Supporter':
+                navigate('/customer-supporter-dashboard');
+                break;
+              default:
+                navigate('/user-dashboard');
+            }
+          }, 6000);
+        } else {
+          toast.success("Login successful!");
+          setTimeout(() => {
+            navigate('/reset-password-window-1');
+          }, 6000);
+        }
+      } else {
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      toast.error('Invalid username or password');
+    }
+  };
+
+  // Password visibility toggle
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
     
 
      
@@ -29,36 +100,44 @@ const Login = () => {
         <h1 className='text-3xl text-blue-950'>LOGIN</h1>
 
         <form className="w-full mt-16 space-y-4">
-          <div className="relative">
+
+        <div className="relative">
             <input
               type="text"
               placeholder="Username"
-              className="block w-full h-16 p-2 pl-10 mb-8 text-xl font-bold placeholder-black placeholder-opacity-50 border-none rounded-xl bg-gradient-to-r from-teal-400 to-gray-200"
-              
+              style={{ width: 'calc(100% - 2.5rem)' }} // Adjust width here
+              className="block h-16 p-4 pl-10 mb-8 text-xl placeholder-black placeholder-opacity-50 rounded-xl bg-gray-300"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <FaUser className="absolute mt-2 text-gray-400 left-3 top-4" />
-          </div>
-          <div className="relative">
-            <input
-              type="password"
-              placeholder="Password"
-              className="block w-full h-16 p-2 pl-10 mb-8 text-xl font-bold placeholder-black placeholder-opacity-50 border-none rounded-xl bg-gradient-to-r from-teal-400 to-gray-200"
-              
-            />
-            <RiLockPasswordFill className="absolute mt-2 text-gray-400 left-3 top-4" />
+            <FaUser className="absolute mt-2 text-gray-800 left-3 top-4" />
           </div>
 
-          {/* Error message */}
+          <div className="relative">
+          <input
+              type={showPassword ? 'text' : 'password'} 
+              placeholder="Password"
+              style={{ width: 'calc(100% - 2.5rem)' }} // Adjust width here
+              className="block h-16 p-4 pl-10 mb-8 text-xl placeholder-black placeholder-opacity-50 rounded-xl bg-gray-300"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className='absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer mt-2 mr-10' onClick={togglePasswordVisibility}>
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
+            <RiLockPasswordFill className="absolute mt-2 text-gray-800 left-3 top-4" />
+          </div>
         
 
           {/* Log in button */}
-          <div className="flex items-center justify-center"> <Link to = './rootpage' className=''>
-            <button type="submit"  className="p-2 mt-4 bg-teal-800 border border-gray-300 hover:bg-teal-600 hover:text-black w-36 h-14 rounded-xl">
+          <div className="flex items-center justify-center">
+            <button type="submit" onClick={handleLogin} className="p-2 mt-4 bg-teal-800 border border-gray-300 hover:bg-teal-600 hover:text-black w-36 h-14 rounded-xl">
               Log in
-            </button></Link>
+            </button>
           </div>
         </form>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
