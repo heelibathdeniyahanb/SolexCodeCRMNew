@@ -549,3 +549,12 @@ C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexC
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.pdb
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.genruntimeconfig.cache
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\ref\SolexCode.CRM.API.New.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\SolexCode.CRM.API.New.staticwebassets.runtime.json

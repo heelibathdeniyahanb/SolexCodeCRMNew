@@ -13,5 +13,6 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Event> Event { get; set; }
         public DbSet<CRMTask> Task { get; set; } // Use the alias here
         public DbSet<Lead> Lead{ get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

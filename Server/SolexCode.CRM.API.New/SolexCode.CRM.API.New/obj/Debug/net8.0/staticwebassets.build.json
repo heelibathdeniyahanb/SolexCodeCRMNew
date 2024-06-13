@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "HuLFASygTlkTuLzmAO0jMZ557ZvMbgHam22kvVKSpuQ=",
+  "Hash": "WTGUcpeSf+wanHJ5Fv8S6nX91SbArN/bYAAar+vtidI=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SolexCode.CRM.API.New\\wwwroot",
+      "Source": "SolexCode.CRM.API.New",
+      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
