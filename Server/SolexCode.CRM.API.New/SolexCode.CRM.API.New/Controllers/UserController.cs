@@ -12,6 +12,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System;
 using SolexCode.CRM.API.New.Data;
+using static System.Net.WebRequestMethods;
 
 namespace SolexCode.CRM.API.New.Controllers
 {
@@ -21,14 +22,73 @@ namespace SolexCode.CRM.API.New.Controllers
     {
         private readonly DatabaseContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly EmailController _emailController;
         private readonly IConfiguration _configuration;
 
-        public UserController(DatabaseContext context, IWebHostEnvironment environment, IConfiguration configuration)
+        public UserController(DatabaseContext context, EmailController emailController, IWebHostEnvironment environment, IConfiguration configuration)
         {
             _context = context;
             _environment = environment;
             _configuration = configuration;
+            _emailController = emailController;
         }
+
+        // Generate Temporary Password
+        private string GenerateTemporaryPassword(int length = 12)
+        {
+            const string validChars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?_-";
+            var random = new Random();
+            return new string(Enumerable.Repeat(validChars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        [HttpPost("{userId}/GenerateOtp")]
+        public async Task<IActionResult> GenerateOtp(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var otpCode = new Random().Next(100000, 999999).ToString(); // Generate a 6-digit OTP
+            var otp = new Otp
+            {
+                UserId = userId,
+                Code = otpCode,
+                GeneratedAt = DateTime.UtcNow,
+                ExpiresAt = DateTime.UtcNow.AddMinutes(10) // OTP valid for 10 minutes
+            };
+
+            _context.Otps.Add(otp);
+            await _context.SaveChangesAsync();
+
+            // Send OTP to user's email
+            await _emailController.SendOtp(user.Email, otpCode);
+
+            return Ok("OTP sent to email.");
+        }
+
+
+        [HttpPost("{userId}/VerifyOtp")]
+        public async Task<IActionResult> VerifyOtp(int userId, [FromBody] string otpCode)
+        {
+            var otp = await _context.Otps
+                .Where(o => o.UserId == userId && o.Code == otpCode && o.ExpiresAt > DateTime.UtcNow && !o.IsVerified)
+                .FirstOrDefaultAsync();
+
+            if (otp == null)
+            {
+                return BadRequest("Invalid or expired OTP.");
+            }
+
+            otp.IsVerified = true;
+            _context.Otps.Update(otp);
+            await _context.SaveChangesAsync();
+
+            return Ok("OTP verified.");
+        }
+
 
         // Change Password
         [HttpPost("{id}/ChangePassword")]
@@ -70,70 +130,96 @@ namespace SolexCode.CRM.API.New.Controllers
             }
         }
 
-        // Login method and data get according to id
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest loginRequest)
+        // Get User By ID
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == loginRequest.UserName);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
-
-            // Create claims for the user
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            // Generate JWT token
-            var token = new JwtSecurityToken(
-                _configuration["Jwt:Issuer"],
-                _configuration["Jwt:Audience"],
-                claims,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: creds
-            );
-
-            HttpContext.Session.SetString("UserId", user.Id.ToString());
-            HttpContext.Session.SetString("LoggedIn", "true");
-
-            return Ok(new
-            {
-                token = new JwtSecurityTokenHandler().WriteToken(token),
-                expiration = token.ValidTo,
-                userId = user.Id,
-                changePassword = user.ChangePassword,
-                sessionId = user.Id,
-                userData = new
-                {
-                    user.Id,
-                    user.FirstName,
-                    user.LastName,
-                    user.UserName,
-                    user.ChangePassword,
-                    user.Email,
-                    user.Role,
-                    user.MobileNumber,
-                    user.CompanyName,
-                    user.Continent,
-                    user.Country,
-                    user.Industry,
-                    user.ImagePath
-                }
-            });
+            return user;
         }
 
-        // Login request check password and username correct from database
+        // Login method and data get according to id
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequest loginRequest)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginRequest.Email);
+
+                // Check if user exists and verify password
+                if (user == null)
+                {
+                    return NotFound("User not found.");
+                }
+
+                if (!BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
+                {
+                    return BadRequest("Invalid password.");
+                }
+
+                // Create claims for the user
+                var claims = new[]
+                {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.Email),
+        };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                // Generate JWT token
+                var token = new JwtSecurityToken(
+                    _configuration["Jwt:Issuer"],
+                    _configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.Now.AddHours(1),
+                    signingCredentials: creds
+                );
+
+                // Optionally manage sessions (consider JWT stateless approach)
+                // HttpContext.Session.SetString("UserId", user.Id.ToString());
+                // HttpContext.Session.SetString("LoggedIn", "true");
+
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expiration = token.ValidTo,
+                    userId = user.Id,
+                    changePassword = user.ChangePassword,
+                    userData = new
+                    {
+                        user.Id,
+                        user.FullName,
+                        user.Email,
+                        user.Role,
+                        user.MobileNumber,
+                        user.BirthDate,
+                        user.CompanyName,
+                        user.Continent,
+                        user.Country,
+                        user.Industry,
+                        user.ImagePath,
+                        user.IsSendViaEmail
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // Login request class
         public class LoginRequest
         {
-            public string UserName { get; set; }
+            public string Email { get; set; }
             public string Password { get; set; }
         }
+
 
         // Add User
         [HttpPost]
@@ -144,20 +230,23 @@ namespace SolexCode.CRM.API.New.Controllers
                 return BadRequest("User data is null");
             }
 
+            var temporaryPassword = GenerateTemporaryPassword();
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(temporaryPassword);
+
             var user = new User
             {
-                FirstName = userDto.FirstName,
-                LastName = userDto.LastName,
+                FullName = userDto.FullName,
+                BirthDate = userDto.BirthDate,
                 Email = userDto.Email,
                 MobileNumber = userDto.MobileNumber,
                 CompanyName = userDto.CompanyName,
                 Continent = userDto.Continent,
                 Country = userDto.Country,
                 Industry = userDto.Industry,
-                UserName = userDto.UserName,
-                Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password),
+                Password = hashedPassword,
                 Role = userDto.Role,
-                ChangePassword = userDto.ChangePassword
+                ChangePassword = true,
+                IsSendViaEmail = userDto.IsSendViaEmail
             };
 
             if (userDto.UserImage != null)
@@ -174,10 +263,30 @@ namespace SolexCode.CRM.API.New.Controllers
                 user.ImagePath = Path.Combine("upload", "image", userDto.UserImage.FileName);
             }
 
+            // Check if the email already exists in the database
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == userDto.Email);
+
+            if (existingUser != null)
+            {
+                // Return a conflict response if the email already exists
+                return Conflict("Email already exists");
+            }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return Ok(user);
+
+            // If IsSendViaEmail is true, send login details email
+            if (userDto.IsSendViaEmail.GetValueOrDefault() && userDto.Email != null)
+            {
+                await _emailController.SendLoginDetails(userDto.Email, temporaryPassword);
+            }
+
+            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
+
+
+
+
 
         // Get File Path
         [NonAction]
