@@ -1,6 +1,5 @@
-import SideBar from '../sidebar/SideBar';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../login/UserContext';
+import { useUser } from '../../login/UserContext'; // Adjust the path
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,9 +28,7 @@ const ResetPasswordWindow1 = () => {
 
   return (
     <div className="flex bg-gray-200 bg-opacity-20 h-screen">
-      <div>
-        <SideBar />
-      </div>
+      <div></div>
       <div className="flex justify-center ml-96 mt-60">
         <div className="bg-white w-96 h-40 pl-5 pr-5 p-4 ml-80 flex flex-col rounded-lg shadow-md border border-black">
           <div className="text-center">
@@ -42,7 +39,7 @@ const ResetPasswordWindow1 = () => {
           </button>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

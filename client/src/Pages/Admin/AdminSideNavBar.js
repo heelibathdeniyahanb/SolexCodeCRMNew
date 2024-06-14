@@ -88,12 +88,12 @@ export default function AdminSideNavBar() {
                     </div>
                 </li>
                 
-                
                 <li>
+                    <Link to='/admin-settings'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><IoIosSettings size={20} className="opacity-25 sm:w-6 sm:h-6 hover:text-white" /></div>
                         <div><label className='text-white opacity-25 hover:text-white' style={{ fontSize: '18px' }}>Settings</label></div>
-                    </div>
+                    </div></Link>
                 </li>
 
                 <li>

@@ -1,84 +1,92 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\",
+  "WorkspaceRootPath": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\",
   "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\dtos\\userimageupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\dtos\\userimageupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240613044026_addusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240613044026_addusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\migrations\\20240613044026_addusertable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\dtos\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\dtos\\userimageupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\dtos\\userimageupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\eventcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\data\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\leadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\controllers\\leadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\controllers\\leadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\models\\lead.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240423164859_addtasktable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240423164859_addtasktable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\migrations\\20240423164859_addtasktable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\solexcode.crm.api.new.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\solexcode.crm.api.new.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\solexcode.crm.api.new.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\databasecontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\databasecontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\migrations\\databasecontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240317122143_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240317122143_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\migrations\\20240317122143_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\solexcode.crm.api.new.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\solexcode.crm.api.new.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\solexcode.crm.api.new.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\acer\\desktop\\softwareproject\\original\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240504172315_createleadtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|c:\\users\\lapmart\\documents\\nimashabhnewclonefolder\\solexcodecrmnew\\server\\solexcode.crm.api.new\\solexcode.crm.api.new\\migrations\\20240504172315_createleadtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE21A889-99F0-41C4-A3F4-99AB058BF2D5}|SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj|solutionrelative:solexcode.crm.api.new\\migrations\\20240504172315_createleadtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -89,7 +97,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -97,244 +105,287 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DatabaseContext.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "20240614204452_AddEmailAndOtpModel.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240614204452_AddEmailAndOtpModel.cs",
+              "ViewState": "AQIAAJoAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T09:38:51.53Z",
+              "WhenOpened": "2024-06-14T20:44:52.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\UserController.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAgBAAAAAAAAAAAwwB4BAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "EmailController.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EmailController.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\EmailController.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EmailController.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\EmailController.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAowCUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:02:54.123Z"
+              "WhenOpened": "2024-06-14T20:33:37.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAkwCwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T11:52:10.322Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "UserRegisterDto.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
               "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
               "RelativeToolTip": "SolexCode.CRM.API.New\\Dtos\\UserRegisterDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAfAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:17:32.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserImageUpdateDto.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:16:46.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\appsettings.json",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\appsettings.json",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\appsettings.json",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-03-17T12:10:32.263Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TaskController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:29:58.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Program.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Program.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Program.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Program.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAF4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T11:56:47.355Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20240613044026_AddUserTable.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:40:27.09Z"
+              "WhenOpened": "2024-06-13T04:17:32.764Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\User.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\User.cs",
               "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\User.cs",
               "RelativeToolTip": "SolexCode.CRM.API.New\\Models\\User.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAAAAAAfAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAowBgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T03:53:51.152Z"
+              "WhenOpened": "2024-06-13T03:53:51.152Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DatabaseContext.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T11:52:10.322Z"
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\appsettings.json",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\appsettings.json",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\appsettings.json",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-17T12:10:32.263Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Event.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Event.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Models\\Event.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Event.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Models\\Event.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAuAAAA",
+              "DocumentIndex": 7,
+              "Title": "UserImageUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Dtos\\UserImageUpdateDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T11:55:43.302Z"
+              "WhenOpened": "2024-06-13T04:16:46.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LeadController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowHIAAAAAAAAA",
+              "DocumentIndex": 8,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\UserController.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAG0BAAAAAAAAAAAswIsBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T17:15:13.511Z"
+              "WhenOpened": "2024-06-13T04:02:54.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Program.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Program.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Program.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Program.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAEMAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T11:56:47.355Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "EventController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EventController.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EventController.cs",
               "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\EventController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EventController.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\EventController.cs",
               "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\EventController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T11:48:20.394Z"
+              "WhenOpened": "2024-03-17T11:48:20.394Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "SolexCode.CRM.API.New.http",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2024-03-17T12:15:00.734Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Lead.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Lead.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Models\\Lead.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Lead.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Models\\Lead.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAmAAAA",
+              "DocumentIndex": 10,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\acer\\Desktop\\new\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Data\\DatabaseContext.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T17:14:45.389Z"
+              "WhenOpened": "2024-06-14T09:38:51.53Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "20240504172315_CreateLeadTable.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 12,
+              "Title": "TaskController.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\TaskController.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAABRwA8AAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-04T17:23:16.223Z"
+              "WhenOpened": "2024-04-23T16:29:58.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20240613044026_AddUserTable.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240613044026_AddUserTable.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-13T04:40:27.09Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "20240423164859_addTaskTable.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwB8AAAARAAAA",
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Event.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Models\\Event.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Event.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Models\\Event.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:49:00.191Z"
+              "WhenOpened": "2024-03-17T11:55:43.302Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DatabaseContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAARAAAA",
+              "DocumentIndex": 13,
+              "Title": "LeadController.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Controllers\\LeadController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowHIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T12:26:47.925Z"
+              "WhenOpened": "2024-05-04T17:15:13.511Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "20240317122143_InitialCreate.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
-              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
-              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAIBJwBUAAABEAAAA",
+              "Title": "SolexCode.CRM.API.New.http",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-03-17T12:15:00.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Lead.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Lead.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Models\\Lead.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Models\\Lead.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Models\\Lead.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-17T12:21:43.75Z"
+              "WhenOpened": "2024-05-04T17:14:45.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20240504172315_CreateLeadTable.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240504172315_CreateLeadTable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T17:23:16.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20240423164859_addTaskTable.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240423164859_addTaskTable.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwB8AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T16:49:00.191Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
+              "Title": "DatabaseContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\DatabaseContextModelSnapshot.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T12:26:47.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20240317122143_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
+              "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
+              "RelativeToolTip": "SolexCode.CRM.API.New\\Migrations\\20240317122143_InitialCreate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBZwBUAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T12:21:43.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "SolexCode.CRM.API.New.csproj",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
+              "DocumentMoniker": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
               "RelativeDocumentMoniker": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
+              "ToolTip": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
               "RelativeToolTip": "SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-17T11:50:27.564Z"
+              "WhenOpened": "2024-03-17T11:50:27.564Z",
+              "EditorCaption": ""
             }
           ]
         }

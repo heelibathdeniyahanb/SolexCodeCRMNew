@@ -246,7 +246,7 @@ const Users = () => {
             setDeletedUsers(prevDeletedUsers => [...prevDeletedUsers, deletedUser]);
             setUsers(updatedUsers);
             localStorage.setItem('deletedUsers', JSON.stringify([...deletedUsers, deletedUser]));
-            const response = await axios.post(`https://localhost:7031/api/user/DeleteUser?id=${userId}`);
+            const response = await axios.post(`https://localhost:7143/api/user/DeleteUser?id=${userId}`);
             if (response.status === 200) {
                 toast.success('User deleted successfully.');
             } else {
@@ -296,7 +296,7 @@ const Users = () => {
                 user.continent,
                 user.country,
                 user.industry,
-                user.userName,
+                
                 user.role
             ];
             rows.push(row.join(","));

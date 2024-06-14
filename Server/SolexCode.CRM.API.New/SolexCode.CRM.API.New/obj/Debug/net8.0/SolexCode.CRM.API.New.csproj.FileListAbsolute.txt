@@ -705,3 +705,6 @@ C:\Users\acer\Desktop\softwareProject\Original\SolexCodeCRMNew\Server\SolexCode.
 C:\Users\acer\Desktop\softwareProject\Original\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.pdb
 C:\Users\acer\Desktop\softwareProject\Original\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.genruntimeconfig.cache
 C:\Users\acer\Desktop\softwareProject\Original\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\ref\SolexCode.CRM.API.New.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\MailKit.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\MimeKit.dll

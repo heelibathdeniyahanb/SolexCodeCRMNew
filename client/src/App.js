@@ -83,6 +83,29 @@ import ClientLeadForm from './Pages/Client/ClientLeadForm';
 import SalesRepInvoice from './Pages/SalesRep/SalesRepInvoice';
 import AdminInvoice from './Pages/Admin/AdminInvoice';
 
+import VerifyOtpAdmin from './Pages/Admin/VerifyOtpAdmin';
+import ClientVerifyOtp from './Pages/Client/ClientVerifyOtp';
+import SalesRepVerifyOtp from './Pages/SalesRep/SalesRepVerifyOtp';
+import CustomerSupporterVerifyOtp from './Pages/CustomerSupporter/CustomerSupporterVerifyOtp';
+
+import ResetPasswordWindow1Admin from './Pages/Admin/ResetPasswordWindow1Admin';
+import ResetPasswordWindow2Admin from './Pages/Admin/ResetPasswordWindow2Admin';
+import ResetPasswordWindow3Admin from './Pages/Admin/ResetPasswordWindow3Admin';
+import ClientResetPasswordWindow1 from './Pages/Client/ClientResetPasswordWindow1';
+import ClientResetPasswordWindow2 from './Pages/Client/ClientResetPasswordWindow2';
+import ClientResetPasswordWindow3 from './Pages/Client/ClientResetPasswordWindow3';
+import SalesRepResetPasswordWindow1 from './Pages/SalesRep/SalesRepResetPasswordWindow1';
+import SalesRepResetPasswordWindow2 from './Pages/SalesRep/SalesRepResetPasswordWindow2';
+import SalesRepResetPasswordWindow3 from './Pages/SalesRep/SalesRepResetPasswordWindow3';
+import CustomerSupporterResetPasswordWindow1 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow1';
+import CustomerSupporterResetPasswordWindow2 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow2';
+import CustomerSupporterResetPasswordWindow3 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow3';
+import AdminSettings from './Pages/Admin/AdminSettings';
+import ClientSettings from './Pages/Client/ClientSettings';
+
+
+
+
 function App() {
   return (
     <div className='App'>
@@ -94,6 +117,27 @@ function App() {
         
          <Route path='/' element={<Login/>}></Route>
          <Route path='/rootpage' element={<RootPage/>}></Route>
+
+         <Route path='/admin-verify-otp' element={<VerifyOtpAdmin/>}></Route>
+         <Route path='/client-verify-otp' element={<ClientVerifyOtp/>}></Route>
+         <Route path='/salesrep-verify-otp' element={<SalesRepVerifyOtp/>}></Route>
+         <Route path='/customersupporter-verify-otp'element={<CustomerSupporterVerifyOtp/>}></Route>
+
+         <Route path='/admin-settings' element={<AdminSettings/>}></Route>
+         <Route path='/client-settings' element={<ClientSettings/>}></Route>
+
+         <Route path='/admin-reset-password-window-1' element={<ResetPasswordWindow1Admin/>}></Route>
+         <Route path='/admin-reset-password-window-2' element={<ResetPasswordWindow2Admin/>}></Route>
+         <Route path='/admin-reset-password-window-3' element={<ResetPasswordWindow3Admin/>}></Route>
+         <Route path='/client-reset-password-window-1' element={<ClientResetPasswordWindow1/>}></Route>
+         <Route path='/client-reset-password-window-2' element={<ClientResetPasswordWindow2/>}></Route>
+         <Route path='/client-reset-password-window-3' element={<ClientResetPasswordWindow3/>}></Route>
+         <Route path='/salesrep-reset-password-window-1' element={<SalesRepResetPasswordWindow1/>}></Route>
+         <Route path='/salesrep-reset-password-window-2' element={<SalesRepResetPasswordWindow2/>}></Route>
+         <Route path='/salesrep-reset-password-window-3' element={<SalesRepResetPasswordWindow3/>}></Route>
+         <Route path='/customersupporter-reset-password-window-1' element={<CustomerSupporterResetPasswordWindow1/>}></Route>
+         <Route path='/customersupporter-reset-password-window-2' element={<CustomerSupporterResetPasswordWindow2/>}></Route>
+         <Route path='/customersupporter-reset-password-window-3' element={<CustomerSupporterResetPasswordWindow3/>}></Route>
 
          <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
          <Route path='/admindashboardcard' element={<AdminDashboardCard/>}></Route>

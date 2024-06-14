@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SideBar from '../sidebar/SideBar';
+
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -67,7 +67,7 @@ const ResetPasswordWindow2 = () => {
     return (
         <div className="flex bg-gray-200 bg-opacity-20 h-screen">
             <div>
-                <SideBar />
+               
             </div>
             <div className="w-5/12 h-5/6 ml-auto mr-60 mt-20 rounded-lg bg-white p-8 shadow-md border border-black">  
             <h1 className="text-center text-4xl mb-8 font-bold text-teal-700">Reset Password</h1>
