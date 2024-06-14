@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\acer\\Desktop\\softwareProject\\Original\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
+      "PackagePath": "staticwebassets\\upload\\image\\logo1.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SolexCode.CRM.API.New.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SolexCode.CRM.API.New.props",
+      "PackagePath": "build\\SolexCode.CRM.API.New.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SolexCode.CRM.API.New.props",
+      "PackagePath": "buildMultiTargeting\\SolexCode.CRM.API.New.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SolexCode.CRM.API.New.props",
+      "PackagePath": "buildTransitive\\SolexCode.CRM.API.New.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
