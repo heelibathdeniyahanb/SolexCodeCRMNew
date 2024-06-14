@@ -1,4 +1,5 @@
-﻿using SolexCode.CRM.API.New.Data;
+﻿
+using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
 
 using Microsoft.AspNetCore.Mvc;
@@ -24,38 +25,21 @@ namespace SolexCode.CRM.API.New.Controllers
         [HttpPost]
         public async Task<ActionResult<Lead>> CreateLead([FromBody] Lead leadFormData)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             _context.Lead.Add(leadFormData);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetLeadById), new { id = leadFormData.Id }, leadFormData);
+            return CreatedAtAction(nameof(GetLead), new { id = leadFormData.Id }, leadFormData);
         }
 
         // GET: api/lead
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lead>>> GetLeads()
+
+        public ActionResult<IEnumerable<Models.Lead>> GetLead()
         {
-            return await _context.Lead.ToListAsync();
+            return _context.Lead.ToList();
         }
 
-        // GET: api/lead/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Lead>> GetLeadById(int id)
-        {
-            var lead = await _context.Lead.FindAsync(id);
 
-            if (lead == null)
-            {
-                return NotFound();
-            }
-
-            return lead;
-        }
-
-        // DELETE: api/lead/{id}
+    // DELETE: api/lead/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLead(int id)
         {
@@ -78,11 +62,6 @@ namespace SolexCode.CRM.API.New.Controllers
             if (id != lead.Id)
             {
                 return BadRequest();
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
             }
 
             _context.Entry(lead).State = EntityState.Modified;
@@ -110,5 +89,37 @@ namespace SolexCode.CRM.API.New.Controllers
         {
             return _context.Lead.Any(e => e.Id == id);
         }
+
+        [HttpPut("UpdatePipeline/{id}/{pipelineName}")]
+        public async Task<IActionResult> UpdatePipeline(int id, string pipelineName)
+        {
+            var lead = await _context.Lead.FindAsync(id);
+            if (lead == null)
+            {
+                return NotFound();
+            }
+
+            lead.SalesPipeline = pipelineName;
+            _context.Entry(lead).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LeadExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
     }
 }
+

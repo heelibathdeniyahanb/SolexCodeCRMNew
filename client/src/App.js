@@ -74,7 +74,14 @@ import Users from './Components/Users';
 import Image from './Components/Image';
 import SuperAdmin from './Pages/Admin/SuperAdmin';
 
-
+import AdminCreateInvoice from './Components/AdminCompo/AdminInvoice/AdminCreateInvoice';
+import AdminInvoiceCard from './Components/AdminCompo/AdminInvoice/AdminInvoiceCard';
+import Invoice from './Components/AdminCompo/AdminInvoice/Invoice';
+import InvoiceForm from './Components/AdminCompo/AdminInvoice/InvoiceForm';
+import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
+import ClientLeadForm from './Pages/Client/ClientLeadForm';
+import SalesRepInvoice from './Pages/SalesRep/SalesRepInvoice';
+import AdminInvoice from './Pages/Admin/AdminInvoice';
 
 function App() {
   return (
@@ -156,10 +163,16 @@ function App() {
           <Route path='/charts' element={<Charts/>}></Route>
           <Route path='/kpi' element={<KPI/>}></Route>
           <Route path='/comparator' element={<Comparator/>}></Route>
-
-         
-
           
+          <Route path='/admincreateinvoice' element={<AdminCreateInvoice/>}></Route>
+          <Route path='/admininvoicecard' element={<AdminInvoiceCard/>}></Route>
+          <Route path='/invoice' element={<Invoice/>}></Route>
+          <Route path='/invoiceform' element={<InvoiceForm/>}></Route>
+          <Route path='/clientviewsaleslead' element={<ClientViewSalesLead/>}></Route>
+          <Route path='/clientleadform' element={<ClientLeadForm/>}></Route>
+          <Route path='/salesrepinvoice' element={<SalesRepInvoice/>}></Route>
+          <Route path='/admininvoice' element={<AdminInvoice/>}></Route>
+
         </Routes>
         </UserProvider>
        
