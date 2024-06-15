@@ -391,5 +391,25 @@ namespace SolexCode.CRM.API.New.Controllers
             await _context.SaveChangesAsync();
             return Ok(user);
         }
+
+
+        [HttpGet("filter")]
+        public async Task<IActionResult> FilterUsers([FromQuery] string? field, [FromQuery] string? roll)
+        {
+            var query = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrEmpty(field))
+            {
+                query = query.Where(u => u.Industry == field);
+            }
+
+            if (!string.IsNullOrEmpty(roll))
+            {
+                query = query.Where(u => u.Role == roll);
+            }
+
+            var users = await query.ToListAsync();
+            return Ok(users);
+        }
     }
 }

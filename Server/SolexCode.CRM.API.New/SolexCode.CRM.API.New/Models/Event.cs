@@ -1,12 +1,23 @@
-﻿namespace SolexCode.CRM.API.New.Models
+﻿namespace SolexCode.CRM.API.New.Models;
+
+public class Events
 {
-    public class Event
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Host { get; set; }
-        public string Venue { get; set; }
-        public DateTime DateTime { get; set; }
-        public string Participants { get; set; }
-    }
+    public int Id { get; set; }
+    public string EventName { get; set; }
+    public DateTime Date { get; set; }
+    public string Time { get; set; }
+    public string Venue { get; set; }
+    public string Host { get; set; }
+
+    public DateTime? RepeatUntilDate { get; set; }
+    public string? RepeatUntilTime { get; set; }
+    public DateTimeOffset ReminderDate { get; set; }
+    public string ReminderTime { get; set; }
+    public DateTime DateAdded { get; set; } = DateTime.Now;
+    public DateTime DateModified { get; set; } = DateTime.Now;
+
+    public ICollection<Participant>? Participants { get; set; }
+    public string Description { get; set; }
+    public bool IsImportant { get; set; }
+    public bool IsSendViaEmail { get; set; }
 }

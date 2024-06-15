@@ -10,6 +10,8 @@
         public string SalesRep { get; set;}
         public string SalesPipeline { get; set; }
         public string LeadStatus { get; set; }
+
+        public ICollection<Task> Tasks { get; set; } = new List<Task>();
     }
 
 

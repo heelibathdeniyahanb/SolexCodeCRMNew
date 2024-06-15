@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SolexCode.CRM.API.New.Models;
-using static System.Net.WebRequestMethods;
+//using static System.Net.WebRequestMethods;
 using CRMTask = SolexCode.CRM.API.New.Models.Task;
 
 namespace SolexCode.CRM.API.New.Data
@@ -11,7 +11,8 @@ namespace SolexCode.CRM.API.New.Data
         {
         }
 
-        public DbSet<Event> Event { get; set; }
+        public DbSet<Events> Events { get; set; }
+        public DbSet<Participant> Participant { get; set; }
         public DbSet<CRMTask> Task { get; set; } // Use the alias here
         public DbSet<Lead> Lead{ get; set; }
         public DbSet<User> Users { get; set; }
@@ -29,6 +30,20 @@ namespace SolexCode.CRM.API.New.Data
                .HasMany(e => e.Attachments)
                .WithOne(a => a.Email)
                .HasForeignKey(a => a.EmailId);
+
+            // Participant Configuration
+            modelBuilder.Entity<Participant>()
+                .HasKey(p => new { p.UserId, p.EventId });
+
+            modelBuilder.Entity<Participant>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Participants)
+                .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<Participant>()
+                .HasOne(p => p.Event)
+                .WithMany(e => e.Participants)
+                .HasForeignKey(p => p.EventId);
 
             base.OnModelCreating(modelBuilder);
         }

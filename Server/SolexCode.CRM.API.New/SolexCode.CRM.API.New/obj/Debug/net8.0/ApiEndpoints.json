@@ -162,40 +162,54 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.EventController",
-    "Method": "Get",
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetEvents",
     "RelativePath": "api/Event",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Events, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.EventController",
-    "Method": "Post",
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "CreateEvent",
     "RelativePath": "api/Event",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "value",
-        "Type": "System.String",
+        "Name": "ev",
+        "Type": "SolexCode.CRM.API.New.DTOs.EventsDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "SolexCode.CRM.API.New.Models.Events",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.EventController",
-    "Method": "Get",
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetEvent",
     "RelativePath": "api/Event/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -207,11 +221,21 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.Models.Events",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.EventController",
-    "Method": "Put",
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "UpdateEvent",
     "RelativePath": "api/Event/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -223,22 +247,16 @@
         "IsRequired": true
       },
       {
-        "Name": "value",
-        "Type": "System.String",
+        "Name": "evDto",
+        "Type": "SolexCode.CRM.API.New.DTOs.EventsDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.EventController",
-    "Method": "Delete",
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "DeleteEvent",
     "RelativePath": "api/Event/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -250,10 +268,30 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetSuggestions",
+    "RelativePath": "api/Event/Suggestions/{input}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.User, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
