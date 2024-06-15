@@ -2,6 +2,11 @@
 {
     public class User
     {
+        public User()
+        {
+            Participants = new List<Participant>();
+           
+        }
         public int Id { get; set; }
         public string FullName { get; set; }
 
@@ -20,5 +25,6 @@
         public string ImagePath { get; set; }
         public bool? IsSendViaEmail { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
+        public ICollection<Participant> Participants { get; set; }
     }
 }
