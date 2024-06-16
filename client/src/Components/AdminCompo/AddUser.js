@@ -88,8 +88,8 @@ const AddUsers = () => {
         try {
             const data = new FormData();
             
-            data.append('FirstName', formData.firstName);
-            data.append('LastName', formData.lastName);
+            data.append('FullName', `${formData.firstName} ${formData.lastName}`);
+           
             data.append('Email', formData.email); 
             data.append('MobileNumber', formData.mobileNumber);
             data.append('CompanyName', formData.companyName);

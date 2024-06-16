@@ -15,7 +15,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { setUserData } = useUser();
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ const Login = () => {
         toast.success("Login successful!");
         setTimeout(() => {
           navigate('/superadmin');
-        }, 3000); // Navigate to superadmin dashboard
+        }, 2000); // Shortened delay
         return;
       }
   
@@ -33,14 +33,12 @@ const Login = () => {
       if (response.status === 200) {
         const userData = response.data.userData;
         setUserData(userData);
+        console.log(userData);
         sessionStorage.setItem('UserId', userData.id);
   
-       
-               
-        
-          // If not the first login, navigate to dashboard based on role
-          toast.success("Login successful!");
-          setTimeout(() => {
+        toast.success("Login successful!");
+        setTimeout(() => {
+          if (userData.changePassword === false) {
             switch (userData.role) {
               case 'Admin':
                 navigate('/admindashboard');
@@ -57,8 +55,25 @@ const Login = () => {
               default:
                 navigate('/user-dashboard');
             }
-          }, 3000);
-        
+          } else {
+            switch (userData.role) {
+              case 'Admin':
+                navigate('/admin-reset-password-window-1');
+                break;
+              case 'Client':
+                navigate('/client-reset-password-window-1');
+                break;
+              case 'Sales Leader':
+                navigate('/salesrep-reset-password-window-1');
+                break;
+              case 'Customer Supporter':
+                navigate('/customersupporter-reset-password-window-1');
+                break;
+              default:
+                navigate('/user-dashboard');
+            }
+          }
+        }, 2000); // Shortened delay
       } else {
         throw new Error('Login failed');
       }

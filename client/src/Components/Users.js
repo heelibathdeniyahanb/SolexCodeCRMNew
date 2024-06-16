@@ -217,7 +217,7 @@ const Users = () => {
         try {
             const response = await axios.get('https://localhost:7143/api/user/Get');
             if (response.status === 200) {
-                const usersWithRoleUser = response.data.filter(user => user.role === 'Admin');
+                const usersWithRoleUser = response.data.filter(user => user.role === 'Client');
                 console.log('Filtered users with role "User":', usersWithRoleUser);
                 setUsers(usersWithRoleUser);
             } else {
@@ -393,8 +393,8 @@ const Users = () => {
     //Edit Table Data Function start
     const [editedUserData, setEditedUserData] = useState({
         id: '',
-        firstName: '',
-        lastName: '',
+        fullName: '',
+       
         email: '',
         mobileNumber: '',
         companyName: '',
@@ -412,7 +412,7 @@ const Users = () => {
     const closeEditModal = () => {
         setEditedUserData({
             id: '',
-            firstName: '',
+            fullName: '',
             lastName: '',
             email: '',
             mobileNumber: '',
@@ -430,7 +430,7 @@ const Users = () => {
     const handleEditUser = async () => {
         if (window.confirm('Do you want to update this user?')) {
             try {
-                const response = await axios.put('https://localhost:7031/api/user/UpdateUser', editedUserData);
+                const response = await axios.put('https://localhost:7143/api/user/UpdateUser', editedUserData);
                 if (response.status === 204) {
                     toast.success('User updated successfully.');
                     closeEditModal();
@@ -472,8 +472,8 @@ const Users = () => {
                                <table className="min-w-full divide-y divide-gray-200">
                                    <thead className="bg-gray-50">
                                        <tr>
-                                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-                                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
+                                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+                                           
                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile Number</th>
                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company Name</th>
@@ -493,8 +493,8 @@ const Users = () => {
                                         <tbody className="bg-white divide-y divide-gray-200">
                                             {filteredUsers.slice(indexOfFirstItem, indexOfLastItem).map(user => (
                                                 <tr key={user.id}>
-                                                    <td className="px-6 py-4 whitespace-nowrap">{user.firstName}</td>
-                                                    <td className="px-6 py-4 whitespace-nowrap">{user.lastName}</td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">{user.fullName}</td>
+                                                    
                                                     <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap">{user.mobileNumber}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap">{user.companyName}</td>
@@ -554,30 +554,30 @@ const Users = () => {
                         <table className="min-w-full bg-white mt-2">
                             <thead>
                                 <tr>
-                                    <th className="py-2">First Name</th>
-                                    <th className="py-2">Last Name</th>
+                                    <th className="py-2">Full Name</th>
+                                    
                                     <th className="py-2">Email</th>
                                     <th className="py-2">Mobile Number</th>
                                     <th className="py-2">Company Details</th>
                                     <th className="py-2">Continent</th>
                                     <th className="py-2">Country</th>
                                     <th className="py-2">Industry</th>
-                                    <th className="py-2">User Name</th>
+                                   
                                     <th className="py-2">Role</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {importedUser.map((user, index) => (
                                 <tr key={index}>
-                                    <td className="py-2">{user['First Name']}</td>
-                                    <td className="py-2">{user['Last Name']}</td>
+                                    <td className="py-2">{user['Full Name']}</td>
+                                    
                                     <td className="py-2">{user['Email']}</td>
                                     <td className="py-2">{user['Mobile Number']}</td>
                                     <td className="py-2">{user['Company Details']}</td>
                                     <td className="py-2">{user['Continent']}</td>
                                     <td className="py-2">{user['Country']}</td>
                                     <td className="py-2">{user['Industry']}</td>
-                                    <td className="py-2">{user['User Name']}</td>
+                                    
                                     <td className="py-2">{user['Role']}</td>
                                 </tr>
                                 ))}
@@ -627,8 +627,8 @@ const Users = () => {
                             <table className="min-w-full divide-y divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile Number</th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company Name</th>
@@ -649,8 +649,8 @@ const Users = () => {
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {filteredUsers.map(user => (
                                         <tr key={user.id}>
-                                            <td className="px-6 py-4 whitespace-nowrap">{user.firstName}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap">{user.lastName}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{user.fullName}</td>
+                                           
                                             <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{user.mobileNumber}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{user.companyName}</td>
@@ -688,13 +688,10 @@ const Users = () => {
                                                     </div>
                                                     <div className="w-full flex gap-4">
                                                         <div className="flex-1">
-                                                            <label htmlFor="firstName" className="block text-gray-700">First Name</label>
-                                                            <input type="text" id="firstName" name="firstName" value={editedUserData.firstName} onChange={(e) => setEditedUserData({ ...editedUserData, firstName: e.target.value })} className="form-input mt-1 block w-full rounded" />
+                                                            <label htmlFor="firstName" className="block text-gray-700">Full Name</label>
+                                                            <input type="text" id="firstName" name="firstName" value={editedUserData.fullName} onChange={(e) => setEditedUserData({ ...editedUserData, firstName: e.target.value })} className="form-input mt-1 block w-full rounded" />
                                                         </div>
-                                                        <div className="flex-1">
-                                                            <label htmlFor="lastName" className="block text-gray-700">Last Name</label>
-                                                            <input type="text" id="lastName" name="lastName" value={editedUserData.lastName} onChange={(e) => setEditedUserData({ ...editedUserData, lastName: e.target.value })} className="form-input mt-1 block w-full rounded" />
-                                                        </div>
+                                                       
                                                     </div>
                                                     <div className="w-full flex gap-4">
                                                         <div className="flex-1">
@@ -763,8 +760,8 @@ const Users = () => {
                              <table className="min-w-full divide-y divide-gray-200">
                                  <thead className="bg-gray-50">
                                      <tr>
-                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
+                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Full Name</th>
+                                         
                                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mobile Number</th>
                                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company Name</th>
@@ -778,8 +775,8 @@ const Users = () => {
                                      {deletedUsers.map(user => (
                                          user &&
                                          <tr key={user.id}>
-                                             <td className="px-6 py-4 whitespace-nowrap">{user.firstName}</td>
-                                             <td className="px-6 py-4 whitespace-nowrap">{user.lastName}</td>
+                                             <td className="px-6 py-4 whitespace-nowrap">{user.fullName}</td>
+                                            
                                              <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
                                              <td className="px-6 py-4 whitespace-nowrap">{user.mobileNumber}</td>
                                              <td className="px-6 py-4 whitespace-nowrap">{user.companyName}</td>

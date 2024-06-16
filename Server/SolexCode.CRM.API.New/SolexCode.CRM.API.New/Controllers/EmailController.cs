@@ -95,6 +95,19 @@ namespace SolexCode.CRM.API.New.Controllers
             return Ok();
         }
         [HttpPost]
+        [Route("ChangePasswordNotification")]
+        public async Task<IActionResult> SendPasswordChangeNotification([FromForm] string email)
+        {
+            var subject = "Password Changed Successfully";
+            var message = "Your password has been changed successfully. If you did not make this change, please contact support immediately.";
+
+            // Assuming you have an email sending service configured
+            await SendEmail(subject, message, new string[] { email }, new List<IFormFile>());
+
+            return Ok();
+        }
+
+        [HttpPost]
         [Route("SendOtp")]
         public async System.Threading.Tasks.Task<IActionResult> SendOtp(string email, string otpCode)
         {

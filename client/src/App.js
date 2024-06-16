@@ -106,6 +106,7 @@ import ClientSettings from './Pages/Client/ClientSettings';
 
 
 
+
 function App() {
   return (
     <div className='App'>
@@ -149,6 +150,8 @@ function App() {
          <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
          <Route path='/clientdashboard' element={<ClientDashboard/>}></Route>
          <Route path='/superadmin' element={<SuperAdmin/>}></Route>
+
+         
 
          <Route path='adduser' element={<AddUsers/>}></Route>
          <Route path='/adduserpage' element={<AddUserPage/>}></Route>

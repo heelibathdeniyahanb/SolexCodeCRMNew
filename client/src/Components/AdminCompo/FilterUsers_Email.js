@@ -19,7 +19,7 @@ const FilterUsers = ({ setRecipients }) => {
     { value: '', label: 'Select a roll' },
     { value: 'Admin', label: 'Admin' },
     { value: 'Client', label: 'Client' },
-    { value: 'Sales Represenative', label: 'Sales Represenative' },
+    { value: 'Sales Leader', label: 'Sales Leader' },
     { value: 'Customer Supporter', label: 'Customer Supporter' },
     // Add more options as needed
   ];

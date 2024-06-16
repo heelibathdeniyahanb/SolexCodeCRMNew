@@ -19,13 +19,13 @@ namespace SolexCode.CRM.API.New.Controllers
     public class TaskController : ControllerBase
     {
         private readonly DatabaseContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+       // private readonly IHttpContextAccessor _httpContextAccessor;
         //private readonly IHubContext<NotificationHub> _hubContext;
 
-        public TaskController(DatabaseContext context, IHttpContextAccessor httpContextAccessor)
+        public TaskController(DatabaseContext context)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
+            //_httpContextAccessor = httpContextAccessor;
           //  _hubContext = hubContext;
         }
 

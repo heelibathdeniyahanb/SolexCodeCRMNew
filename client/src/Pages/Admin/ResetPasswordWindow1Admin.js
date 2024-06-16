@@ -8,7 +8,8 @@ import ResetPasswordWindow1 from '../../Components/AdminCompo/password/ResetPass
 export default function ResetPasswordWindow1Admin() {
   return (
     <div><Header/>
+    <div className='flex'>
     <AdminSideNavBar/>
-    <ResetPasswordWindow1/></div>
+    <ResetPasswordWindow1/></div></div>
   )
 }
