@@ -31,6 +31,13 @@ namespace SolexCode.CRM.API.New.Data
                .WithOne(a => a.Email)
                .HasForeignKey(a => a.EmailId);
 
+            //lead and task
+            modelBuilder.Entity<Lead>()
+               .HasMany(lead => lead.Tasks)
+               .WithOne(task => task.Lead)
+               .HasForeignKey(task => task.LeadId)
+               .IsRequired(false);
+
             // Participant Configuration
             modelBuilder.Entity<Participant>()
                 .HasKey(p => new { p.UserId, p.EventId });

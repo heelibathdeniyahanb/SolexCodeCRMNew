@@ -7,7 +7,8 @@ import Header from '../../Components/Header/Header'
 export default function ResetPasswordWindow2Admin() {
   return (
     <div><Header/>
+    <div className='flex'>
     <AdminSideNavBar/>
-    <ResetPasswordWindow2/></div>
+    <ResetPasswordWindow2/></div></div>
   )
 }

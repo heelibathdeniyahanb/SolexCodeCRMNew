@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useUser } from '../../login/UserContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,7 @@ const ResetPasswordWindow2 = () => {
     const [passwordError, setPasswordError] = useState('');
     const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
     const navigate = useNavigate();
+    const { userData } = useUser();
 
     // Retrieve userId from session storage
     const userId = sessionStorage.getItem('UserId');
@@ -40,7 +41,7 @@ const ResetPasswordWindow2 = () => {
                 setPasswordError('Passwords do not match.');
             } else {
                 // Call the backend API to change the password
-                const response = await axios.post(`https://localhost:7031/api/user/ChangePassword/${userId}/ChangePassword`, `"${newPassword}"`, {
+            const response = await axios.post(`https://localhost:7143/api/user/ChangePassword/${userId}/ChangePassword`, `"${newPassword}"`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -50,8 +51,30 @@ const ResetPasswordWindow2 = () => {
                     setConfirmNewPassword('');
                     toast.success('Password Reset successful!');
                     setTimeout(() => {
-                        navigate('/reset-password-window-3');
-                      }, 6000);
+                        if (userData && userData.role) {
+                            switch (userData.role) {
+                              case 'Admin':
+                                navigate('/admin-reset-password-window-3');
+                                break;
+                              case 'Client'  :
+                                navigate('/client-reset-password-window-3');
+                                break;
+                              case 'Sales Leader'  :
+                                navigate ('/salesrep-reset-password-window-3');
+                                break;
+                              case 'Customer Supporter'  :
+                                navigate ('/customersupporter-reset-password-window-3');
+                                break;
+                                default:
+                                  navigate('/default-reset-password-window-3');  
+                              } }
+                          else {
+                                navigate('/default-reset-password-window-3');
+                              }
+                            
+                        }, 6000);
+                     
+                    
                 }
             }
         } catch (error) {

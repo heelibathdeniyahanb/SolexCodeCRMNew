@@ -56,8 +56,8 @@ namespace SolexCode.CRM.API.New.Controllers
             {
                 UserId = userId,
                 Code = otpCode,
-                GeneratedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddMinutes(10) // OTP valid for 10 minutes
+                GeneratedAt = DateTime.Now,
+                ExpiresAt = DateTime.Now.AddMinutes(10) // OTP valid for 10 minutes
             };
 
             _context.Otps.Add(otp);
@@ -106,6 +106,8 @@ namespace SolexCode.CRM.API.New.Controllers
 
                 _context.Users.Update(user);
                 await _context.SaveChangesAsync();
+
+                await _emailController.SendPasswordChangeNotification(user.Email);
 
                 return Ok("Password changed successfully.");
             }

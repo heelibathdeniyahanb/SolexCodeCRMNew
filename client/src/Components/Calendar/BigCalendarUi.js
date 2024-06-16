@@ -4,6 +4,8 @@ import Cn from './Cn';
 import dayjs from 'dayjs';
 import { GrPrevious, GrNext } from "react-icons/gr";
 import axios from 'axios';
+import { useUser } from '../login/UserContext';
+
 
 const BigCalendarUi = () => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -11,11 +13,13 @@ const BigCalendarUi = () => {
     const [selectedDate, setSelectedDate] = useState(dayjs());
     const [tasks, setTasks] = useState([]);
     const [events, setEvents] = useState([]);
+    const { userData } = useUser();
 
     useEffect(() => {
         fetchTasks();
-        fetchEvents();
-    }, []);
+        if(userData){
+        fetchEvents()};
+    }, [userData]);
 
     const fetchTasks = () => {
         axios.get('https://localhost:7143/api/Task')
@@ -38,7 +42,10 @@ const BigCalendarUi = () => {
     }
 
     const getTasksForDate = (date) => {
-        return tasks.filter(task => dayjs(task.dueDate).isSame(date, 'day'));
+        if (!userData) return [];
+        return tasks.filter(task => 
+            dayjs(task.dueDate).isSame(date, 'day') && task.createdById === userData.id
+        );
     };
 
     const getEventsForDate = (date) => {

@@ -20,7 +20,27 @@ const ResetPasswordWindow1 = () => {
   const handleResetPasswordClick = () => {
     toast.success("Reset Password Window successful!");
     setTimeout(() => {
-      navigate('/reset-password-window-2');
+      if (userData && userData.role) {
+        switch (userData.role) {
+          case 'Admin':
+            navigate('/admin-reset-password-window-2');
+            break;
+          case 'Client'  :
+            navigate('/client-reset-password-window-2');
+            break;
+          case 'Sales Leader'  :
+            navigate ('/salesrep-reset-password-window-2');
+            break;
+          case 'Customer Supporter'  :
+            navigate ('/customersupporter-reset-password-window-2');
+            break;
+            default:
+              navigate('/default-reset-password-window-2');  
+          } }
+      else {
+            navigate('/default-reset-password-window-2');
+          }
+        
     }, 6000);
   };
 
