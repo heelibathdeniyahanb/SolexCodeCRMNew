@@ -102,6 +102,7 @@ import CustomerSupporterResetPasswordWindow2 from './Pages/CustomerSupporter/Cus
 import CustomerSupporterResetPasswordWindow3 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow3';
 import AdminSettings from './Pages/Admin/AdminSettings';
 import ClientSettings from './Pages/Client/ClientSettings';
+import Chat from './Components/Chat/Chat';
 
 
 
@@ -177,8 +178,10 @@ function App() {
           <Route path='/addtask' element={<AddTask/>}></Route>
           <Route path='/addevent' element={<AddEvent/>}></Route>
           <Route path='/addcall' element={<AddCall/>}></Route>
+
           <Route path='/sendemail' element={<SendEmail/>}></Route>
          <Route path='/email' element={<Email/>}></Route>
+         <Route path='/chat' element={<Chat/>}></Route>
           
           <Route path='/clientcalendar' element = {<ClientCalendar/>}></Route>
           <Route path='event' element = {<Event/>}></Route>

@@ -708,3 +708,5 @@ C:\Users\acer\Desktop\softwareProject\Original\SolexCodeCRMNew\Server\SolexCode.
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\MailKit.dll
 C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\MimeKit.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
