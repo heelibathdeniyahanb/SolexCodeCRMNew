@@ -413,5 +413,7 @@ namespace SolexCode.CRM.API.New.Controllers
             var users = await query.ToListAsync();
             return Ok(users);
         }
+
+
     }
 }

@@ -1,5 +1,145 @@
 [
   {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "GetChatMessages",
+    "RelativePath": "api/Chat/{chatId}/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.DTOs.ChatMessageDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "GetUserChatMessages",
+    "RelativePath": "api/Chat/{chatId}/users/{userId}/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.DTOs.ChatMessageDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "GetChatMessagesBetweenUsers",
+    "RelativePath": "api/Chat/chats/{chatId}/users/{senderId}/receivers/{receiverId}/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "senderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "receiverId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.DTOs.ChatMessageDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "GetMessagesBetweenUsers",
+    "RelativePath": "api/Chat/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "senderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "receiverId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.DTOs.ChatMessageDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "SendMessage",
+    "RelativePath": "api/Chat/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "messageDto",
+        "Type": "SolexCode.CRM.API.New.DTOs.ChatMessageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.ClientLeadController",
     "Method": "CreateLead",
     "RelativePath": "api/ClientLead",

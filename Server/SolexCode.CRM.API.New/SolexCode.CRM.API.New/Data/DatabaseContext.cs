@@ -18,6 +18,11 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Email> Email { get; set; }
         public DbSet<Otp> Otps { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
+        public DbSet<ChatParticipant> ChatParticipants { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
 
         public DbSet<ClientLead> ClientLead { get; set; }   
         public DbSet<Invoice> Invoice { get; set; }
@@ -51,6 +56,34 @@ namespace SolexCode.CRM.API.New.Data
                 .HasOne(p => p.Event)
                 .WithMany(e => e.Participants)
                 .HasForeignKey(p => p.EventId);
+
+            // Chat Configurations
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Participants)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
+
+            modelBuilder.Entity<Chat>()
+                .HasMany(c => c.Participants)
+                .WithOne(p => p.Chat)
+                .HasForeignKey(p => p.ChatId);
+
+            modelBuilder.Entity<Chat>()
+                .HasMany(c => c.Messages)
+                .WithOne(m => m.Chat)
+                .HasForeignKey(m => m.ChatId);
+
+            modelBuilder.Entity<ChatMessage>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ChatMessage>()
+                .HasOne(m => m.Receiver)
+                .WithMany()
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

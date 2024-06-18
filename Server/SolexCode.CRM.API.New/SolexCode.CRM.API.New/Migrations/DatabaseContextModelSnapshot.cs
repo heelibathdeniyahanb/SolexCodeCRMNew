@@ -48,6 +48,77 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.ToTable("Attachment");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Chat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Chats");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.ChatMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("ChatMessages");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.ChatParticipant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ChatId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChatId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ChatParticipants");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.ClientLead", b =>
                 {
                     b.Property<int>("Id")
@@ -317,6 +388,32 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.ToTable("Lead");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Otp", b =>
                 {
                     b.Property<int>("Id")
@@ -371,7 +468,14 @@ namespace SolexCode.CRM.API.New.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("CreatedByEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedByName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -384,26 +488,36 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Priority")
-                        .HasColumnType("bit");
+                    b.Property<int?>("LeadId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RelatedTo")
+                    b.Property<string>("LeadName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Reminder")
+                    b.Property<bool>("Priority")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ReminderDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ReminderTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaskDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaskName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaskStatus")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
 
                     b.ToTable("Task");
                 });
@@ -484,6 +598,52 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Email");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.ChatMessage", b =>
+                {
+                    b.HasOne("SolexCode.CRM.API.New.Models.Chat", "Chat")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SolexCode.CRM.API.New.Models.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SolexCode.CRM.API.New.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.ChatParticipant", b =>
+                {
+                    b.HasOne("SolexCode.CRM.API.New.Models.Chat", "Chat")
+                        .WithMany("Participants")
+                        .HasForeignKey("ChatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
+                        .WithMany("ChatParticipants")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Otp", b =>
                 {
                     b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
@@ -514,6 +674,22 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Task", b =>
+                {
+                    b.HasOne("SolexCode.CRM.API.New.Models.Lead", "Lead")
+                        .WithMany("Tasks")
+                        .HasForeignKey("LeadId");
+
+                    b.Navigation("Lead");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Chat", b =>
+                {
+                    b.Navigation("Messages");
+
+                    b.Navigation("Participants");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Email", b =>
                 {
                     b.Navigation("Attachments");
@@ -524,8 +700,15 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Participants");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Lead", b =>
+                {
+                    b.Navigation("Tasks");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>
                 {
+                    b.Navigation("ChatParticipants");
+
                     b.Navigation("Participants");
                 });
 #pragma warning restore 612, 618

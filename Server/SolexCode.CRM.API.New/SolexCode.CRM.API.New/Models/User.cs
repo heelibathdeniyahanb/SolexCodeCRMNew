@@ -5,7 +5,8 @@
         public User()
         {
             Participants = new List<Participant>();
-           
+            ChatParticipants = new List<ChatParticipant>();
+
         }
         public int Id { get; set; }
         public string FullName { get; set; }
@@ -26,5 +27,6 @@
         public bool? IsSendViaEmail { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public ICollection<Participant> Participants { get; set; }
+        public ICollection<ChatParticipant> ChatParticipants { get; set; }
     }
 }

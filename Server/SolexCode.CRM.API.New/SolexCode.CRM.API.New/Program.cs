@@ -4,11 +4,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SolexCode.CRM.API.New.Controllers;
+using SolexCode.CRM.API.New.Services;
+using SolexCode.CRM.API.New.Hub;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
+
 
 // Load JWT configuration values
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
@@ -65,7 +69,9 @@ builder.Services.AddSession(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<ChatService>();
 builder.Services.AddTransient<EmailController>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -92,5 +98,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chathub");
+app.MapHub<NotificationHub>("/notificationHub");
+
+
 
 app.Run();
