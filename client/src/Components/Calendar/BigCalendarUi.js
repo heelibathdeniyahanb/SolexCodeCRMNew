@@ -6,7 +6,6 @@ import { GrPrevious, GrNext } from "react-icons/gr";
 import axios from 'axios';
 import { useUser } from '../login/UserContext';
 
-
 const BigCalendarUi = () => {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const [today, setToday] = useState(dayjs());
@@ -17,8 +16,9 @@ const BigCalendarUi = () => {
 
     useEffect(() => {
         fetchTasks();
-        if(userData){
-        fetchEvents()};
+        if (userData) {
+            fetchEvents();
+        }
     }, [userData]);
 
     const fetchTasks = () => {
@@ -43,13 +43,25 @@ const BigCalendarUi = () => {
 
     const getTasksForDate = (date) => {
         if (!userData) return [];
-        return tasks.filter(task => 
+        return tasks.filter(task =>
             dayjs(task.dueDate).isSame(date, 'day') && task.createdById === userData.id
         );
     };
 
     const getEventsForDate = (date) => {
-        return events.filter(event => dayjs(event.datetime).isSame(date, 'day'));
+        if (!userData) return [];
+
+        // Filter events where the host is the current user
+        const hostEvents = events.filter(event =>
+            dayjs(event.date).isSame(date, 'day') && event.host === userData.fullName
+        );
+
+        // Filter events where the current user is a participant
+        const participantEvents = events.filter(event =>
+            dayjs(event.date).isSame(date, 'day') && event.participants.some(participant => participant.email === userData.email)
+        );
+
+        return [...hostEvents, ...participantEvents];
     };
 
     const goToPreviousMonth = () => {

@@ -6,6 +6,7 @@ using System.Text;
 using SolexCode.CRM.API.New.Controllers;
 using SolexCode.CRM.API.New.Services;
 using SolexCode.CRM.API.New.Hub;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 

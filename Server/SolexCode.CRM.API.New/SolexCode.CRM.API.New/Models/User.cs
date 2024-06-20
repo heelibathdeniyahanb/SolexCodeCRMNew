@@ -6,6 +6,8 @@
         {
             Participants = new List<Participant>();
             ChatParticipants = new List<ChatParticipant>();
+          //  NewLeadClients = new List<NewLeadClient>();
+
 
         }
         public int Id { get; set; }
@@ -24,9 +26,10 @@
         public string Country { get; set; }
         public string Industry { get; set; }
         public string ImagePath { get; set; }
-        public bool? IsSendViaEmail { get; set; }
+       
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public ICollection<Participant> Participants { get; set; }
         public ICollection<ChatParticipant> ChatParticipants { get; set; }
+        //public ICollection<NewLeadClient> NewLeadClients { get; set; }
     }
 }

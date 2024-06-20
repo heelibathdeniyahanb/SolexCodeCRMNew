@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+// src/Components/Events/EventForm.js
+
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUser } from '../login/UserContext';
 
 const EventForm = () => {
+    const { userData } = useUser();
     const [eventName, setEventName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [venue, setVenue] = useState('');
-    const [host, setHost] = useState('');
     const [participants, setParticipants] = useState([{ FullName: '', email: '' }]);
     const [repeatUntilDate, setRepeatUntilDate] = useState('');
     const [repeatUntilTime, setRepeatUntilTime] = useState('');
@@ -18,15 +21,19 @@ const EventForm = () => {
     const [isImportant, setIsImportant] = useState(false);
     const [isSendViaEmail, setIsSendViaEmail] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!userData) {
+            toast.error('User details not found.');
+            return;
+        }
 
         const data = {
             eventName,
             date,
             time,
             venue,
-            host,
+            host: userData.fullName || '',
             participants: participants.map(participant => ({
                 FullName: participant.FullName,
                 Email: participant.email
@@ -40,17 +47,16 @@ const EventForm = () => {
             isSendViaEmail
         };
 
-        axios.post('https://localhost:7143/api/Event', data, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                toast.success('Event added successfully');
-            })
-            .catch(error => {
-                toast.error('An error occurred while adding the event.');
+        try {
+            const response = await axios.post('https://localhost:7143/api/Event', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
+            toast.success('Event added successfully');
+        } catch (error) {
+            toast.error('An error occurred while adding the event.');
+        }
     };
 
     const handleParticipantChange = (index, fieldName, value) => {
@@ -74,11 +80,16 @@ const EventForm = () => {
         setRepeatUntilTime(time);
     };
 
+    if (!userData) {
+        return <div>Loading...</div>; // Or any other loading indicator
+    }
+
     return (
         <div className='formbody border px-5 py-5 text-sm'>
             <ToastContainer />
             <form onSubmit={handleSubmit}>
                 <div className='title mb-4'>
+                    {userData.fullName}
                     <label className="block mb-2">Title</label>
                     <input type='text' placeholder='Add event title' className='border px-3 py-2 rounded-md w-full border-green-700' value={eventName} onChange={(e) => setEventName(e.target.value)} required />
                 </div>
@@ -132,19 +143,18 @@ const EventForm = () => {
                 </div>
                 <div className='description mb-4'>
                     <label className="block mb-2">Description</label>
-                    <textarea rows="4" className='border px-3 py-2 rounded-md border-green-700 w-full' placeholder='Enter text here...' value={description} onChange={(e) => setDescription(e.target.value)} required ></textarea>
+                    <textarea rows="4" className='border px-3 py-2 rounded-md w-full border-green-700' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 </div>
-                <div className='mb-4'>
-                    <input type='checkbox' id="marked" checked={isImportant} onChange={(e) => setIsImportant(e.target.checked)} className="mr-2" />
-                    <label htmlFor="marked">Mark as high priority</label>
+                <div className='isImportant mb-4'>
+                    <label className="block mb-2">Mark As Important</label>
+                    <input type='checkbox' checked={isImportant} onChange={(e) => setIsImportant(e.target.checked)} />
                 </div>
-                <div className='mb-4'>
-                    <input type='checkbox' id="sendViaEmail" checked={isSendViaEmail} onChange={(e) => setIsSendViaEmail(e.target.checked)} className="mr-2" />
-                    <label htmlFor="sendViaEmail">Send Via Email</label>
+                <div className='isSendViaEmail mb-4'>
+                    <label className="block mb-2">Send Via Email</label>
+                    <input type='checkbox' checked={isSendViaEmail} onChange={(e) => setIsSendViaEmail(e.target.checked)} />
                 </div>
-                <div className='button mb-4'>
-                    <button type='submit' className='border px-6 py-2 bg-gray-400 rounded-md border-green-700 font-bold mr-4'>Create</button>
-                    <button type='button' className='border px-6 py-2 bg-gray-400 rounded-md border-green-700 font-bold'>Cancel</button>
+                <div className='submit'>
+                    <button type='submit' className='px-3 py-1 bg-green-500 text-white rounded-md'>Submit</button>
                 </div>
             </form>
         </div>

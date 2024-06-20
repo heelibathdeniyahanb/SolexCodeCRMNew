@@ -263,7 +263,34 @@
       },
       {
         "Name": "lead",
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Type": "SolexCode.CRM.API.New.Models.NewLead",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.EmailController",
+    "Method": "SendLeadCreatedNotification",
+    "RelativePath": "api/Email/SendLeadCreatedNotification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clientEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "notificationData",
+        "Type": "SolexCode.CRM.API.New.Dtos.LeadCreatedNotificationDto",
         "IsRequired": true
       }
     ],
@@ -571,13 +598,13 @@
     "Parameters": [
       {
         "Name": "leadFormData",
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Type": "SolexCode.CRM.API.New.Dtos.LeadDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Type": "SolexCode.CRM.API.New.Models.NewLead",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -597,7 +624,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Lead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -623,7 +650,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Type": "SolexCode.CRM.API.New.Models.NewLead",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -664,7 +691,7 @@
       },
       {
         "Name": "lead",
-        "Type": "SolexCode.CRM.API.New.Models.Lead",
+        "Type": "SolexCode.CRM.API.New.Models.NewLead",
         "IsRequired": true
       }
     ],
@@ -686,7 +713,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Lead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -903,12 +930,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "field",
+        "Name": "industry",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "roll",
+        "Name": "role",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -1097,11 +1124,6 @@
       {
         "Name": "UserImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsSendViaEmail",
-        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {

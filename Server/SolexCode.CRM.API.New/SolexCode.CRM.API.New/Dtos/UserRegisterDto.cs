@@ -16,7 +16,7 @@
         public bool ChangePassword { get; set; }
 
         public IFormFile UserImage { get; set; }
-        public bool? IsSendViaEmail { get; set; }
+       
         public DateTime DateAdded { get; set; } = DateTime.Now;
     }
 }

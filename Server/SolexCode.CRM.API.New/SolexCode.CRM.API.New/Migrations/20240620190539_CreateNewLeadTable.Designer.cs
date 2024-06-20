@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolexCode.CRM.API.New.Data;
 
@@ -11,9 +12,11 @@ using SolexCode.CRM.API.New.Data;
 namespace SolexCode.CRM.API.New.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240620190539_CreateNewLeadTable")]
+    partial class CreateNewLeadTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -434,6 +437,9 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NewLeadClientId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SalesPipeline")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -447,7 +453,27 @@ namespace SolexCode.CRM.API.New.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NewLeadClientId");
+
                     b.ToTable("NewLeads");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLeadClient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("NewLeadClients");
                 });
 
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Notification", b =>
@@ -730,6 +756,28 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLead", b =>
+                {
+                    b.HasOne("SolexCode.CRM.API.New.Models.NewLeadClient", "NewLeadClient")
+                        .WithMany("NewLeads")
+                        .HasForeignKey("NewLeadClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NewLeadClient");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLeadClient", b =>
+                {
+                    b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
+                        .WithMany("NewLeadClients")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Otp", b =>
                 {
                     b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
@@ -805,9 +853,16 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Tasks");
                 });
 
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLeadClient", b =>
+                {
+                    b.Navigation("NewLeads");
+                });
+
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>
                 {
                     b.Navigation("ChatParticipants");
+
+                    b.Navigation("NewLeadClients");
 
                     b.Navigation("Participants");
                 });

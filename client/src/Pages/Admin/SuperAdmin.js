@@ -5,7 +5,7 @@ const SuperAdmin = () => {
   const navigate = useNavigate();
 
   const handleAddUser = () => {
-    navigate('/add-user'); 
+    navigate('/adduserpage'); 
   };
 
   const handleLogout = () => {
