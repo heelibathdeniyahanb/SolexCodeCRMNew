@@ -46,10 +46,10 @@ const Login = () => {
               case 'Client':
                 navigate('/clientdashboard');
                 break;
-              case 'Sales Leader':
+              case 'LeadManager':
                 navigate('/salesrepdashboard');
                 break;
-              case 'Customer Supporter':
+              case 'CustomerSupporter':
                 navigate('/customersupporterdashboard');
                 break;
               default:
@@ -63,10 +63,10 @@ const Login = () => {
               case 'Client':
                 navigate('/client-reset-password-window-1');
                 break;
-              case 'Sales Leader':
+              case 'LeadManager':
                 navigate('/salesrep-reset-password-window-1');
                 break;
-              case 'Customer Supporter':
+              case 'CustomerSupporter':
                 navigate('/customersupporter-reset-password-window-1');
                 break;
               default:

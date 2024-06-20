@@ -8,11 +8,14 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { LuFilter } from "react-icons/lu";
 import React, { useState, useEffect  } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 import { FaTrash,FaEdit } from 'react-icons/fa';
 import { parse } from 'papaparse';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminSideNavBar from "../Pages/Admin/AdminSideNavBar";
+import Header from "./Header/Header";
 
 
 
@@ -451,10 +454,12 @@ const Users = () => {
 
     // import sidebar
     <div className={`bg-opacity-20 h-screen`}>
+        <Header/>
         
 
         {/* import navbar */}
         <div className='w-full '>
+            <AdminSideNavBar/>
            
             <div className='flex justify-center'>
 
@@ -462,8 +467,10 @@ const Users = () => {
                 <nav className='w-9/12 ml-72 h-8 bg-gray-200 flex items-center justify-start py-6 mt-8 rounded-md pl-8'>
 
                 <div className={`flex items-center justify-center p-2 cursor-pointer ${addBorder ? 'bg-blue-200 bg-opacity-50 rounded' : ''}`} onClick={handleNavItemAddClick}>
-                        <FaPlus className='mr-1 text-blue-600'/>
-                        <span className='text-blue-600'>Users</span>
+                <Link to='/adduserpage'><FaPlus className='mr-1 text-blue-600'/></Link> &nbsp;&nbsp;
+                       
+                      
+                       <span className='text-blue-600'>Clients</span>
                     </div>
                     {/* Add Data Box */}
                     {addOpen && (

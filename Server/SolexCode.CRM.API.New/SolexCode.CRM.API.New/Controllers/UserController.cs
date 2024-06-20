@@ -204,8 +204,8 @@ namespace SolexCode.CRM.API.New.Controllers
                         user.Continent,
                         user.Country,
                         user.Industry,
-                        user.ImagePath,
-                        user.IsSendViaEmail
+                        user.ImagePath
+                     
                     }
                 });
             }
@@ -248,7 +248,7 @@ namespace SolexCode.CRM.API.New.Controllers
                 Password = hashedPassword,
                 Role = userDto.Role,
                 ChangePassword = true,
-                IsSendViaEmail = userDto.IsSendViaEmail
+                
             };
 
             if (userDto.UserImage != null)
@@ -278,10 +278,9 @@ namespace SolexCode.CRM.API.New.Controllers
             await _context.SaveChangesAsync();
 
             // If IsSendViaEmail is true, send login details email
-            if (userDto.IsSendViaEmail.GetValueOrDefault() && userDto.Email != null)
-            {
+            
                 await _emailController.SendLoginDetails(userDto.Email, temporaryPassword);
-            }
+            
 
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
@@ -396,18 +395,18 @@ namespace SolexCode.CRM.API.New.Controllers
 
 
         [HttpGet("filter")]
-        public async Task<IActionResult> FilterUsers([FromQuery] string? field, [FromQuery] string? roll)
+        public async Task<IActionResult> FilterUsers([FromQuery] string? industry, [FromQuery] string? role)
         {
             var query = _context.Users.AsQueryable();
 
-            if (!string.IsNullOrEmpty(field))
+            if (!string.IsNullOrEmpty(industry))
             {
-                query = query.Where(u => u.Industry == field);
+                query = query.Where(u => u.Industry == industry);
             }
 
-            if (!string.IsNullOrEmpty(roll))
+            if (!string.IsNullOrEmpty(role))
             {
-                query = query.Where(u => u.Role == roll);
+                query = query.Where(u => u.Role == role);
             }
 
             var users = await query.ToListAsync();

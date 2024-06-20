@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SolexCode.CRM.API.New.Models;
-//using static System.Net.WebRequestMethods;
 using CRMTask = SolexCode.CRM.API.New.Models.Task;
 
 namespace SolexCode.CRM.API.New.Data
@@ -14,29 +13,29 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Events> Events { get; set; }
         public DbSet<Participant> Participant { get; set; }
         public DbSet<CRMTask> Task { get; set; } // Use the alias here
-        public DbSet<Lead> Lead{ get; set; }
+        public DbSet<Lead> Lead { get; set; }
+        public DbSet<NewLead> NewLeads { get; set; }
+        
+        public DbSet<LeadClient> LeadClients { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Email> Email { get; set; }
         public DbSet<Otp> Otps { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
         public DbSet<ChatParticipant> ChatParticipants { get; set; }
         public DbSet<Chat> Chats { get; set; }
-
         public DbSet<Notification> Notifications { get; set; }
-
-        public DbSet<ClientLead> ClientLead { get; set; }   
+        public DbSet<ClientLead> ClientLead { get; set; }
         public DbSet<Invoice> Invoice { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Email Attachments Configuration
-
             modelBuilder.Entity<Email>()
                .HasMany(e => e.Attachments)
                .WithOne(a => a.Email)
                .HasForeignKey(a => a.EmailId);
 
-            //lead and task
+            // lead and task
             modelBuilder.Entity<Lead>()
                .HasMany(lead => lead.Tasks)
                .WithOne(task => task.Lead)
@@ -84,6 +83,14 @@ namespace SolexCode.CRM.API.New.Data
                 .WithMany()
                 .HasForeignKey(m => m.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // One-to-many relationship between LeadClient and Lead
+            modelBuilder.Entity<LeadClient>()
+                .HasMany(client => client.Leads)
+                .WithOne(lead => lead.LeadClient)
+                .HasForeignKey(lead => lead.LeadClientId);
+
+            
 
             base.OnModelCreating(modelBuilder);
         }

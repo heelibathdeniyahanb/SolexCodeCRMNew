@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using MimeKit.Text;
 using SolexCode.CRM.API.New.Data;
+using SolexCode.CRM.API.New.Dtos;
 using SolexCode.CRM.API.New.Models;
 
 namespace SolexCode.CRM.API.New.Controllers
@@ -121,12 +122,29 @@ namespace SolexCode.CRM.API.New.Controllers
 
         [HttpPost]
         [Route("SendLeadAssignmentDetails")]
-        public async System.Threading.Tasks.Task SendLeadAssignmentEmail(string email, Lead lead)
+        public async System.Threading.Tasks.Task SendLeadAssignmentEmail(string email, NewLead lead)
         {
             var subject = "New Lead Assignment";
             var body = $"You have been assigned a new lead.\nLead Name: {lead.LeadName}\nCompany: {lead.CompanyName}\nStart Date: {lead.StartDate}\nEnd Date: {lead.EndDate}";
 
             await SendEmail(subject, body, new string[] { email }, new List<IFormFile>());
+        }
+
+        [HttpPost]
+        [Route("SendLeadCreatedNotification")]
+        public async System.Threading.Tasks.Task SendLeadCreatedNotification([FromForm] string clientEmail, [FromBody] LeadCreatedNotificationDto notificationData)
+        {
+            var subject = "New Lead Created";
+            var body = $"Dear Client,\n\n" +
+                       $"A new lead has been created with the following details:\n\n" +
+                       $"Lead Name: {notificationData.LeadName}\n" +
+                       $"End Date: {notificationData.EndDate}\n\n" +
+                       $"Your assigned lead manager is {notificationData.LeadManagerName} ({notificationData.LeadManagerEmail}).\n\n" +
+                       $"You can expect to hear from your lead manager soon regarding the next steps.\n\n" +
+                       $"Best regards,\n" +
+                       $"The SolexCode Team";
+
+            await SendEmail(subject, body, new string[] { clientEmail }, new List<IFormFile>());
         }
     }
 }

@@ -12,8 +12,13 @@
         public string LeadStatus { get; set; }
 
         public ICollection<Task> Tasks { get; set; } = new List<Task>();
+
+        // Foreign key for LeadClient
+        public int LeadClientId { get; set; }
+        public LeadClient LeadClient { get; set; }
     }
-
-
 }
+
+
+
 

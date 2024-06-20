@@ -1,12 +1,11 @@
-﻿
-using SolexCode.CRM.API.New.Data;
+﻿using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SolexCode.CRM.API.New.Dtos;
 
 namespace SolexCode.CRM.API.New.Controllers
 {
@@ -25,7 +24,7 @@ namespace SolexCode.CRM.API.New.Controllers
 
         // POST: api/lead
         [HttpPost]
-        public async Task<ActionResult<Lead>> CreateLead([FromBody] Lead leadFormData)
+        public async Task<ActionResult<NewLead>> CreateLead([FromBody] LeadDto leadFormData)
         {
             if (!ModelState.IsValid)
             {
@@ -38,18 +37,41 @@ namespace SolexCode.CRM.API.New.Controllers
                 return BadRequest("No eligible lead manager found.");
             }
 
-            leadFormData.SalesRep = leadManager.FullName;
-
-            _context.Lead.Add(leadFormData);
+            
             await _context.SaveChangesAsync();
 
-            await _emailController.SendLeadAssignmentEmail(leadManager.Email, leadFormData);
+            var lead = new NewLead
+            {
+                LeadName = leadFormData.LeadName,
+                CompanyName = leadFormData.CompanyName,
+                StartDate = leadFormData.StartDate,
+                EndDate = leadFormData.EndDate,
+                SalesPipeline = leadFormData.SalesPipeline,
+                LeadStatus = leadFormData.LeadStatus,
+               
+                SalesRep = leadManager.FullName
+            };
 
-            return CreatedAtAction(nameof(GetLeadById), new { id = leadFormData.Id }, leadFormData);
+            _context.NewLeads.Add(lead);
+            await _context.SaveChangesAsync();
+
+            await _emailController.SendLeadAssignmentEmail(leadManager.Email, lead);
+
+            var notificationData = new LeadCreatedNotificationDto
+            {
+                LeadName = lead.LeadName,
+                EndDate = lead.EndDate,
+                LeadManagerName = leadManager.FullName,
+                LeadManagerEmail = leadManager.Email
+            };
+
+            
+
+            return CreatedAtAction(nameof(GetLeadById), new { id = lead.Id }, lead);
         }
 
         [HttpGet("manager/{leadManagerId}")]
-        public async Task<ActionResult<IEnumerable<Lead>>> GetLeadsByManager(string leadManagerId)
+        public async Task<ActionResult<IEnumerable<NewLead>>> GetLeadsByManager(string leadManagerId)
         {
             if (!int.TryParse(leadManagerId, out int leadManagerIdInt))
             {
@@ -65,24 +87,24 @@ namespace SolexCode.CRM.API.New.Controllers
                 return NotFound("Lead Manager not found.");
             }
 
-            var leads = await _context.Lead
+            var leads = await _context.NewLeads
                 .Where(l => l.SalesRep == leadManager.FullName)
                 .ToListAsync();
 
             return Ok(leads);
         }
+
         // GET: api/lead
         [HttpGet]
-
-        public ActionResult<IEnumerable<Models.Lead>> GetLead()
+        public ActionResult<IEnumerable<NewLead>> GetLead()
         {
-            return _context.Lead.ToList();
+            return _context.NewLeads.ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Lead>> GetLeadById(int id)
+        public async Task<ActionResult<NewLead>> GetLeadById(int id)
         {
-            var lead = await _context.Lead.FindAsync(id);
+            var lead = await _context.NewLeads.FindAsync(id);
 
             if (lead == null)
             {
@@ -92,18 +114,17 @@ namespace SolexCode.CRM.API.New.Controllers
             return lead;
         }
 
-
         // DELETE: api/lead/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLead(int id)
         {
-            var lead = await _context.Lead.FindAsync(id);
+            var lead = await _context.NewLeads.FindAsync(id);
             if (lead == null)
             {
                 return NotFound();
             }
 
-            _context.Lead.Remove(lead);
+            _context.NewLeads.Remove(lead);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -111,7 +132,7 @@ namespace SolexCode.CRM.API.New.Controllers
 
         // PUT: api/lead/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLead(int id, Lead lead)
+        public async Task<IActionResult> UpdateLead(int id, NewLead lead)
         {
             if (id != lead.Id)
             {
@@ -141,13 +162,13 @@ namespace SolexCode.CRM.API.New.Controllers
 
         private bool LeadExists(int id)
         {
-            return _context.Lead.Any(e => e.Id == id);
+            return _context.NewLeads.Any(e => e.Id == id);
         }
 
         [HttpPut("UpdatePipeline/{id}/{pipelineName}")]
         public async Task<IActionResult> UpdatePipeline(int id, string pipelineName)
         {
-            var lead = await _context.Lead.FindAsync(id);
+            var lead = await _context.NewLeads.FindAsync(id);
             if (lead == null)
             {
                 return NotFound();
@@ -181,13 +202,12 @@ namespace SolexCode.CRM.API.New.Controllers
                 .Where(u => u.Role == "LeadManager")
                 .ToListAsync();
 
-            var sortedManagers = leadManagers
-                .OrderBy(m => _context.Lead.Count(l => l.SalesRep == m.FullName && l.EndDate >= DateOnly.FromDateTime(DateTime.Now)))
+            var sortedManager = leadManagers
+                .OrderBy(m => _context.NewLeads.Count(l => l.SalesRep == m.FullName && l.EndDate >= DateOnly.FromDateTime(DateTime.Now)))
                 .ThenByDescending(m => m.DateAdded)
                 .FirstOrDefault();
 
-            return sortedManagers;
+            return sortedManager;
         }
     }
 }
-

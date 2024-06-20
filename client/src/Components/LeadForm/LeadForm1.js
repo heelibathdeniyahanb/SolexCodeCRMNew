@@ -9,9 +9,10 @@ const LeadForm1 = () => {
     const [startDate, setStartDate] = useState(dayjs());
     const [endDate, setEndDate] = useState(dayjs());
     const [salesPipeline, setPipelineStage] = useState("");
-    const [salesRep, setSalesRep] = useState("");
+    //const [salesRep, setSalesRep] = useState("");
     const [clicked,setClicked] = useState(true);
     const [click,setClick] = useState(true);
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ const LeadForm1 = () => {
         const startDateString = startDate.format('YYYY-MM-DD');
         const endDateString = endDate.format('YYYY-MM-DD');
 
-        if (!leadName || !companyName || !startDateString || !endDateString || !salesRep || !salesPipeline || !leadStatus) {
+        if (!leadName || !companyName || !startDateString || !endDateString ||  !salesPipeline || !leadStatus) {
             window.alert('Fill all the fields');
             return;
         }
@@ -29,7 +30,7 @@ const LeadForm1 = () => {
             companyName,
             startDate: startDateString,
             endDate: endDateString,
-            salesRep,
+           // salesRep,
             salesPipeline,
             leadStatus
         };
@@ -125,12 +126,7 @@ const LeadForm1 = () => {
                         </div>
                     </div>
 
-                    <div class="mt-5">
-                        <label for="sales-ref" class="flex text-sm font-medium text-gray-600 mr-80 ">Sales Ref :</label>
-                        <div class="mt-2">
-                            <input value={salesRep} onChange={ (e) => setSalesRep(e.target.value)} type="text" name="sales-ref" id="sales-ref" class="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                        </div>
-                    </div>
+                    
 
                     <div className="mt-5">
                         <label className="flex text-sm font-medium text-gray-600 mr-80">Lead Status:</label>

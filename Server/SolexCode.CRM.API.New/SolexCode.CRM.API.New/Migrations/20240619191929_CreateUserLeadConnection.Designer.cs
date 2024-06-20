@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolexCode.CRM.API.New.Data;
 
@@ -11,9 +12,11 @@ using SolexCode.CRM.API.New.Data;
 namespace SolexCode.CRM.API.New.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240619191929_CreateUserLeadConnection")]
+    partial class CreateUserLeadConnection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -411,45 +414,6 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.ToTable("LeadClients");
                 });
 
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLead", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly>("EndDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("LeadName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LeadStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SalesPipeline")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SalesRep")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly>("StartDate")
-                        .HasColumnType("date");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NewLeads");
-                });
-
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Notification", b =>
                 {
                     b.Property<int>("Id")
@@ -557,9 +521,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NewLeadId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Priority")
                         .HasColumnType("bit");
 
@@ -583,8 +544,6 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LeadId");
-
-                    b.HasIndex("NewLeadId");
 
                     b.ToTable("Task");
                 });
@@ -722,7 +681,7 @@ namespace SolexCode.CRM.API.New.Migrations
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.LeadClient", b =>
                 {
                     b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
-                        .WithMany()
+                        .WithMany("LeadClients")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -766,10 +725,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .WithMany("Tasks")
                         .HasForeignKey("LeadId");
 
-                    b.HasOne("SolexCode.CRM.API.New.Models.NewLead", null)
-                        .WithMany("Tasks")
-                        .HasForeignKey("NewLeadId");
-
                     b.Navigation("Lead");
                 });
 
@@ -800,14 +755,11 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Leads");
                 });
 
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.NewLead", b =>
-                {
-                    b.Navigation("Tasks");
-                });
-
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>
                 {
                     b.Navigation("ChatParticipants");
+
+                    b.Navigation("LeadClients");
 
                     b.Navigation("Participants");
                 });

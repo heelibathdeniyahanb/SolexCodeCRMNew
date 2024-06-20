@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SolexCode.CRM.API.New")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96e6de1f34f18762539cfcfaa2235fa80499cce2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dccbf77c0d56da319faaa7432a8d374e395c82ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("SolexCode.CRM.API.New")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SolexCode.CRM.API.New")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
