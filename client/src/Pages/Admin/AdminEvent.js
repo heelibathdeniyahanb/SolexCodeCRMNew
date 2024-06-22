@@ -10,7 +10,7 @@ export default function AdminEvent() {
        <CalendarLogin/>
        <EventSearchBar/>
        <EventAdminSalesRepTable/>
-   
+       
     </div>
   )
 }

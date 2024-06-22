@@ -1,26 +1,106 @@
 import React from 'react'
 
-export default function KPI() {
-    return (
-        <div>
-            <h2 className="text-4xl font-bold tracking-tight text-black sm:text-6xl">Analyzing</h2>
 
-            <div className='mt-10'>
-                <div class="inline-flex rounded-md shadow-sm" style={{ justifyContent: 'space-between' }} role="group">
-                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white" style={{ marginRight: '10px', borderRadius: '10px' }}>
-                        Reports
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white" style={{ marginRight: '10px', borderRadius: '10px' }}>
-                        Charts
-                    </button>
-                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white" style={{ marginRight: '10px', borderRadius: '10px' }}>
-                        KPI
-                    </button> 
-                    <button type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white" style={{ marginRight: '10px', borderRadius: '10px' }}>
-                        Comparator
-                    </button>
-                </div>
-            </div>
+
+const Top5LeadOwners = () => {
+    const data = [
+        { name: "Martha Hills", count: 508 },
+        { name: "Amelia Burrows", count: 371 },
+        { name: "jacob Luluwayo", count: 290 },
+        { name: "Quinn Rivers", count: 126 },
+        { name: "Joane ee", count: 1 },
+    ];
+
+    return (
+        <div className="border rounded-lg p-4">
+            <h2 className="text-xl font-bold mb-4">TOP 5 LEAD OWNERS</h2>
+            <table className="w-full">
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td className="px-2 py-1">{index + 1}. {item.name}</td>
+                            <td className="px-2 py-1 text-right">{item.count}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
-}
+};
+
+const Top10BestPerformingLeads = () => {
+    const data = [
+        { name: "None", amount: 9558299 },
+        { name: "Advertisement", amount: 8406000 },
+        { name: "Public Relations", amount: 3965000 },
+        { name: "Cold Call", amount: 3901300 },
+        { name: "Employee Referral", amount: 3045550 },
+        { name: "Partner", amount: 2777800 },
+        { name: "External Referral", amount: 2397790 },
+        { name: "Web Research", amount: 1640000 },
+        { name: "Trade Show", amount: 1235680 },
+        { name: "OnlineStore", amount: 599990 },
+    ];
+
+    return (
+        <div className="border rounded-lg p-4">
+            <h2 className="text-xl font-bold mb-4">
+                TOP 10 BEST PERFORMING LEADS
+            </h2>
+            <table className="w-full">
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td className="px-2 py-1">{index + 1}. {item.name}</td>
+                            <td className="px-2 py-1 text-right">
+                                ${item.amount.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
+const LeastPerformingRegionWise = () => {
+    const data = [
+        { region: "Argentina", amount: 10000 },
+        { region: "Ukraine", amount: 12500 },
+        { region: "San Marino", amount: 19788 },
+        { region: "Peurto Rico", amount: 25600 },
+        { region: "Finland", amount: 32140 },
+    ];
+
+    return (
+        <div className="border rounded-lg p-4">
+            <h2 className="text-xl font-bold mb-4">
+                LEAST PERFORMING REGION WISE
+            </h2>
+            <table className="w-full">
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <td className="px-2 py-1">{index + 1}. {item.region}</td>
+                            <td className="px-2 py-1 text-right">
+                                ${item.amount.toLocaleString()}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
+const Analyzing = () => {
+    return (
+        <div className="flex flex-col gap-4 mt-4">
+            <Top5LeadOwners />
+            <Top10BestPerformingLeads />
+            <LeastPerformingRegionWise />
+        </div>
+    );
+};
+
+export default Analyzing;

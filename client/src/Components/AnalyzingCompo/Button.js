@@ -1,19 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
-const HeaderButton = ({ text, onClick }) => {
+
+const Button = ({ label, to }) => {
   return (
-    <button 
-      className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white" style={{ marginRight: '10px', borderRadius: '10px' }}>"
-      onClick={onClick}
-      {text}
-    </button>
+    <Link to={to}>
+      <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        {label}
+      </button>
+    </Link>
   );
 };
 
-HeaderButton.propTypes = {
+const Analyzing = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-gray-800 mb-4">Analyzing</h1>
+      <div className="flex mb-4">
+        <div className="mr-4">
+          <Link to="/analyse/reports"><Button label="Reports" /></Link>
+        </div>
+        <div className="mr-4">
+          <Link to="/analyse/charts"><Button label="Charts" /></Link>
+        </div>
+        <div className="mr-4">
+          <Link to="/analyse/kpi"><Button label="KPI" /></Link>
+        </div>
+        <div>
+          <Link to="/analyse/comparator"><Button label="Comparator" /></Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 
-export default HeaderButton;
+export default Button;
