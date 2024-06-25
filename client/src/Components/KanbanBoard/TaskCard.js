@@ -28,7 +28,9 @@ function TaskCard({ task, deleteTask, updateTask }) {
     leadStatus: task.leadStatus,
     startDate: formatDate(task.startDate),
     endDate: formatDate(task.endDate),
-    salesRep: task.salesRep
+    salesRep: task.salesRep,
+    userFullName : task.userFullName,
+    userEmail : task.userEmail
     
   });
 
@@ -76,12 +78,12 @@ function TaskCard({ task, deleteTask, updateTask }) {
     e.preventDefault();
   
     try {
-      const { leadName, companyName, leadStatus, startDate, endDate, salesRep} = formData;
+      const { leadName, companyName, leadStatus, startDate, endDate, salesRep,userFullName,userEmail} = formData;
       
       const formattedStartDate = formatDate(startDate);
       const formattedEndDate = formatDate(endDate);
       
-      await updateTask(task.id, { leadName, companyName, leadStatus, startDate: formattedStartDate, endDate: formattedEndDate, salesRep });
+      await updateTask(task.id, { leadName, companyName, leadStatus, startDate: formattedStartDate, endDate: formattedEndDate, salesRep,userFullName,userEmail });
       setEditMode(false);
       setShowModal(false);
     } catch (error) {
@@ -202,6 +204,12 @@ function TaskCard({ task, deleteTask, updateTask }) {
             </p>
             <p className="card-text ">
               <span className="ml-1 text-sm text-gray-600 text-justify">End Date  : {formattedEndDate}</span>
+            </p>
+            <p className="card-text mt-2">
+              <span className="ml-1 text-sm text-gray-600 text-justify"> Name: {taskData.userFullName}</span>
+            </p>
+            <p className="card-text ">
+              <span className="ml-1 text-sm text-gray-600 text-justify"> Email  : {taskData.userEmail}</span>
             </p>
             <p className="card-text mt-4">
               <span className="text-gray-500 ml-1 text-xs text-start"> <Avatar src={Avatar} size="32" round={true} /> {taskData.salesRep}</span>

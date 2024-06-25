@@ -103,6 +103,7 @@ import CustomerSupporterResetPasswordWindow3 from './Pages/CustomerSupporter/Cus
 import AdminSettings from './Pages/Admin/AdminSettings';
 import ClientSettings from './Pages/Client/ClientSettings';
 import Chat from './Components/Chat/Chat';
+import CustomerSupporterDashboard from './Pages/CustomerSupporter/CustomerSupporterDashboard';
 
 
 
@@ -190,6 +191,8 @@ function App() {
           <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route>
           <Route path='/clientevent' element={<ClientEvent/>}></Route>
           <Route path='myprojects' element={<MyProjects/>}></Route>
+
+          <Route path='/customersupporter-dashboard' element={<CustomerSupporterDashboard/>}></Route>
           
           <Route path='/quickguide' element={<QuickGuide/>}></Route>
           <Route path='/ticketingsystem' element={<TicketingSystem/>}></Route>

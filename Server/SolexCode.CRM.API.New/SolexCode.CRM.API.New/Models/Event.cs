@@ -1,4 +1,7 @@
-﻿namespace SolexCode.CRM.API.New.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace SolexCode.CRM.API.New.Models;
 
 public class Events
 {
@@ -7,10 +10,12 @@ public class Events
     public DateTime Date { get; set; }
     public string Time { get; set; }
     public string Venue { get; set; }
-    public string Host { get; set; }
 
-    public DateTime? RepeatUntilDate { get; set; }
-    public string? RepeatUntilTime { get; set; }
+    public string CreatedByName { get; set; }
+    public string CreatedByEmail { get; set; }
+    public int CreatedById { get; set; }
+
+  
     public DateTimeOffset ReminderDate { get; set; }
     public string ReminderTime { get; set; }
     public DateTime DateAdded { get; set; } = DateTime.Now;
@@ -20,4 +25,9 @@ public class Events
     public string Description { get; set; }
     public bool IsImportant { get; set; }
     public bool IsSendViaEmail { get; set; }
+
+    [ForeignKey("Id")]
+    public int NewLeadId { get; set; }
+    [JsonIgnore]
+    public NewLead NewLead { get; set; }
 }

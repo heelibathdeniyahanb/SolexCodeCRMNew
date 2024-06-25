@@ -2,7 +2,9 @@ import React from 'react';
 import Header from '../../Components/Header/Header';
 import CalendarLogin from '../../Components/CalendarLogin';
 import AdminSideNavBar from './AdminSideNavBar';
-import BigCalendarUi from '../../Components/Calendar/BigCalendarUi';
+
+
+import AdminCalendarUi from '../../Components/AdminCompo/AdminCalendarUi';
 
 const AdminCalendar = () => {
     return (
@@ -16,7 +18,7 @@ const AdminCalendar = () => {
                     <AdminSideNavBar />
                 </div>
                 <div className='w-full lg:w-4/5 overflow-y-auto'>
-                    <BigCalendarUi />
+                    <AdminCalendarUi/>
                 </div>
             </div>
         </div>

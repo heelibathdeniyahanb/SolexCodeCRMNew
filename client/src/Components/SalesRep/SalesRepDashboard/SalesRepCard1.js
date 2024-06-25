@@ -3,9 +3,9 @@ import { GrProjects } from "react-icons/gr";
 import axios from 'axios';
 import { useUser } from '../../login/UserContext';
 
-export default function Card1() {
+export default function SalesRepCard1() {
   const [leadCount, setLeadCount] = useState(0);
-  const [userData] = useUser(); // Assumed to provide user context including id
+  const { userData } = useUser(); // Assumed to provide user context including id
 
   useEffect(() => {
     if (userData && userData.id) {
@@ -16,7 +16,9 @@ export default function Card1() {
   const fetchLeads = (id) => {
     axios.get(`https://localhost:7143/api/Lead/manager/${id}`)
       .then(response => {
-        setLeadCount(response.data.length); // Set the lead count to the length of the fetched data
+        // Filter leads that are not in the 'Close-won' stage
+        const ongoingLeads = response.data.filter(lead => lead.salesPipeline !== "Close-won");
+        setLeadCount(ongoingLeads.length); // Set the lead count to the length of the ongoing leads
       })
       .catch(error => {
         console.error('Error fetching leads:', error);
@@ -29,7 +31,7 @@ export default function Card1() {
         <GrProjects className='text-white text-4xl' />
       </div>
       <h5 className="mb-2 text-2xl ml-8 font-bold tracking-tight text-gray-900 dark:text-white">
-        Leads
+        Ongoing Leads
       </h5>
       <p className="font-normal text-gray-700 dark:text-gray-400 text-center text-3xl">
         {leadCount} {/* Display the lead count dynamically */}

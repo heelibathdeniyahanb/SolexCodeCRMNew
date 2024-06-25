@@ -42,6 +42,14 @@ namespace SolexCode.CRM.API.New.Data
                .HasForeignKey(task => task.LeadId)
                .IsRequired(false);
 
+
+            // newlead and event
+            modelBuilder.Entity<NewLead>()
+               .HasMany(lead => lead.Events)
+               .WithOne(events => events.NewLead)
+               .HasForeignKey(events => events.NewLeadId)
+               .IsRequired(false);
+
             // Participant Configuration
             modelBuilder.Entity<Participant>()
                 .HasKey(p => new { p.UserId, p.EventId });
@@ -90,7 +98,13 @@ namespace SolexCode.CRM.API.New.Data
                 .WithOne(lead => lead.LeadClient)
                 .HasForeignKey(lead => lead.LeadClientId);
 
-            
+            //one to many relationship with user and lead
+            modelBuilder.Entity<User>()
+               .HasMany(u => u.NewLeads)
+               .WithOne(nl => nl.User)
+               .HasForeignKey(nl => nl.UserId)
+               .OnDelete(DeleteBehavior.Cascade);
+
 
             base.OnModelCreating(modelBuilder);
         }

@@ -122,20 +122,20 @@ namespace SolexCode.CRM.API.New.Controllers
 
         [HttpPost]
         [Route("SendLeadAssignmentDetails")]
-        public async System.Threading.Tasks.Task SendLeadAssignmentEmail(string email, NewLead lead)
+        public async System.Threading.Tasks.Task SendLeadAssignmentEmail(string email, LeadDto lead)
         {
             var subject = "New Lead Assignment";
-            var body = $"You have been assigned a new lead.\nLead Name: {lead.LeadName}\nCompany: {lead.CompanyName}\nStart Date: {lead.StartDate}\nEnd Date: {lead.EndDate}";
+            var body = $"You have been assigned a new lead Lead Name:\n {lead.LeadName}\nCompany: {lead.CompanyName}\nStart Date: {lead.StartDate}\nEnd Date: {lead.EndDate}, Client details : name : {lead.UserFullName}  email : {lead.UserEmail}";
 
             await SendEmail(subject, body, new string[] { email }, new List<IFormFile>());
         }
 
         [HttpPost]
         [Route("SendLeadCreatedNotification")]
-        public async System.Threading.Tasks.Task SendLeadCreatedNotification([FromForm] string clientEmail, [FromBody] LeadCreatedNotificationDto notificationData)
+        public async Task<IActionResult> SendLeadCreatedNotification([FromForm] string userEmail, [FromBody] LeadCreatedNotificationDto notificationData)
         {
             var subject = "New Lead Created";
-            var body = $"Dear Client,\n\n" +
+            var body = $"Dear{notificationData.UserFullName},\n\n" +
                        $"A new lead has been created with the following details:\n\n" +
                        $"Lead Name: {notificationData.LeadName}\n" +
                        $"End Date: {notificationData.EndDate}\n\n" +
@@ -144,7 +144,10 @@ namespace SolexCode.CRM.API.New.Controllers
                        $"Best regards,\n" +
                        $"The SolexCode Team";
 
-            await SendEmail(subject, body, new string[] { clientEmail }, new List<IFormFile>());
+            await SendEmail(subject, body, new string[] { userEmail }, new List<IFormFile>());
+
+            return Ok();
         }
+
     }
 }

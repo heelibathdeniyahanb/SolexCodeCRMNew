@@ -263,7 +263,7 @@
       },
       {
         "Name": "lead",
-        "Type": "SolexCode.CRM.API.New.Models.NewLead",
+        "Type": "SolexCode.CRM.API.New.Dtos.LeadDto",
         "IsRequired": true
       }
     ],
@@ -284,7 +284,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "clientEmail",
+        "Name": "userEmail",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -294,13 +294,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.EmailController",
@@ -455,6 +449,52 @@
   },
   {
     "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetEventsByUserId",
+    "RelativePath": "api/Event/EventsByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Events, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetEventsWithParticipants",
+    "RelativePath": "api/Event/EventsWithParticipants",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CRM3.Controllers.EventController",
     "Method": "GetSuggestions",
     "RelativePath": "api/Event/Suggestions/{input}",
     "HttpMethod": "GET",
@@ -470,6 +510,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.User, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CRM3.Controllers.EventController",
+    "Method": "GetUsersWithEventId",
+    "RelativePath": "api/Event/UsersWithEventId/{eventId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -650,7 +716,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "SolexCode.CRM.API.New.Models.NewLead",
+        "Type": "SolexCode.CRM.API.New.Dtos.NewLeadAndEventDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -699,6 +765,32 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetEventsByLeadManager",
+    "RelativePath": "api/Lead/events/manager/{leadManagerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leadManagerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Events, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
     "Method": "GetLeadsByManager",
     "RelativePath": "api/Lead/manager/{leadManagerId}",
     "HttpMethod": "GET",
@@ -713,7 +805,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Dtos.GetLeadByLeadManagerDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -745,16 +837,22 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.TaskController",
-    "Method": "GetTasks",
-    "RelativePath": "api/Task",
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetLeadsByUserId",
+    "RelativePath": "api/Lead/user/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Task, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -766,21 +864,15 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.TaskController",
-    "Method": "CreateTask",
+    "Method": "GetTasks",
     "RelativePath": "api/Task",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "taskDto",
-        "Type": "SolexCode.CRM.API.New.DTOs.TaskDto",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "SolexCode.CRM.API.New.DTOs.TaskDto",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Task, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
