@@ -49,7 +49,7 @@ namespace SolexCode.CRM.API.New.Controllers
             return Ok(taskDto);
         }
 
-        [HttpPost]
+       /* [HttpPost]
         public async Task<ActionResult<TaskDto>> CreateTask(TaskDto taskDto)
         {
             if (taskDto == null)
@@ -95,7 +95,7 @@ namespace SolexCode.CRM.API.New.Controllers
            // await _hubContext.Clients.User(userId).SendAsync("ReceiveTaskReminder", "Don't forget about your task!");
 
             return CreatedAtAction(nameof(GetTask), new { id = taskDto.Id }, taskDto);
-        }
+        }*/
 
 
 

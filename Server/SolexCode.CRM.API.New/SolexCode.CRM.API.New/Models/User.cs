@@ -6,7 +6,8 @@
         {
             Participants = new List<Participant>();
             ChatParticipants = new List<ChatParticipant>();
-          //  NewLeadClients = new List<NewLeadClient>();
+            NewLeads = new List<NewLead>();
+            //  NewLeadClients = new List<NewLeadClient>();
 
 
         }
@@ -30,6 +31,8 @@
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public ICollection<Participant> Participants { get; set; }
         public ICollection<ChatParticipant> ChatParticipants { get; set; }
+
+        public ICollection<NewLead> NewLeads { get; set; }
         //public ICollection<NewLeadClient> NewLeadClients { get; set; }
     }
 }

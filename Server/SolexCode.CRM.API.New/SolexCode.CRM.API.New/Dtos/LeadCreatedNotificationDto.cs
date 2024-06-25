@@ -6,5 +6,6 @@
         public DateOnly EndDate { get; set; }
         public string LeadManagerName { get; set; }
         public string LeadManagerEmail { get; set; }
+        public string UserFullName { get; }
     }
 }
