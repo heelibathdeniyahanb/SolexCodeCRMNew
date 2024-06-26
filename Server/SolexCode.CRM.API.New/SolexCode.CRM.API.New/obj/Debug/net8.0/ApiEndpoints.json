@@ -791,6 +791,26 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetAllLeads",
+    "RelativePath": "api/Lead/Get/Leads/Tasks/Events",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Dtos.NewLeadAndEventDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
     "Method": "GetLeadsByManager",
     "RelativePath": "api/Lead/manager/{leadManagerId}",
     "HttpMethod": "GET",
@@ -872,7 +892,33 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Task, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.DTOs.TaskDto, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TaskController",
+    "Method": "CreateTask",
+    "RelativePath": "api/Task",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createTaskDto",
+        "Type": "SolexCode.CRM.API.New.Dtos.CreateTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.DTOs.TaskDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -922,8 +968,8 @@
         "IsRequired": true
       },
       {
-        "Name": "taskDto",
-        "Type": "SolexCode.CRM.API.New.DTOs.TaskDto",
+        "Name": "updateTaskDto",
+        "Type": "SolexCode.CRM.API.New.Dtos.UpdateTaskDto",
         "IsRequired": true
       }
     ],
@@ -944,37 +990,6 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SolexCode.CRM.API.New.Controllers.TaskController",
-    "Method": "CreateTaskForLead",
-    "RelativePath": "api/Task/CreateTaskForLead/{leadId}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "leadId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "taskDto",
-        "Type": "SolexCode.CRM.API.New.DTOs.TaskDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "SolexCode.CRM.API.New.Models.Task",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",

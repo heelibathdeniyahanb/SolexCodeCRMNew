@@ -215,10 +215,15 @@ namespace SolexCode.CRM.API.New.Controllers
                 .Where(e => e.NewLeadId == id)
                 .ToListAsync();
 
+            var tasks = await _context.NewTasks
+                .Where(t => t.NewLeadId == id)
+                .ToListAsync();
+
             var leadDto = new NewLeadAndEventDto
             {
                 NewLead = lead,
-                Events = events
+                Events = events,
+                Tasks = tasks
             };
 
             return Ok(leadDto);
@@ -261,6 +266,87 @@ namespace SolexCode.CRM.API.New.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet("Get/Leads/Tasks/Events")]
+        public async Task<ActionResult<IEnumerable<NewLeadAndEventDto>>> GetAllLeads()
+        {
+            try
+            {
+                var leads = await _context.NewLeads
+                    .AsNoTracking()
+                    .Include(l => l.Events)
+                    .Include(l => l.NewTasks)
+                    .Select(l => new NewLeadAndEventDto
+                    {
+                        NewLead = new NewLead
+                        {
+                            Id = l.Id,
+                            LeadName = l.LeadName ?? "",
+                            CompanyName = l.CompanyName ?? "",
+                            StartDate = l.StartDate,
+                            EndDate = l.EndDate,
+                            SalesRep = l.SalesRep ?? "",
+                            LeadManagerId = l.LeadManagerId ?? 0,
+                            SalesPipeline = l.SalesPipeline ?? "",
+                            LeadStatus = l.LeadStatus ?? "",
+                            UserId = l.UserId ?? 0,
+                            UserFullName = l.UserFullName ?? "",
+                            UserEmail = l.UserEmail ?? ""
+                        },
+                        Events = l.Events.Select(e => new Events
+                        {
+                            Id = e.Id,
+                            EventName = e.EventName ?? "",
+                            Date = e.Date,
+                            Time = e.Time ?? "",
+                            Venue = e.Venue ?? "",
+                            CreatedByName = e.CreatedByName ?? "",
+                            CreatedByEmail = e.CreatedByEmail ?? "",
+                            CreatedById = e.CreatedById ?? 0,
+                            ReminderDate = e.ReminderDate,
+                            ReminderTime = e.ReminderTime ?? "",
+                            DateAdded = e.DateAdded,
+                            DateModified = e.DateModified,
+                            Description = e.Description ?? "",
+                            IsImportant = e.IsImportant,
+                            IsSendViaEmail = e.IsSendViaEmail,
+                            NewLeadId = e.NewLeadId
+                        }).ToList(),
+                        Tasks = l.NewTasks.Select(t => new NewTask
+                        {
+                            Id = t.Id,
+                            DateAdded = t.DateAdded,
+                            DateModified = t.DateModified,
+                            TaskName = t.TaskName ?? "",
+                            TaskDescription = t.TaskDescription,
+                            Status = t.Status ?? "",
+                            DueDate = t.DueDate,
+                            LeadName = t.LeadName ?? "",
+                            ReminderDate = t.ReminderDate,
+                            ReminderTime = t.ReminderTime,
+                            Priority = t.Priority,
+                            CreatedByName = t.CreatedByName ?? "",
+                            CreatedByEmail = t.CreatedByEmail ?? "",
+                            CreatedById = t.CreatedById ?? 0,
+                            NewLeadId = t.NewLeadId
+                        }).ToList()
+                    })
+                    .ToListAsync();
+
+                if (!leads.Any())
+                {
+                    return NotFound("No leads found.");
+                }
+
+                return Ok(leads);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Console.Error.WriteLine($"Exception: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred while processing your request.");
+            }
         }
 
         // PUT: api/lead/{id}

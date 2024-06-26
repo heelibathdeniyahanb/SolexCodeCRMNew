@@ -1,4 +1,6 @@
-﻿namespace SolexCode.CRM.API.New.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SolexCode.CRM.API.New.Models
 {
     public class User
     {
@@ -29,6 +31,13 @@
         public string ImagePath { get; set; }
        
         public DateTime DateAdded { get; set; } = DateTime.Now;
+
+        // Foreign key
+        public int? CompanyId { get; set; }
+
+        // Navigation property
+        [ForeignKey("CompanyId")]
+        public Company Company { get; set; }
         public ICollection<Participant> Participants { get; set; }
         public ICollection<ChatParticipant> ChatParticipants { get; set; }
 

@@ -6,5 +6,6 @@ namespace SolexCode.CRM.API.New.Dtos
     {
         public NewLead NewLead { get; set; }
         public List<Events> Events { get; set; }
+        public List<NewTask> Tasks { get; set; }
     }
 }

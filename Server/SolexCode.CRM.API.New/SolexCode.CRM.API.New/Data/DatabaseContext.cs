@@ -13,6 +13,8 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Events> Events { get; set; }
         public DbSet<Participant> Participant { get; set; }
         public DbSet<CRMTask> Task { get; set; } // Use the alias here
+
+        public DbSet<NewTask> NewTasks { get; set; }
         public DbSet<Lead> Lead { get; set; }
         public DbSet<NewLead> NewLeads { get; set; }
         
@@ -26,6 +28,7 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<ClientLead> ClientLead { get; set; }
         public DbSet<Invoice> Invoice { get; set; }
+        public DbSet<Company> Company { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,6 +52,20 @@ namespace SolexCode.CRM.API.New.Data
                .WithOne(events => events.NewLead)
                .HasForeignKey(events => events.NewLeadId)
                .IsRequired(false);
+
+            // newlead and newtask
+            modelBuilder.Entity<NewLead>()
+               .HasMany(lead => lead.NewTasks)
+               .WithOne(nt => nt.NewLead)
+               .HasForeignKey(nt => nt.NewLeadId)
+               .IsRequired(false);
+
+
+            // Configure the one-to-many relationship user-company
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Company)
+                .WithMany(c => c.Users)
+                .HasForeignKey(u => u.CompanyId);
 
             // Participant Configuration
             modelBuilder.Entity<Participant>()

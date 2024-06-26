@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Security.Claims;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
-namespace SolexCode.CRM.API.New.DTOs
+namespace SolexCode.CRM.API.New.Models
 {
-    public class TaskDto
+    public class NewTask
     {
         public int Id { get; set; }
         public DateTime DateAdded { get; set; }
@@ -20,8 +19,27 @@ namespace SolexCode.CRM.API.New.DTOs
         public string CreatedByName { get; set; }
         public string CreatedByEmail { get; set; }
         public int? CreatedById { get; set; }
-        public int? NewLeadId { get; set; }
 
+        [ForeignKey("Id")]
+        public int? NewLeadId { get; set; }
+        [JsonIgnore]
+        public NewLead NewLead { get; set; }
+
+
+
+        public NewTask()
+        {
+            DateAdded = DateTime.Now;
+            DateModified = DateTime.Now;
+        }
+
+        public enum TaskStatus
+        {
+            ToDo,
+            InProgress,
+            Completed,
+            Cancelled
+        }
 
     }
 }
