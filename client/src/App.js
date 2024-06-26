@@ -42,7 +42,10 @@ import SalesRepNavBar from './Components/SalesRep/SalesRepNavBar';
 import SalesRepDashboard from './Pages/SalesRep/SalesRepDashboard';
 import AddUserPage from './Pages/Admin/AddUserPage';
 
-
+import AnalysePage from './Pages/Analysing/AnalysePage';
+import Reports from './Pages/Analysing/Reports';
+import KPI from './Pages/Analysing/KPI';
+import Comparator from './Pages/Analysing/Comparator';
 
 function App() {
   return (
@@ -93,7 +96,11 @@ function App() {
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
           <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
           <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
-
+          
+          <Route path='AnalysePage' element={<AnalysePage/>}></Route>
+          <Route path='/reports' element={<Reports/>}></Route>
+          <Route path='/kpi' element={<KPI/>}></Route>
+          <Route path='/comparator' element={<Comparator/>}></Route>
           
         </Routes>
        
