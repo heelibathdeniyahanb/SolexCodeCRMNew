@@ -61,13 +61,11 @@ import ServicelevelAgreement from './Pages/Admin/ServiceLevelAgreement';
 import SendEmail from './Components/AdminCompo/SendEmail';
 import Email from './Pages/Admin/Email';
 
-import AnalysePage from './Components/AnalyzingCompo/Analysepage';
-import RectangularCard from './Components/AnalyzingCompo/RectangularCard';
-import ReportMenu from './Components/AnalyzingCompo/ReportMenu';
-import Report from './Components/AnalyzingCompo/Report';
-import Charts from './Components/AnalyzingCompo/Charts';
-import KPI from './Components/AnalyzingCompo/KPI';
-import Comparator from './Components/AnalyzingCompo/Comparator';
+import AnalysePage from './Pages/Analysing/AnalysePage';
+import Reports from './Pages/Analysing/Reports';
+import KPI from './Pages/Analysing/KPI';
+import Comparator from './Pages/Analysing/Comparator';
+
 import MyProjects from './Pages/Client/MyProjects';
 import { UserProvider } from './Components/login/UserContext';
 import Users from './Components/Users';
@@ -203,6 +201,11 @@ function App() {
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
           <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
           <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
+
+          <Route path='/AnalysePage' element={<AnalysePage/>}></Route>
+          <Route path='/Reports' element={<Reports/>}></Route>
+          <Route path='/KPI' element={<KPI/>}></Route>
+          <Route path='/Comparator' element={<Comparator/>}></Route>
 
           
         </Routes>
