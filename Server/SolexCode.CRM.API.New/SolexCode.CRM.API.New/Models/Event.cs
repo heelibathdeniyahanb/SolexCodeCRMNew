@@ -13,7 +13,7 @@ public class Events
 
     public string CreatedByName { get; set; }
     public string CreatedByEmail { get; set; }
-    public int CreatedById { get; set; }
+    public int? CreatedById { get; set; }
 
   
     public DateTimeOffset ReminderDate { get; set; }
@@ -27,7 +27,7 @@ public class Events
     public bool IsSendViaEmail { get; set; }
 
     [ForeignKey("Id")]
-    public int NewLeadId { get; set; }
+    public int? NewLeadId { get; set; }
     [JsonIgnore]
     public NewLead NewLead { get; set; }
 }

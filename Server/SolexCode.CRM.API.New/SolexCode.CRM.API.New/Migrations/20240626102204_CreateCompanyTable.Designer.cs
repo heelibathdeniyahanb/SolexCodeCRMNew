@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolexCode.CRM.API.New.Data;
 
@@ -11,9 +12,11 @@ using SolexCode.CRM.API.New.Data;
 namespace SolexCode.CRM.API.New.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240626102204_CreateCompanyTable")]
+    partial class CreateCompanyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -756,9 +759,6 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<bool>("ChangePassword")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -803,8 +803,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Users");
                 });
@@ -959,25 +957,11 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Lead");
                 });
 
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>
-                {
-                    b.HasOne("SolexCode.CRM.API.New.Models.Company", "Company")
-                        .WithMany("Users")
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Chat", b =>
                 {
                     b.Navigation("Messages");
 
                     b.Navigation("Participants");
-                });
-
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Company", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Email", b =>

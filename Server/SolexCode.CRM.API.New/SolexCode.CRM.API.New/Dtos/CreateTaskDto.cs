@@ -1,14 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Security.Claims;
-
-namespace SolexCode.CRM.API.New.DTOs
+﻿namespace SolexCode.CRM.API.New.Dtos
 {
-    public class TaskDto
+    public class CreateTaskDto
     {
-        public int Id { get; set; }
-        public DateTime DateAdded { get; set; }
-        public DateTime DateModified { get; set; }
         public string TaskName { get; set; }
         public string? TaskDescription { get; set; }
         public string Status { get; set; }
@@ -20,8 +13,6 @@ namespace SolexCode.CRM.API.New.DTOs
         public string CreatedByName { get; set; }
         public string CreatedByEmail { get; set; }
         public int? CreatedById { get; set; }
-        public int? NewLeadId { get; set; }
-
-
+        public int NewLeadId { get; set; }
     }
 }

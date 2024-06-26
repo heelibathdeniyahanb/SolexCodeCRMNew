@@ -10,6 +10,7 @@ using SolexCode.CRM.API.New.DTOs;
 using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.SignalR;
+using SolexCode.CRM.API.New.Dtos;
 //using SolexCode.CRM.API.New.Hub;
 
 namespace SolexCode.CRM.API.New.Controllers
@@ -19,206 +20,187 @@ namespace SolexCode.CRM.API.New.Controllers
     public class TaskController : ControllerBase
     {
         private readonly DatabaseContext _context;
-       // private readonly IHttpContextAccessor _httpContextAccessor;
-        //private readonly IHubContext<NotificationHub> _hubContext;
 
         public TaskController(DatabaseContext context)
         {
             _context = context;
-            //_httpContextAccessor = httpContextAccessor;
-          //  _hubContext = hubContext;
+
         }
 
+        // GET: api/Task
         [HttpGet]
-        public ActionResult<IEnumerable<SolexCode.CRM.API.New.Models.Task>> GetTasks()
+        public ActionResult<IEnumerable<TaskDto>> GetTasks()
         {
-            return _context.Task.ToList();
+            var tasks = _context.NewTasks.Select(t => new TaskDto
+            {
+                Id = t.Id,
+                DateAdded = t.DateAdded,
+                DateModified = t.DateModified,
+                TaskName = t.TaskName,
+                TaskDescription = t.TaskDescription,
+                Status = t.Status,
+                DueDate = t.DueDate,
+                LeadName = t.LeadName,
+                ReminderDate = t.ReminderDate,
+                ReminderTime = t.ReminderTime,
+                Priority = t.Priority,
+                CreatedByName = t.CreatedByName,
+                CreatedByEmail = t.CreatedByEmail,
+                CreatedById = t.CreatedById,
+                NewLeadId = t.NewLeadId
+            }).ToList();
+
+            return Ok(tasks);
         }
 
+        // GET: api/Task/{id}
         [HttpGet("{id}")]
-
-        public async Task<ActionResult<TaskDto>> GetTask(int id)
+        public ActionResult<TaskDto> GetTask(int id)
         {
-            var taskDto = await _context.Task.FindAsync(id);
-
-            if (taskDto == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(taskDto);
-        }
-
-       /* [HttpPost]
-        public async Task<ActionResult<TaskDto>> CreateTask(TaskDto taskDto)
-        {
-            if (taskDto == null)
-            {
-                return BadRequest("TaskDto is null");
-            }
-
-            // Validate the taskDto if needed
-            if (string.IsNullOrWhiteSpace(taskDto.TaskName))
-            {
-                return BadRequest("Task name is required");
-            }
-
-            var task = new SolexCode.CRM.API.New.Models.Task
-            {
-                TaskName = taskDto.TaskName,
-                TaskDescription = taskDto.TaskDescription,
-                Status = taskDto.Status,
-                DueDate = taskDto.DueDate,
-                ReminderDate = taskDto.ReminderDate,
-                ReminderTime = taskDto.ReminderTime,
-                Priority = taskDto.Priority,
-                DateAdded = taskDto.DateAdded,
-                DateModified = DateTime.Now,
-                CreatedById = taskDto.CreatedById,
-                CreatedByName = taskDto.CreatedByName,
-                CreatedByEmail = taskDto.CreatedByEmail,
-            };
-
-            _context.Task.Add(task);
-            await _context.SaveChangesAsync();
-
-            // Update the DTO with the generated ID and other properties
-            taskDto.Id = task.Id;
-            taskDto.DateAdded = task.DateAdded;
-            taskDto.DateModified = task.DateModified;
-
-            // Inside CreateTask method
-            DateTime NotificationDateTime = taskDto.DueDate.AddDays(-2); // Two days before due date
-            string userId = taskDto.CreatedById.ToString(); // Convert CreatedById to string
-
-            // Call SignalR hub to send reminder
-           // await _hubContext.Clients.User(userId).SendAsync("ReceiveTaskReminder", "Don't forget about your task!");
-
-            return CreatedAtAction(nameof(GetTask), new { id = taskDto.Id }, taskDto);
-        }*/
-
-
-
-
-
-
-
-        [HttpPost("CreateTaskForLead/{leadId}")]
-        public async Task<ActionResult<SolexCode.CRM.API.New.Models.Task>> CreateTaskForLead(int leadId, [FromBody] TaskDto taskDto)
-        {
-            if (taskDto == null)
-            {
-                return BadRequest("Task data is required");
-            }
-
-            var lead = _context.Lead.FirstOrDefault(l => l.Id == leadId);
-            if (lead == null)
-            {
-                return BadRequest("Invalid lead ID");
-            }
-
-            // Map TaskDto to Task entity
-            var task = new SolexCode.CRM.API.New.Models.Task
-            {
-                TaskName = taskDto.TaskName,
-                TaskDescription = taskDto.TaskDescription,
-                Status = taskDto.Status,
-                DueDate = taskDto.DueDate,
-                ReminderDate = taskDto.ReminderDate,
-                ReminderTime = taskDto.ReminderTime,
-                Priority = taskDto.Priority,
-                LeadId = leadId, // Associate the task with the specified lead
-
-                DateAdded = DateTime.UtcNow,
-                DateModified = DateTime.UtcNow,
-                CreatedById = taskDto.CreatedById,
-                CreatedByName = taskDto.CreatedByName,
-                CreatedByEmail = taskDto.CreatedByEmail
-            };
-
-            // Add task to the context and save changes
-            try
-            {
-                _context.Task.Add(task);
-                await _context.SaveChangesAsync();
-
-                // Update DTO with the generated ID
-                taskDto.Id = task.Id;
-
-                return CreatedAtAction(nameof(GetTask), new { id = taskDto.Id }, taskDto);
-            }
-            catch (Exception ex)
-            {
-                // Log the exception (not shown here) and return a generic error message
-                return StatusCode(500, "An error occurred while creating the task");
-            }
-        }
-
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTask(int id, TaskDto taskDto)
-        {
-            if (id != taskDto.Id)
-            {
-                return BadRequest();
-            }
-
-            var existingTask = await _context.Task.FindAsync(id);
-            if (existingTask == null)
-            {
-                return NotFound();
-            }
-
-            // Update the existing task with values from taskDto
-            existingTask.TaskName = taskDto.TaskName;
-            existingTask.TaskDescription = taskDto.TaskDescription;
-            existingTask.Status = taskDto.Status;
-            existingTask.DueDate = taskDto.DueDate;
-            existingTask.ReminderDate = taskDto.ReminderDate;
-            existingTask.ReminderTime = taskDto.ReminderTime;
-            existingTask.Priority = taskDto.Priority;
-            existingTask.DateModified = DateTime.UtcNow;
-
-            // Optionally update taskDto with the modified date
-            taskDto.DateModified = existingTask.DateModified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TaskExists(id))
+            var task = _context.NewTasks
+                .Where(t => t.Id == id)
+                .Select(t => new TaskDto
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                    Id = t.Id,
+                    DateAdded = t.DateAdded,
+                    DateModified = t.DateModified,
+                    TaskName = t.TaskName,
+                    TaskDescription = t.TaskDescription,
+                    Status = t.Status,
+                    DueDate = t.DueDate,
+                    LeadName = t.LeadName,
+                    ReminderDate = t.ReminderDate,
+                    ReminderTime = t.ReminderTime,
+                    Priority = t.Priority,
+                    CreatedByName = t.CreatedByName,
+                    CreatedByEmail = t.CreatedByEmail,
+                    CreatedById = t.CreatedById,
+                    NewLeadId = t.NewLeadId
+                })
+                .FirstOrDefault();
 
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTask(int id)
-        {
-            var task = await _context.Task.FindAsync(id);
             if (task == null)
             {
                 return NotFound();
             }
 
-            _context.Task.Remove(task);
-            await _context.SaveChangesAsync();
+            return Ok(task);
+        }
+
+        // POST: api/Task
+        [HttpPost]
+        public ActionResult<TaskDto> CreateTask(CreateTaskDto createTaskDto)
+        {
+            var task = new NewTask
+            {
+                TaskName = createTaskDto.TaskName,
+                TaskDescription = createTaskDto.TaskDescription,
+                Status = createTaskDto.Status,
+                DueDate = createTaskDto.DueDate,
+                LeadName = createTaskDto.LeadName,
+                ReminderDate = createTaskDto.ReminderDate,
+                ReminderTime = createTaskDto.ReminderTime,
+                Priority = createTaskDto.Priority,
+                CreatedByName = createTaskDto.CreatedByName,
+                CreatedByEmail = createTaskDto.CreatedByEmail,
+                CreatedById = createTaskDto.CreatedById,
+                NewLeadId = createTaskDto.NewLeadId,
+                DateAdded = DateTime.Now,
+                DateModified = DateTime.Now
+            };
+
+            _context.NewTasks.Add(task);
+            _context.SaveChanges();
+
+            var taskDto = new TaskDto
+            {
+                Id = task.Id,
+                DateAdded = task.DateAdded,
+                DateModified = task.DateModified,
+                TaskName = task.TaskName,
+                TaskDescription = task.TaskDescription,
+                Status = task.Status,
+                DueDate = task.DueDate,
+                LeadName = task.LeadName,
+                ReminderDate = task.ReminderDate,
+                ReminderTime = task.ReminderTime,
+                Priority = task.Priority,
+                CreatedByName = task.CreatedByName,
+                CreatedByEmail = task.CreatedByEmail,
+                CreatedById = task.CreatedById,
+                NewLeadId = task.NewLeadId
+            };
+
+            return CreatedAtAction(nameof(GetTask), new { id = task.Id }, taskDto);
+        }
+
+        // PUT: api/Task/{id}
+        [HttpPut("{id}")]
+        public IActionResult UpdateTask(int id, UpdateTaskDto updateTaskDto)
+        {
+            var task = _context.NewTasks.Find(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            if (updateTaskDto.TaskName != null)
+            {
+                task.TaskName = updateTaskDto.TaskName;
+            }
+            if (updateTaskDto.TaskDescription != null)
+            {
+                task.TaskDescription = updateTaskDto.TaskDescription;
+            }
+            if (updateTaskDto.Status != null)
+            {
+                task.Status = updateTaskDto.Status;
+            }
+            if (updateTaskDto.DueDate != null)
+            {
+                task.DueDate = (DateTime)updateTaskDto.DueDate;
+            }
+            if (updateTaskDto.LeadName != null)
+            {
+                task.LeadName = updateTaskDto.LeadName;
+            }
+            if (updateTaskDto.ReminderDate != null)
+            {
+                task.ReminderDate = updateTaskDto.ReminderDate;
+            }
+            if (updateTaskDto.ReminderTime != null)
+            {
+                task.ReminderTime = updateTaskDto.ReminderTime;
+            }
+            if (updateTaskDto.Priority != null)
+            {
+                task.Priority = (bool)updateTaskDto.Priority;
+            }
+
+            task.DateModified = DateTime.Now;
+
+            _context.NewTasks.Update(task);
+            _context.SaveChanges();
 
             return NoContent();
         }
 
-        private bool TaskExists(int id)
+        // DELETE: api/Task/{id}
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTask(int id)
         {
-            return _context.Task.Any(e => e.Id == id);
+            var task = _context.NewTasks.Find(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            _context.NewTasks.Remove(task);
+            _context.SaveChanges();
+
+            return NoContent();
         }
     }
 }

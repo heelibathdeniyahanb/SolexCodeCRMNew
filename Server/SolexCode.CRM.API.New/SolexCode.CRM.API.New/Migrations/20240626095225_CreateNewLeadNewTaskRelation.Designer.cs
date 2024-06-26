@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolexCode.CRM.API.New.Data;
 
@@ -11,9 +12,11 @@ using SolexCode.CRM.API.New.Data;
 namespace SolexCode.CRM.API.New.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240626095225_CreateNewLeadNewTaskRelation")]
+    partial class CreateNewLeadNewTaskRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,75 +189,6 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ClientLead");
-                });
-
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AdditionalNote")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AnnualRevenue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Department")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Industry")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumberOfEmployees")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonalPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Source")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Website")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Email", b =>
@@ -756,9 +690,6 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<bool>("ChangePassword")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -803,8 +734,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Users");
                 });
@@ -959,25 +888,11 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Navigation("Lead");
                 });
 
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>
-                {
-                    b.HasOne("SolexCode.CRM.API.New.Models.Company", "Company")
-                        .WithMany("Users")
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Chat", b =>
                 {
                     b.Navigation("Messages");
 
                     b.Navigation("Participants");
-                });
-
-            modelBuilder.Entity("SolexCode.CRM.API.New.Models.Company", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.Email", b =>
