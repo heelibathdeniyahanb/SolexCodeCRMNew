@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../../Components/CalendarLogin';
-import SearchBar from '../../Components/Task/SearchBar';
+
 import TaskTable from '../../Components/Task/TaskTable';
 
 const Task = () => {
@@ -9,7 +9,7 @@ const Task = () => {
             
           
             <Login/>
-            <SearchBar/>
+          
             <TaskTable/>
         </div>
     );

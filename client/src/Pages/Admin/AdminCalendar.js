@@ -1,41 +1,26 @@
 import React from 'react';
-
-import MiniCalendarUi from '../../Components/Calendar/MiniCalendarUi';
-import BigCalendarUi from '../../Components/Calendar/BigCalendarUi';
-import CalendarLogin from '../../Components/CalendarLogin';
 import Header from '../../Components/Header/Header';
+import CalendarLogin from '../../Components/CalendarLogin';
 import AdminSideNavBar from './AdminSideNavBar';
+
+
+import AdminCalendarUi from '../../Components/AdminCompo/AdminCalendarUi';
 
 const AdminCalendar = () => {
     return (
-        <div className='width-full'>
-            <div><Header/></div>
-            <div><CalendarLogin/></div>
-            <div className=''>
-                <div className='flex justify-between'>
-
-                    <div className='justify-left'><AdminSideNavBar/></div>
-
-                    <div> <BigCalendarUi/></div>
-                    
-                    <div className=' h-fit '><MiniCalendarUi/></div>
-                    
-                    
-                    
-             
+        <div className='w-full'>
+            <div className="sticky top-0 z-10">
+                <Header />
+            </div>
+            <CalendarLogin />
+            <div className='flex flex-col lg:flex-row lg:justify-between'>
+                <div className='sticky top-0 z-10 w-full lg:w-1/5 mb-4 lg:mb-0 lg:mr-10'>
+                    <AdminSideNavBar />
+                </div>
+                <div className='w-full lg:w-4/5 overflow-y-auto'>
+                    <AdminCalendarUi/>
                 </div>
             </div>
-            
-          
-          
-          
-         
-       
-          
-    
-          
-          
-          
         </div>
     );
 };

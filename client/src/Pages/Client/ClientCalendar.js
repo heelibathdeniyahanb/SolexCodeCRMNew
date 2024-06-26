@@ -1,13 +1,15 @@
 import React from 'react';
 import ClientCalendarLogin from '../../Components/Client/ClientCalendarLogin';
-import ClientMiniCalendarUi from '../../Components/Client/ClientMiniCalendarUi';
+
 import ClientSideNavBar from '../../Components/Client/ClientSideNavBar';
-import Header from '../../Components/Header/Header';
+
+import BigCalendarUi from '../../Components/Calendar/BigCalendarUi';
+import ClientHeader from '../../Components/Header/ClientHeader';
 const ClientCalendar = () => {
     return (
         <div>
             <div>
-                <Header/>
+                <ClientHeader/>
             </div>
             <div>
             <ClientCalendarLogin/>
@@ -17,8 +19,8 @@ const ClientCalendar = () => {
                 <div>
                     <ClientSideNavBar/>
                 </div>
-                <div>
-                    <ClientMiniCalendarUi/>
+                <div className='w-full lg:w-4/5 overflow-y-auto'>
+                    <BigCalendarUi />
                 </div>
             </div>
 

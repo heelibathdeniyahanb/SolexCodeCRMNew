@@ -1,7 +1,7 @@
 import React from 'react';
-import SideNav from '../../Components/Sidebar/SideNav';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 import Header from '../../Components/Header/Header';
-import EditTicket from '../../Components/Client/EditTicket';
+import EditTicket from '../../Components/Client/Ticket/EditTicket';
 
 export default function EditTicketPage() {
   return (

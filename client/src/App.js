@@ -17,7 +17,7 @@ import ClientCalendar from './Pages/Client/ClientCalendar';
 import ClientCall from './Pages/ClientCall';
 
 import ClientEvent from './Pages/Client/ClientEvent';
-import TaskDetailsPage from './Pages/TaskDetailsPage';
+
 import CustomerSupporterCalendar from './Pages/CustomerSupporter/CustomerSupporterCalendar';
 import AdminAddEvent from './Pages/Admin/AdminAddEvent';
 import AdminAddTask from './Pages/Admin/AdminAddTask';
@@ -29,11 +29,16 @@ import AdminCalendar from './Pages/Admin/AdminCalendar';
 import Login from './Components/login/Login'
 
 import TicketingSystem from './Pages/Client/TicketingSystem';
-import QuickGuid from './Pages/Client/QuickGuid';
+import QuickGuide from './Pages/Client/QuickGuide';
 import CreateTickets from './Pages/Client/CreateTickets';
 import DeligateListPage from './Pages/Client/DeligateListPage';
 import EditTicketPage from './Pages/Client/EditTicketPage';
 import ViewTicketPage from './Pages/Client/ViewTicketPage';
+import CustomerSurvey from './Pages/Client/CustomerSurvey';
+import ServiceAnalytics from './Pages/Client/ServiceAnalytics';
+
+
+
 import AdminSideNavBar from './Pages/Admin/AdminSideNavBar';
 import ClientSideNavBar from './Components/Client/ClientSideNavBar';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
@@ -41,6 +46,66 @@ import AddUsers from './Components/AdminCompo/AddUser';
 import SalesRepNavBar from './Components/SalesRep/SalesRepNavBar';
 import SalesRepDashboard from './Pages/SalesRep/SalesRepDashboard';
 import AddUserPage from './Pages/Admin/AddUserPage';
+import AdminDashboardCard from './Components/AdminCompo/AdminDashboardCard';
+import AdminDashboardCard2 from './Components/AdminCompo/AdminDashboardCard2';
+import AdminDashboardCard3 from './Components/AdminCompo/AdminDashboardCard3';
+import AdminDashboardLatestClients from './Components/AdminCompo/AdminDashboardLatestClients';
+import AdminDashboardSheduledEventsTasks from './Components/AdminCompo/AdminDashboardSheduledEventsTasks';
+import AdminDashboardOngoingLeads from './Components/AdminCompo/AdninDashboardOngoingLeads';
+import AdminKanbanView from './Pages/Admin/AdminKanbanView';
+import AdminAddLeadForm from './Pages/Admin/AdminAddLeadForm';
+import SalesAdminListView from './Pages/Admin/SalesAdminListView';
+import ClientDashboard from './Pages/Client/ClientDashboard';
+import ServicelevelAgreement from './Pages/Admin/ServiceLevelAgreement';
+
+import SendEmail from './Components/AdminCompo/SendEmail';
+import Email from './Pages/Admin/Email';
+
+import AnalysePage from './Components/AnalyzingCompo/Analysepage';
+import RectangularCard from './Components/AnalyzingCompo/RectangularCard';
+import ReportMenu from './Components/AnalyzingCompo/ReportMenu';
+import Report from './Components/AnalyzingCompo/Report';
+import Charts from './Components/AnalyzingCompo/Charts';
+import KPI from './Components/AnalyzingCompo/KPI';
+import Comparator from './Components/AnalyzingCompo/Comparator';
+import MyProjects from './Pages/Client/MyProjects';
+import { UserProvider } from './Components/login/UserContext';
+import Users from './Components/Users';
+import Image from './Components/Image';
+import SuperAdmin from './Pages/Admin/SuperAdmin';
+
+import AdminCreateInvoice from './Components/AdminCompo/AdminInvoice/AdminCreateInvoice';
+import AdminInvoiceCard from './Components/AdminCompo/AdminInvoice/AdminInvoiceCard';
+import Invoice from './Components/AdminCompo/AdminInvoice/Invoice';
+import InvoiceForm from './Components/AdminCompo/AdminInvoice/InvoiceForm';
+import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
+import ClientLeadForm from './Pages/Client/ClientLeadForm';
+import SalesRepInvoice from './Pages/SalesRep/SalesRepInvoice';
+import AdminInvoice from './Pages/Admin/AdminInvoice';
+
+import VerifyOtpAdmin from './Pages/Admin/VerifyOtpAdmin';
+import ClientVerifyOtp from './Pages/Client/ClientVerifyOtp';
+import SalesRepVerifyOtp from './Pages/SalesRep/SalesRepVerifyOtp';
+import CustomerSupporterVerifyOtp from './Pages/CustomerSupporter/CustomerSupporterVerifyOtp';
+
+import ResetPasswordWindow1Admin from './Pages/Admin/ResetPasswordWindow1Admin';
+import ResetPasswordWindow2Admin from './Pages/Admin/ResetPasswordWindow2Admin';
+import ResetPasswordWindow3Admin from './Pages/Admin/ResetPasswordWindow3Admin';
+import ClientResetPasswordWindow1 from './Pages/Client/ClientResetPasswordWindow1';
+import ClientResetPasswordWindow2 from './Pages/Client/ClientResetPasswordWindow2';
+import ClientResetPasswordWindow3 from './Pages/Client/ClientResetPasswordWindow3';
+import SalesRepResetPasswordWindow1 from './Pages/SalesRep/SalesRepResetPasswordWindow1';
+import SalesRepResetPasswordWindow2 from './Pages/SalesRep/SalesRepResetPasswordWindow2';
+import SalesRepResetPasswordWindow3 from './Pages/SalesRep/SalesRepResetPasswordWindow3';
+import CustomerSupporterResetPasswordWindow1 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow1';
+import CustomerSupporterResetPasswordWindow2 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow2';
+import CustomerSupporterResetPasswordWindow3 from './Pages/CustomerSupporter/CustomerSupporterResetPasswordWindow3';
+import AdminSettings from './Pages/Admin/AdminSettings';
+import ClientSettings from './Pages/Client/ClientSettings';
+import Chat from './Components/Chat/Chat';
+import CustomerSupporterDashboard from './Pages/CustomerSupporter/CustomerSupporterDashboard';
+
+
 
 import AnalysePage from './Pages/Analysing/AnalysePage';
 import Reports from './Pages/Analysing/Reports';
@@ -52,16 +117,51 @@ function App() {
     <div className='App'>
       
       <BrowserRouter>
+      <UserProvider>
+
         <Routes>
         
          <Route path='/' element={<Login/>}></Route>
          <Route path='/rootpage' element={<RootPage/>}></Route>
 
+         <Route path='/admin-verify-otp' element={<VerifyOtpAdmin/>}></Route>
+         <Route path='/client-verify-otp' element={<ClientVerifyOtp/>}></Route>
+         <Route path='/salesrep-verify-otp' element={<SalesRepVerifyOtp/>}></Route>
+         <Route path='/customersupporter-verify-otp'element={<CustomerSupporterVerifyOtp/>}></Route>
+
+         <Route path='/admin-settings' element={<AdminSettings/>}></Route>
+         <Route path='/client-settings' element={<ClientSettings/>}></Route>
+
+         <Route path='/admin-reset-password-window-1' element={<ResetPasswordWindow1Admin/>}></Route>
+         <Route path='/admin-reset-password-window-2' element={<ResetPasswordWindow2Admin/>}></Route>
+         <Route path='/admin-reset-password-window-3' element={<ResetPasswordWindow3Admin/>}></Route>
+         <Route path='/client-reset-password-window-1' element={<ClientResetPasswordWindow1/>}></Route>
+         <Route path='/client-reset-password-window-2' element={<ClientResetPasswordWindow2/>}></Route>
+         <Route path='/client-reset-password-window-3' element={<ClientResetPasswordWindow3/>}></Route>
+         <Route path='/salesrep-reset-password-window-1' element={<SalesRepResetPasswordWindow1/>}></Route>
+         <Route path='/salesrep-reset-password-window-2' element={<SalesRepResetPasswordWindow2/>}></Route>
+         <Route path='/salesrep-reset-password-window-3' element={<SalesRepResetPasswordWindow3/>}></Route>
+         <Route path='/customersupporter-reset-password-window-1' element={<CustomerSupporterResetPasswordWindow1/>}></Route>
+         <Route path='/customersupporter-reset-password-window-2' element={<CustomerSupporterResetPasswordWindow2/>}></Route>
+         <Route path='/customersupporter-reset-password-window-3' element={<CustomerSupporterResetPasswordWindow3/>}></Route>
+
          <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
+         <Route path='/admindashboardcard' element={<AdminDashboardCard/>}></Route>
+         <Route path='/admindashboardcard2' element={<AdminDashboardCard2/>}></Route>
+         <Route path='/admindashboardcard3' element={<AdminDashboardCard3/>}></Route>
+         <Route path='/admindashboardlatestclients' element={<AdminDashboardLatestClients/>}></Route>
+         <Route path='/admindashboardseduledeventstasks' element={<AdminDashboardSheduledEventsTasks/>}></Route>
+         <Route path='/admindashboardongoingleads' element={<AdminDashboardOngoingLeads/>}></Route>
          <Route path='/salesrepdashboard' element={<SalesRepDashboard/>}></Route>
+         <Route path='/clientdashboard' element={<ClientDashboard/>}></Route>
+         <Route path='/superadmin' element={<SuperAdmin/>}></Route>
+
+         
 
          <Route path='adduser' element={<AddUsers/>}></Route>
          <Route path='/adduserpage' element={<AddUserPage/>}></Route>
+         <Route path='/users' element={<Users/>}></Route>
+         <Route path='/image' element={<Image/>}></Route>
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
           <Route path='/clientcalendar' element={<ClientCalendar/>}></Route>
           <Route path='/customersupportercalendar' element={<CustomerSupporterCalendar/>}></Route>
@@ -82,27 +182,31 @@ function App() {
           <Route path='/addtask' element={<AddTask/>}></Route>
           <Route path='/addevent' element={<AddEvent/>}></Route>
           <Route path='/addcall' element={<AddCall/>}></Route>
-          <Route path='/Pages/taskdetailspage' element={<TaskDetailsPage/>}></Route>
-          <Route path='clientcalendar' element = {<ClientCalendar/>}></Route>
+
+          <Route path='/sendemail' element={<SendEmail/>}></Route>
+         <Route path='/email' element={<Email/>}></Route>
+         <Route path='/chat' element={<Chat/>}></Route>
+          
+          <Route path='/clientcalendar' element = {<ClientCalendar/>}></Route>
           <Route path='event' element = {<Event/>}></Route>
 
           <Route path='/clientcall' element={<ClientCall/>}></Route>
           <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route>
           <Route path='/clientevent' element={<ClientEvent/>}></Route>
+          <Route path='myprojects' element={<MyProjects/>}></Route>
+
+          <Route path='/customersupporter-dashboard' element={<CustomerSupporterDashboard/>}></Route>
           
-          <Route path='/quickguid' element={<QuickGuid/>}></Route>
+          <Route path='/quickguide' element={<QuickGuide/>}></Route>
           <Route path='/ticketingsystem' element={<TicketingSystem/>}></Route>
           <Route path='/createtickets' element={<CreateTickets/>}></Route>
           <Route path='/deligatelistpage' element={<DeligateListPage/>}></Route>
           <Route path='/editticketpage' element={<EditTicketPage/>}></Route>
           <Route path='/viewticketpage' element={<ViewTicketPage/>}></Route>
-          
-          <Route path='AnalysePage' element={<AnalysePage/>}></Route>
-          <Route path='/reports' element={<Reports/>}></Route>
-          <Route path='/kpi' element={<KPI/>}></Route>
-          <Route path='/comparator' element={<Comparator/>}></Route>
+
           
         </Routes>
+        </UserProvider>
        
         </BrowserRouter>
     </div>

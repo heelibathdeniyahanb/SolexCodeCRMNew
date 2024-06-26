@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "HuLFASygTlkTuLzmAO0jMZ557ZvMbgHam22kvVKSpuQ=",
+  "Hash": "oTxMfm1D3R2wJSlZ117f3mt0NADrh3BqzjsBqV7j1qQ=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "SolexCode.CRM.API.New\\wwwroot",
+      "Source": "SolexCode.CRM.API.New",
+      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
+      "SourceId": "SolexCode.CRM.API.New",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "RelativePath": "upload/image/logo1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\image\\logo1.png"
+    }
+  ]
 }

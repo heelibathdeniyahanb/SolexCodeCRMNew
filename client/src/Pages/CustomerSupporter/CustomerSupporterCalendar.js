@@ -3,7 +3,7 @@ import React from 'react';
 import MiniCalendarUi from '../../Components/Calendar/MiniCalendarUi';
 import BigCalendarUi from '../../Components/Calendar/BigCalendarUi';
 import SalesRepCalendarLogin from '../../Components/CustomerSupporter/SalesRepCalendarLogin';
-import SideNav from '../../Components/Sidebar/SideNav';
+import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 import Header from '../../Components/Header/Header';
 
 
@@ -13,8 +13,10 @@ const CustomerSupporterCalendar = () => {
           <Header/>
           <SalesRepCalendarLogin/>
           <div className='flex'><SideNav/>
-          <MiniCalendarUi/>
-          <BigCalendarUi/></div>
+         
+          <div className='w-full lg:w-4/5 overflow-y-auto'>
+                    <BigCalendarUi />
+                </div></div>
           
           
     

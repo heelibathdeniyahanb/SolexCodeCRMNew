@@ -11,7 +11,8 @@ import { MdAnalytics } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 
 import { Link } from 'react-router-dom';
-import Img1 from '../../Components/login/1.png'
+import Img1 from '../../Components/login/1.png';
+import { FaFileInvoiceDollar } from "react-icons/fa";
 
 
 export default function AdminSideNavBar() {
@@ -38,7 +39,8 @@ export default function AdminSideNavBar() {
                 </li>
                </Link>
                
-                <Link to='/adduserpage'>
+                {/* <Link to='/adduserpage'> */}
+                <Link to='/users'>
                 <li className=''>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10 dark:hover:text-neutral-300'>
                         <div className='mr-8'><MdContactPage size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
@@ -48,12 +50,14 @@ export default function AdminSideNavBar() {
                </Link>
                 
 
+               <Link to='/kanbanboard'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><GoProjectSymlink  size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Sales & Lead</label></div>
                     </div>
                 </li>
+                </Link>
                 <Link to='/admincalendar'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
@@ -63,32 +67,43 @@ export default function AdminSideNavBar() {
                 </li></Link>
 
                 <li>
+                    <Link to='/email'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdEmail  size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Email</label></div>
                     </div>  
+                    </Link>
                 </li>
 
                 <li>
+                    <Link to='/analysepage'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdAnalytics size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Analytics</label></div>
+                    </div></Link>
+                </li>
+                <li>
+                    <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
+                        <div className='mr-8'><FaFileInvoiceDollar size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+                        <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Invoice</label></div>
                     </div>
                 </li>
-
                 
                 <li>
+                    <Link to='/admin-settings'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><IoIosSettings size={20} className="opacity-25 sm:w-6 sm:h-6 hover:text-white" /></div>
                         <div><label className='text-white opacity-25 hover:text-white' style={{ fontSize: '18px' }}>Settings</label></div>
-                    </div>
+                    </div></Link>
                 </li>
 
                 <li>
+                    <Link to='/'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><CiLogout  size={20} className="opacity-25 sm:w-6 sm:h-6 hover:text-white" /></div>
                         <div><label className='text-white opacity-25 hover:text-white' style={{ fontSize: '18px' }}>Logout</label></div>
                     </div>
+                    </Link>
                 </li>
                 
                
