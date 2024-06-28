@@ -94,6 +94,37 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
+    "Method": "GetLatestMessageBetweenUsers",
+    "RelativePath": "api/Chat/latestMessage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "senderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "receiverId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.DTOs.ChatMessageDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.ChatController",
     "Method": "GetMessagesBetweenUsers",
     "RelativePath": "api/Chat/messages",
     "HttpMethod": "GET",
