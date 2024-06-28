@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -15,16 +16,20 @@ namespace SolexCode.CRM.API.New.Models
         public int? LeadManagerId { get; set; }
         public string SalesPipeline { get; set; }
         public string LeadStatus { get; set; }
+        public bool? IsWon {  get; set; }
+        
 
         public ICollection<Task> Tasks { get; set; } = new List<Task>();
         [JsonIgnore]
         public ICollection<Events> Events { get; set; }
+
         [JsonIgnore]
         public ICollection<NewTask> NewTasks { get; set; }
 
         // Foreign key to User
+        public int? UserId { get; set; }
 
-        public int? UserId { get; set; } // Add this line to define the foreign key
+        // Add this line to define the foreign key
         [ForeignKey("UserId")]
         [JsonIgnore]
         public User User { get; set; } // Add this line to define the navigation property

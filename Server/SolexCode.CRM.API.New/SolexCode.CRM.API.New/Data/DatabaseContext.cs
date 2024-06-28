@@ -124,6 +124,8 @@ namespace SolexCode.CRM.API.New.Data
 
 
             base.OnModelCreating(modelBuilder);
+
+
         }
 
         public (int LastNumber, string LastDate) GetLastInvoiceData()

@@ -501,6 +501,9 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
 
+                    b.Property<bool?>("IsWon")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("LeadManagerId")
                         .HasColumnType("int");
 
@@ -531,7 +534,7 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -902,7 +905,8 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
                         .WithMany("NewLeads")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

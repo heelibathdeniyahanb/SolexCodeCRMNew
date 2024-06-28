@@ -1,19 +1,47 @@
-import { useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaCircleNotch, FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import Avatar from 'react-avatar';
 import axios from 'axios';
 import UpdateTaskModal from './UpdateTaskModel';
+import LeadStatusModel from "./LeadStatusModel";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function TaskCard({ task, deleteTask, updateTask }) {
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [taskData, setTaskData] = useState(task);
 
+
+  const handleCloseModal = () => {
+    setShowUpdateModal(false);
+    
+  };
+
+  //Delete Card According it's id
+  const handleDelete = async (taskId) => {
+    const userConfirmed = window.confirm("Do you want to delete this lead?");
+    if (!userConfirmed) {
+      return;
+    }
+  
+    try {
+      await axios.delete(`https://localhost:7143/api/Lead/${taskId}`);
+      deleteTask(taskId);
+      toast.success("Lead deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      toast.error("Failed to delete lead.");
+    }
+  };
+  
+  
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toISOString().split('T')[0];
@@ -28,10 +56,8 @@ function TaskCard({ task, deleteTask, updateTask }) {
     leadStatus: task.leadStatus,
     startDate: formatDate(task.startDate),
     endDate: formatDate(task.endDate),
-    salesRep: task.salesRep,
-    userFullName : task.userFullName,
-    userEmail : task.userEmail
-    
+    salesRep: task.salesRep
+
   });
 
   const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
@@ -49,24 +75,6 @@ function TaskCard({ task, deleteTask, updateTask }) {
   };
 
 
-
-
-  const handleDeleteTask = async () => {
-  try {
-    const confirmDelete = window.confirm("Are you sure you want to delete this task?");
-    if (confirmDelete) {
-      // Send a DELETE request to the backend to delete the lead
-      await axios.delete(`https://localhost:7143/api/Lead/${task.id}`);
-      
-      // If the request is successful, delete the task from the frontend
-      deleteTask(task.id);
-    }
-  } catch (error) {
-    console.error("Error deleting task:", error);
-  }
-};
-
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -78,26 +86,26 @@ function TaskCard({ task, deleteTask, updateTask }) {
     e.preventDefault();
   
     try {
-      const { leadName, companyName, leadStatus, startDate, endDate, salesRep,userFullName,userEmail} = formData;
-      
+      const { leadName, companyName, leadStatus, startDate, endDate, salesRep } = formData;
+  
       const formattedStartDate = formatDate(startDate);
       const formattedEndDate = formatDate(endDate);
-      
-      await updateTask(task.id, { leadName, companyName, leadStatus, startDate: formattedStartDate, endDate: formattedEndDate, salesRep,userFullName,userEmail });
+  
+      await updateTask(task.id, { leadName, companyName, leadStatus, startDate: formattedStartDate, endDate: formattedEndDate, salesRep });
       setEditMode(false);
-      setShowModal(false);
+      setShowUpdateModal(false);
+      toast.success("Lead updated successfully!");
     } catch (error) {
       console.error("Error updating task:", error);
+      toast.error("Failed to update lead.");
     }
   };
+  
 
   const handleOpenModal = () => {
-    setShowModal(true);
+    setShowUpdateModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
 
   const handleUpdate = (updatedData) => {
     setTaskData((prevTask) => ({
@@ -112,7 +120,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       <div
         ref={setNodeRef}
         style={style}
-        className="opacity-30 bg- p-2.5 h-[100px] min-h-[100px] items-center flex text-left rounded-xl border-2 border-rose-500 cursor-grab relative"
+        className="opacity-30 bg- p-2.5 h-[200px] min-h-[200px] items-center flex text-left rounded-xl border-2 border-rose-500 cursor-grab relative"
       />
     );
   }
@@ -123,12 +131,12 @@ function TaskCard({ task, deleteTask, updateTask }) {
       style={style}
       {...attributes}
       {...listeners}
-      className="bg-slate-200 h-[300px] min-h-[200px] text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-zinc-400 cursor-grab relative task"
+      className="bg-gray-300 h-[220px] min-h-[220px] text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-gray-400 cursor-grab relative task"
       onMouseEnter={() => setMouseIsOver(true)}
       onMouseLeave={() => setMouseIsOver(false)}
     >
       {editMode ? (
-        <form onSubmit={handleSubmit} className="p-2.5 h-[100px] min-h-[100px] items-center flex text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-zinc-400 cursor-grab relative flex-col">
+        <form onSubmit={handleSubmit} className="p-2.5 h-[300px] min-h-[300px] items-center flex text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-zinc-400 cursor-grab relative flex-col">
           <div className="mb-1">
             <label className="block text-gray-700 text-sm font-bold mb-2">Lead Name</label>
             <input
@@ -192,12 +200,12 @@ function TaskCard({ task, deleteTask, updateTask }) {
           <button type="submit" className="bg-primary text-white py-1 px-4 rounded">Update</button>
         </form>
       ) : (
-        <div className="card text-black bg-primary ml-1 mt-1" style={{ minWidth: '18rem', width: '300px', height: '200px' }}>
+        <div className="card text-black font-bold text-lg bg-primary ml-1 mt-1" style={{ minWidth: '24rem', width: '300px', height: '200px' }}>
           <div className="card-header text-start ml-2">{taskData.leadName}</div>
           <div className="card-body">
-            <h5 className="card-title text-cyan-600 text-start ml-2">{taskData.companyName}</h5>
+            <h5 className="card-title text-teal-700 font-semibold text-start ml-2">{taskData.companyName}</h5>
             <p className="card-text">
-              <span className="text-red-800 ml-1 text-xs text-start rounded-full bg-red-300  py-1 px-3 border">{taskData.leadStatus}</span>
+              <span className="text-red-400 ml-1 text-xs text-start rounded-full bg-red-200  py-1 px-3 border">{taskData.leadStatus}</span>
             </p>
             <p className="card-text mt-2">
               <span className="ml-1 text-sm text-gray-600 text-justify">Start Date: {formattedStartDate}</span>
@@ -205,24 +213,21 @@ function TaskCard({ task, deleteTask, updateTask }) {
             <p className="card-text ">
               <span className="ml-1 text-sm text-gray-600 text-justify">End Date  : {formattedEndDate}</span>
             </p>
-            <p className="card-text mt-2">
-              <span className="ml-1 text-sm text-gray-600 text-justify"> Name: {taskData.userFullName}</span>
-            </p>
-            <p className="card-text ">
-              <span className="ml-1 text-sm text-gray-600 text-justify"> Email  : {taskData.userEmail}</span>
-            </p>
             <p className="card-text mt-4">
-              <span className="text-gray-500 ml-1 text-xs text-start"> <Avatar src={Avatar} size="32" round={true} /> {taskData.salesRep}</span>
+              <span className="text-gray-500 ml-1 text-xs text-start"> <Avatar src="https://source.unsplash.com/random/100x100" size="32" round={true} /> {taskData.salesRep}</span>
             </p>
           </div>
         </div>
       )}
 
       {mouseIsOver && (
-        <button onClick={handleDeleteTask} className="stroke-black absolute right-4 top-1/2 -translate-y-1/2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100">
-          <FaTrash />
-        </button>
+        <div className="absolute top-2 right-2 mt-1 flex ">
+          <button onClick={() => handleDelete(task.id)} className="stroke-black bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100">
+            <FaTrash />
+          </button>
+        </div>
       )}
+
 
       {!editMode && (
         <button onClick={handleOpenModal} className="absolute bottom-4 right-4 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100">
@@ -230,18 +235,18 @@ function TaskCard({ task, deleteTask, updateTask }) {
         </button>
       )}
 
-      {showModal && (
+      {showUpdateModal && (
         <UpdateTaskModal
           task={task}
-          onUpdate={handleUpdate} // Pass a function that handles the event object
+          onUpdate={handleUpdate}
           onClose={handleCloseModal}
         />
       )}
-
+     <ToastContainer/>
     </div>
   );
 }
 
-export default TaskCard; 
+export default TaskCard;
 
 

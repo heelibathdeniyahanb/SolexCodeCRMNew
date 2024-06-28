@@ -1,19 +1,26 @@
-using Microsoft.EntityFrameworkCore;
-using SolexCode.CRM.API.New.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Controllers;
 using SolexCode.CRM.API.New.Services;
 using SolexCode.CRM.API.New.Hub;
 using System.Text.Json.Serialization;
+using StackExchange.Redis;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
+builder.Services.AddDbContext<DatabaseContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("Solex")));
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
+// Add Redis
+var redisConnectionString = builder.Configuration.GetConnectionString("Redis") + ",abortConnect=false";
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
 // Load JWT configuration values
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
@@ -42,6 +49,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddDbContext<DatabaseContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("Solex")));
 
+// Add authorization
+builder.Services.AddAuthorization();
+
 // Configure CORS
 builder.Services.AddCors(options =>
 {
@@ -68,8 +78,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+
+
 builder.Services.AddScoped<ChatService>();
 builder.Services.AddTransient<EmailController>();
 builder.Services.AddHttpContextAccessor();
@@ -101,7 +111,5 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/chathub");
 app.MapHub<NotificationHub>("/notificationHub");
-
-
 
 app.Run();

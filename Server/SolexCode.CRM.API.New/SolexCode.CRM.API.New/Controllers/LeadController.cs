@@ -1,6 +1,5 @@
 ﻿using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SolexCode.CRM.API.New.Dtos;
 using Microsoft.Extensions.Logging;
+using StackExchange.Redis;
 
 namespace SolexCode.CRM.API.New.Controllers
 {
@@ -17,11 +17,18 @@ namespace SolexCode.CRM.API.New.Controllers
     {
         private readonly DatabaseContext _context;
         private readonly EmailController _emailController;
+        private readonly IConnectionMultiplexer _redis;
 
-        public LeadController(DatabaseContext context, EmailController emailController)
+        public LeadController(DatabaseContext context, EmailController emailController , IConnectionMultiplexer redis)
         {
             _context = context;
             _emailController = emailController;
+            _redis = redis;
+        }
+
+        private bool LeadExists(int id)
+        {
+            return _context.NewLeads.Any(e => e.Id == id);
         }
 
         // POST: api/lead
@@ -215,15 +222,10 @@ namespace SolexCode.CRM.API.New.Controllers
                 .Where(e => e.NewLeadId == id)
                 .ToListAsync();
 
-            var tasks = await _context.NewTasks
-                .Where(t => t.NewLeadId == id)
-                .ToListAsync();
-
             var leadDto = new NewLeadAndEventDto
             {
                 NewLead = lead,
-                Events = events,
-                Tasks = tasks
+                Events = events
             };
 
             return Ok(leadDto);
@@ -268,109 +270,48 @@ namespace SolexCode.CRM.API.New.Controllers
             return NoContent();
         }
 
-        [HttpGet("Get/Leads/Tasks/Events")]
-        public async Task<ActionResult<IEnumerable<NewLeadAndEventDto>>> GetAllLeads()
-        {
-            try
-            {
-                var leads = await _context.NewLeads
-                    .AsNoTracking()
-                    .Include(l => l.Events)
-                    .Include(l => l.NewTasks)
-                    .Select(l => new NewLeadAndEventDto
-                    {
-                        NewLead = new NewLead
-                        {
-                            Id = l.Id,
-                            LeadName = l.LeadName ?? "",
-                            CompanyName = l.CompanyName ?? "",
-                            StartDate = l.StartDate,
-                            EndDate = l.EndDate,
-                            SalesRep = l.SalesRep ?? "",
-                            LeadManagerId = l.LeadManagerId ?? 0,
-                            SalesPipeline = l.SalesPipeline ?? "",
-                            LeadStatus = l.LeadStatus ?? "",
-                            UserId = l.UserId ?? 0,
-                            UserFullName = l.UserFullName ?? "",
-                            UserEmail = l.UserEmail ?? ""
-                        },
-                        Events = l.Events.Select(e => new Events
-                        {
-                            Id = e.Id,
-                            EventName = e.EventName ?? "",
-                            Date = e.Date,
-                            Time = e.Time ?? "",
-                            Venue = e.Venue ?? "",
-                            CreatedByName = e.CreatedByName ?? "",
-                            CreatedByEmail = e.CreatedByEmail ?? "",
-                            CreatedById = e.CreatedById ?? 0,
-                            ReminderDate = e.ReminderDate,
-                            ReminderTime = e.ReminderTime ?? "",
-                            DateAdded = e.DateAdded,
-                            DateModified = e.DateModified,
-                            Description = e.Description ?? "",
-                            IsImportant = e.IsImportant,
-                            IsSendViaEmail = e.IsSendViaEmail,
-                            NewLeadId = e.NewLeadId
-                        }).ToList(),
-                        Tasks = l.NewTasks.Select(t => new NewTask
-                        {
-                            Id = t.Id,
-                            DateAdded = t.DateAdded,
-                            DateModified = t.DateModified,
-                            TaskName = t.TaskName ?? "",
-                            TaskDescription = t.TaskDescription,
-                            Status = t.Status ?? "",
-                            DueDate = t.DueDate,
-                            LeadName = t.LeadName ?? "",
-                            ReminderDate = t.ReminderDate,
-                            ReminderTime = t.ReminderTime,
-                            Priority = t.Priority,
-                            CreatedByName = t.CreatedByName ?? "",
-                            CreatedByEmail = t.CreatedByEmail ?? "",
-                            CreatedById = t.CreatedById ?? 0,
-                            NewLeadId = t.NewLeadId
-                        }).ToList()
-                    })
-                    .ToListAsync();
-
-                if (!leads.Any())
-                {
-                    return NotFound("No leads found.");
-                }
-
-                return Ok(leads);
-            }
-            catch (Exception ex)
-            {
-                // Log the exception details
-                Console.Error.WriteLine($"Exception: {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred while processing your request.");
-            }
-        }
-
         // PUT: api/lead/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLead(int id, NewLead lead)
+        public async Task<IActionResult> UpdateLead(int id, [FromBody] UpdateLeadDto updateLeadDto)
         {
-            if (id != lead.Id)
+            if (id != updateLeadDto.Id)
             {
                 return BadRequest("Mismatched id in request.");
             }
 
-            // Check if the lead exists
-            if (!LeadExists(id))
+            var lead = await _context.NewLeads.FindAsync(id);
+
+            if (lead == null)
             {
-                return NotFound();
+                return NotFound("Lead not found.");
             }
 
-            // Check model state and validation errors
-            if (!ModelState.IsValid)
+            // Update lead properties
+            lead.LeadName = updateLeadDto.LeadName;
+            lead.CompanyName = updateLeadDto.CompanyName;
+            lead.StartDate = updateLeadDto.StartDate;
+            lead.EndDate = updateLeadDto.EndDate;
+            lead.SalesRep = updateLeadDto.SalesRep;
+            lead.LeadManagerId = updateLeadDto.LeadManagerId;
+            lead.SalesPipeline = updateLeadDto.SalesPipeline;
+            lead.LeadStatus = updateLeadDto.LeadStatus;
+            lead.IsWon = updateLeadDto.IsWon;
+            lead.UserEmail = updateLeadDto.UserEmail;
+            lead.UserFullName= updateLeadDto.UserFullName;
+
+            // Check if the UserId exists in the Users table before updating
+            if (updateLeadDto.UserId != lead.UserId)
             {
-                return BadRequest(ModelState);
+                var userExists = await _context.Users.AnyAsync(u => u.Id == updateLeadDto.UserId);
+                if (!userExists)
+                {
+                    return BadRequest("The specified UserId does not exist.");
+                }
+                lead.UserId = updateLeadDto.UserId;
             }
 
-            _context.Entry(lead).State = EntityState.Modified;
+            lead.UserFullName = updateLeadDto.UserFullName;
+            lead.UserEmail = updateLeadDto.UserEmail;
 
             try
             {
@@ -389,11 +330,6 @@ namespace SolexCode.CRM.API.New.Controllers
             }
 
             return NoContent();
-        }
-
-        private bool LeadExists(int id)
-        {
-            return _context.NewLeads.Any(e => e.Id == id);
         }
 
         [HttpPut("UpdatePipeline/{id}/{pipelineName}")]
@@ -427,6 +363,52 @@ namespace SolexCode.CRM.API.New.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateLeadStatus(int id, [FromQuery] bool isWon)
+        {
+            var lead = await _context.NewLeads.FindAsync(id);
+            if (lead == null)
+            {
+                return NotFound();
+            }
+
+            lead.IsWon = isWon;
+            _context.Entry(lead).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LeadExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+        // GET Not Won Lead
+        [HttpGet("notwon")]
+        public ActionResult<IEnumerable<NewLead>> GetNotWonLeads()
+        {
+            var notWonLeads = _context.NewLeads.Where(lead => lead.IsWon == false).ToList();
+            return notWonLeads;
+        }
+
+        // GET Won Lead
+        [HttpGet("won")]
+        public ActionResult<IEnumerable<NewLead>> GetWonLeads()
+        {
+            var notWonLeads = _context.NewLeads.Where(lead => lead.IsWon == true).ToList();
+            return notWonLeads;
+        }
+
         private async Task<User> AssignLeadManager()
         {
             var leadManagers = await _context.Users
@@ -440,5 +422,49 @@ namespace SolexCode.CRM.API.New.Controllers
 
             return sortedManager;
         }
+
+
+
+
+        //// PUT: api/lead/{id}
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateLead(int id, Lead lead)
+        //{
+        //    if (id != lead.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    var salesRep = await _context.SalesRep.FirstOrDefaultAsync(sr => sr.Name == lead.SalesRep.Name);
+        //    if (salesRep == null)
+        //    {
+        //        salesRep = new SalesRep { Name = lead.SalesRep.Name };
+        //        _context.SalesRep.Add(salesRep);
+        //        await _context.SaveChangesAsync();
+        //    }
+
+        //    lead.SalesRepId = salesRep.Id;
+        //    lead.SalesRep = salesRep;
+
+        //    _context.Entry(lead).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!LeadExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return NoContent();
+        //}
     }
 }

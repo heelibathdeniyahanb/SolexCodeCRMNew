@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../Components/Header/Header';
 import Header2 from '../../Components/Header/Header2';
 import Sidebar from './AdminSideNavBar';
-import KanbanBoard from '../../Components/KanbanBoard/KanbanBoard';
+import KanbanBoard from '../../Components/AdminCompo/KanbanBoard/KanbanBoard';
 
 const AdminKanbanView = () => {
     return (
