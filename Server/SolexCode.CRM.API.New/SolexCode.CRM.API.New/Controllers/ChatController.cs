@@ -191,6 +191,43 @@ namespace SolexCode.CRM.API.New.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        // Get the latest message for a user in a specific chat
+        [HttpGet("latestMessage")]
+        public async Task<ActionResult<ChatMessageDto>> GetLatestMessageBetweenUsers(int senderId, int receiverId)
+        {
+            try
+            {
+                // Fetch the latest message where the user is either the sender or the receiver
+                var latestMessage = await _context.ChatMessages
+                    .Where(m => (m.SenderId == senderId && m.ReceiverId == receiverId) || (m.SenderId == receiverId && m.ReceiverId == senderId))
+                    .OrderByDescending(m => m.Timestamp)
+                    .Select(m => new ChatMessageDto
+                    {
+                        Id = m.Id,
+                        SenderId = m.SenderId,
+                        ReceiverId = m.ReceiverId,
+                        Content = m.Content,
+                        Timestamp = m.Timestamp,
+                        ChatId = m.ChatId
+                    })
+                    .FirstOrDefaultAsync();
+
+                if (latestMessage == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(latestMessage);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (using a logger, for example)
+                // _logger.LogError(ex, "Error retrieving latest message between users {SenderId} and {ReceiverId}", senderId, receiverId);
+
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }
 
