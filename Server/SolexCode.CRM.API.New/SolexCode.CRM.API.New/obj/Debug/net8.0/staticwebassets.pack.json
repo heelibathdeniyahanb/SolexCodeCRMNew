@@ -1,6 +1,18 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\689873ec9e38f81af644efb2ba46f433.jpg",
+      "PackagePath": "staticwebassets\\upload\\image\\689873ec9e38f81af644efb2ba46f433.jpg"
+    },
+    {
+      "Id": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\740full.jpg",
+      "PackagePath": "staticwebassets\\upload\\image\\740full.jpg"
+    },
+    {
+      "Id": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",
+      "PackagePath": "staticwebassets\\upload\\image\\OIP.jpg"
+    },
+    {
       "Id": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
       "PackagePath": "staticwebassets\\upload\\image\\logo1.png"
     },

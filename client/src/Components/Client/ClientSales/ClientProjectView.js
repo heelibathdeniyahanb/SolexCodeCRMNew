@@ -30,7 +30,7 @@ const ClientProjectView = () => {
                         </div>
 
                     </div>
-                    <button className='w-24 h-7 bg-teal-700 bg-opacity-70 rounded-lg text-cyan-200 absolute right-6'><Link to='/clientForm'>+Lead Form</Link></button>
+                    <button className='w-24 h-7 bg-teal-700 bg-opacity-70 rounded-lg text-cyan-200 absolute right-6'><Link to='/clientform'>+Lead Form</Link></button>
                 </div>
             </div>
 

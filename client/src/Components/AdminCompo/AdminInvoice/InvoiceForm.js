@@ -35,7 +35,7 @@ const InvoiceForm = ({ onSubmit,fetchInvoiceData  }) => {
     const [pipeline, setPipeline] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [quantity, setQuantity] = useState('');
+    const [days, setDays] = useState('');
     const [discount, setDiscount] = useState('');
     const [invoiceNo, setInvoiceNo] = useState(() => generateInvoiceId(lastInvoiceNumber));
     const [invoiceData, setInvoiceData] = useState([]);
@@ -43,8 +43,8 @@ const InvoiceForm = ({ onSubmit,fetchInvoiceData  }) => {
 
     const calculateSubtotal = () => {
         const parsedPrice = parseFloat(price) || 0;
-        const parsedQuantity = parseInt(quantity) || 0;
-        return parsedPrice * parsedQuantity;
+        const parsedDays = parseInt(days) || 0;
+        return parsedPrice * parsedDays;
     };
 
     const calculateTotalPrice = () => {
@@ -75,7 +75,7 @@ const InvoiceForm = ({ onSubmit,fetchInvoiceData  }) => {
             pipeline,
             description,
             price: parseFloat(price) || 0,
-            quantity: parseInt(quantity) || 0,
+            days: parseInt(days) || 0,
             discount: parseFloat(discount) || 0,
             totalPrice: calculateTotalPrice(),
             subtotal: calculateSubtotal(),
@@ -242,10 +242,10 @@ const InvoiceForm = ({ onSubmit,fetchInvoiceData  }) => {
                                     className="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <input
-                                    value={quantity}
-                                    onChange={(e) => setQuantity(e.target.value)}
+                                    value={days}
+                                    onChange={(e) => setDays(e.target.value)}
                                     type="number"
-                                    placeholder="Quantity"
+                                    placeholder="Days"
                                     className="block w-4/5 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                                 <input

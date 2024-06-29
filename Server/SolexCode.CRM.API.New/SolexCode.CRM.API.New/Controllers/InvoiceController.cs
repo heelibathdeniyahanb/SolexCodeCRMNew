@@ -36,22 +36,7 @@ namespace SolexCode.CRM.API.New.Controllers
         [HttpPost]
         public async Task<ActionResult<Invoice>> CreateInvoice(Invoice invoice)
         {
-            //var lastInvoiceData = _context.GetLastInvoiceData();
-           // var lastInvoiceNumber = lastInvoiceData.LastNumber;
-         //   var lastInvoiceDate = lastInvoiceData.LastDate;
-
-       //     var currentDate = DateTime.Now.ToString("yyyy-MM-dd");
-            //var invoiceNumber = (lastInvoiceNumber + 1).ToString().PadLeft(2, '0');
-
-            //if (currentDate != lastInvoiceDate)
-            //{
-            //    invoiceNumber = "01";
-          //  }
-
-            //var invoiceNum = invoice.invoiceNo; //$"#INV-{currentDate}-{invoiceNumber}"; 
-           // invoice.InvoiceNo = invoiceNo;
-          //  invoice.LastInvoiceNumber = int.Parse(invoiceNum);
-        //    invoice.Date = DateTime.Now;
+     
 
             _context.Invoice.Add(invoice);
             await _context.SaveChangesAsync();

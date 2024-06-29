@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "quFVDkqUV7e9OPSkA/HVJb9B8wddzCYhByUBqR5WC1g=",
+  "Hash": "4S7J0510khojHLdUllySSCy5Lq8gkbsMf7c6omGvKsQ=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\689873ec9e38f81af644efb2ba46f433.jpg",
+      "SourceId": "SolexCode.CRM.API.New",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "RelativePath": "upload/image/689873ec9e38f81af644efb2ba46f433.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\image\\689873ec9e38f81af644efb2ba46f433.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\740full.jpg",
+      "SourceId": "SolexCode.CRM.API.New",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "RelativePath": "upload/image/740full.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\image\\740full.jpg"
+    },
     {
       "Identity": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
       "SourceId": "SolexCode.CRM.API.New",
@@ -34,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\upload\\image\\logo1.png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",
+      "SourceId": "SolexCode.CRM.API.New",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\crmNew\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "RelativePath": "upload/image/OIP.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\image\\OIP.jpg"
     }
   ]
 }

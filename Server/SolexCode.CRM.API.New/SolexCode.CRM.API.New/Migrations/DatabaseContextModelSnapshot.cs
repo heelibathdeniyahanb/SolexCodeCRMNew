@@ -200,10 +200,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("AnnualRevenue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -233,10 +229,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumberOfEmployees")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonalPhone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -383,6 +375,9 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -406,9 +401,6 @@ namespace SolexCode.CRM.API.New.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Subtotal")
                         .HasColumnType("decimal(18,2)");
@@ -534,7 +526,7 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -905,8 +897,7 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.HasOne("SolexCode.CRM.API.New.Models.User", "User")
                         .WithMany("NewLeads")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });

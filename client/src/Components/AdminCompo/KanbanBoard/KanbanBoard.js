@@ -252,9 +252,9 @@ function KanbanBoard() {
             {activeTask && (
               <TaskCard
                 task={activeTask}
-                deleteTask={deleteTask}
+                deleteTask={handleDeleteTask}
                 updateTask={updateTask}
-                handleDeleteTask={handleDeleteTask}
+               // handleDeleteTask={handleDeleteTask}
                 taskData={taskData}
               />
             )}

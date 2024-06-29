@@ -147,7 +147,7 @@ const Invoice = ({ fetchInvoiceData,onNewInvoiceSubmit }) => {
                           <th className="py-2 px-4 text-left max-w-[100px] truncate">Pipeline</th>
                           <th className="py-2 px-4 text-left min-w-[300px] row-span-10">Description</th>
                           <th className="py-2 px-4 text-right max-w-[100px]">Price</th>
-                          <th className="py-2 px-4 text-right max-w-[80px]">Quantity</th>
+                          <th className="py-2 px-4 text-right max-w-[80px]">Days</th>
                           {/* <th className="py-2 px-4 text-right max-w-[80px]">Discount</th> */}
                           <th className="py-2 px-4 text-right max-w-[120px]">Total Price</th>
                         </tr>
@@ -159,7 +159,7 @@ const Invoice = ({ fetchInvoiceData,onNewInvoiceSubmit }) => {
                             {invoiceData.description}
                           </td>
                           <td className="py-2 px-4 text-right">${invoiceData.price}</td>
-                          <td className="py-2 px-4 text-right">{invoiceData.quantity}</td>
+                          <td className="py-2 px-4 text-right">{invoiceData.days}</td>
                           {/* <td className="py-2 px-4 text-right">{invoiceData.discount}%</td> */}
                           <td className="py-2 px-4 text-right">${invoiceData.totalPrice}</td>
                         </tr>

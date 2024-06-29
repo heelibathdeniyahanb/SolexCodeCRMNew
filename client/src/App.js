@@ -117,6 +117,7 @@ import AdminSalesSummeryView from './Pages/Admin/AdminSalesSummeryView';
 import ClientPaymentView1 from './Pages/Client/ClientPaymentPage';
 import Navbar from './Components/Client/ClientSales/Navbar';
 import SalesRefSummeryView from './Pages/Admin/AdminSalesSummeryView';
+import ClientForm from './Components/Client/ClientSales/ClientForm';
 
 
 
@@ -250,6 +251,8 @@ function App() {
           <Route path='/salesrepInvoice' element={<SalesRepInvoice/>}></Route>
           <Route path='/clientpayment' element={<ClientPaymentView1/>}></Route>
           <Route path='/navbar' element={<Navbar/>}></Route>
+
+          <Route path='/clientform' element={<ClientForm/>}></Route>
 
 
         </Routes>

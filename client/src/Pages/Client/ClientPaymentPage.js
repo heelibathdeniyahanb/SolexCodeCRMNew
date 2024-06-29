@@ -1,5 +1,5 @@
 import SideBar from '../../Components/Client/ClientSideNavBar';
-import NavbarMenu from '../../Components/Client/ClientSales/Navbar';
+import NavbarMenu from '../../Components/Header/Header';
 import React, { useState } from 'react';
 
   const columns = [

@@ -16,7 +16,7 @@
         public string Pipeline { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public int Quantity { get; set; }
+        public int Days { get; set; }
         public decimal TotalPrice { get; set; }
         public int LastInvoiceNumber { get; set; }
     }

@@ -95,7 +95,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50 update-modal">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
         <h2 className="text-xl font-bold text-teal-700 mb-4">Update Task</h2>
         <form onSubmit={handleUpdate}>
