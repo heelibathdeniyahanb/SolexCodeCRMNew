@@ -105,6 +105,22 @@ import ClientSettings from './Pages/Client/ClientSettings';
 import Chat from './Components/Chat/Chat';
 import CustomerSupporterDashboard from './Pages/CustomerSupporter/CustomerSupporterDashboard';
 
+import SummeryTables from './Components/AdminCompo/SummeryTables';
+import LeadStausModel from './Components/AdminCompo/KanbanBoard/LeadStatusModel';
+import LossKanbanBoard from './Components/AdminCompo/KanbanBoard/LossKanbanBoard';
+import NewColumnContainer from './Components/AdminCompo/KanbanBoard/ColumnContainer';
+import NewTaskCard from './Components/AdminCompo/KanbanBoard/NewTaskCard';
+import WonKanbanBoard from './Components/AdminCompo/KanbanBoard/WonKanbanBoard';
+import AdminLossKanbanView from './Pages/Admin/AdminLossKanbanView';
+import AdminWonKanbanView from './Pages/Admin/AdminWonKanbanView';
+import AdminSalesSummeryView from './Pages/Admin/AdminSalesSummeryView';
+import ClientPaymentView1 from './Pages/Client/ClientPaymentPage';
+import SalesRefSummeryView from './Pages/SalesRep/SalesRefSummeryView';
+import ClientForm from './Components/Client/ClientSales/ClientForm';
+import Navbar from './Components/Client/ClientSales/Navbar';
+
+
+
 
 
 
@@ -226,6 +242,21 @@ function App() {
           <Route path='/salesrepinvoice' element={<SalesRepInvoice/>}></Route>
           <Route path='/admininvoice' element={<AdminInvoice/>}></Route>
 
+          <Route path='/adminsummerytable' element={<SummeryTables/>}></Route>
+          <Route path='/leadstatusmodel' element={<LeadStausModel/>}></Route>
+          <Route path='/losskanbanboard' element={<LossKanbanBoard/>}></Route>
+          <Route path='/newcolumncontainer' element={<NewColumnContainer/>}></Route>
+          <Route path='/newtaskcard' element={<NewTaskCard/>}></Route>
+          <Route path='/wonkanbanboard' element={<WonKanbanBoard/>}></Route>
+          <Route path='/adminlosskanbanview' element={<AdminLossKanbanView/>}></Route>
+          <Route path='/adminwonkanbanview' element={<AdminWonKanbanView/>}></Route>
+          <Route path='/adminsalessummeryview' element={<AdminSalesSummeryView/>}></Route>
+          <Route path='/salesrefsummeryview' element={<SalesRefSummeryView/>}></Route>
+          <Route path='/salesrepInvoice' element={<SalesRepInvoice/>}></Route>
+          <Route path='/clientpayment' element={<ClientPaymentView1/>}></Route>
+          <Route path='/navbar' element={<Navbar/>}></Route>
+          <Route path='/clientForm' element={<ClientForm/>}></Route>
+          <Route path='/navbar' element={<Navbar/>}></Route>
         </Routes>
         </UserProvider>
        

@@ -18,7 +18,7 @@ namespace SolexCode.CRM.API.New.Models
 
         public ICollection<Task> Tasks { get; set; } = new List<Task>();
         [JsonIgnore]
-        public ICollection<Events> Events { get; set; }
+        public ICollection<Events> Events { get; set; } = new List<Events>();
         [JsonIgnore]
         public ICollection<NewTask> NewTasks { get; set; }
 

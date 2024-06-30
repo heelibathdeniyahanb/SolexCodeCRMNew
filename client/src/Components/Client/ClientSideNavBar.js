@@ -9,6 +9,8 @@ import { IoIosSettings } from "react-icons/io";
 import { MdContactSupport } from "react-icons/md";
 import { IoDocumentSharp } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
+import { AiFillFileAdd } from "react-icons/ai";
+import { MdPayments } from "react-icons/md";
 
 import { Link } from 'react-router-dom';
 import Image1 from '../../Components/login/1.png'
@@ -45,12 +47,14 @@ export default function ClientSideNavBar() {
                </Link>
                 
 
+                <Link to='/clientviewsaleslead'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
-                        <div className='mr-8'><GoProjectSymlink  size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+                        <div className='mr-8'><AiFillFileAdd size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Sales & Lead</label></div>
                     </div>
                 </li>
+                </Link>
 
                 <li>
                     <Link to='/clientcalendar'>
@@ -80,6 +84,14 @@ export default function ClientSideNavBar() {
                     </div>
                 </li>
 
+                <Link to='/clientpayment'>
+                <li>
+                    <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
+                        <div className='mr-8'><MdPayments size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
+                        <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Payments</label></div>
+                    </div>
+                </li>
+                </Link>
                 
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
