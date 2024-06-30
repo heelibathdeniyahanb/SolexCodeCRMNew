@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oTxMfm1D3R2wJSlZ117f3mt0NADrh3BqzjsBqV7j1qQ=",
+  "Hash": "fYi7Mi7OMQncuEZzlQOyECapVAyZr3uPpJTHqNSYeKI=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "SolexCode.CRM.API.New\\wwwroot",
       "Source": "SolexCode.CRM.API.New",
-      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\MainNewProject\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
+      "Identity": "C:\\Users\\admin\\Desktop\\MainNewProject\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
       "SourceId": "SolexCode.CRM.API.New",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\MainNewProject\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
       "RelativePath": "upload/image/logo1.png",
       "AssetKind": "All",
@@ -34,6 +34,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\upload\\image\\logo1.png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\Desktop\\MainNewProject\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",
+      "SourceId": "SolexCode.CRM.API.New",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Desktop\\MainNewProject\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "BasePath": "_content/SolexCode.CRM.API.New",
+      "RelativePath": "upload/image/OIP.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\image\\OIP.jpg"
     }
   ]
 }

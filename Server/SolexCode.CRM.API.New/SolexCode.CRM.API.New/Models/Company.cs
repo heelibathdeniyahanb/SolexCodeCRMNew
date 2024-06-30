@@ -1,10 +1,16 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace SolexCode.CRM.API.New.Models
 {
     public class Company
     {
-       
+
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public string Website { get; set; }
@@ -13,8 +19,6 @@ namespace SolexCode.CRM.API.New.Models
         public string ClientName { get; set; }
         public string Email { get; set; }
         public string CompanyPhone { get; set; }
-        public string PersonalPhone { get; set; }
-        public string Address { get; set; }
         public string Industry { get; set; }
         public string Department { get; set; }
         public string Title { get; set; }

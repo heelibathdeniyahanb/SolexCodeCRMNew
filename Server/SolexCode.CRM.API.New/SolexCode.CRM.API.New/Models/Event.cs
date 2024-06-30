@@ -29,5 +29,7 @@ public class Events
     [ForeignKey("Id")]
     public int? NewLeadId { get; set; }
     [JsonIgnore]
+    [ForeignKey("NewLeadId")]
+
     public NewLead NewLead { get; set; }
 }

@@ -205,7 +205,7 @@ namespace SolexCode.CRM.API.New.Controllers
                         user.Country,
                         user.Industry,
                         user.ImagePath
-                     
+
                     }
                 });
             }
@@ -248,7 +248,7 @@ namespace SolexCode.CRM.API.New.Controllers
                 Password = hashedPassword,
                 Role = userDto.Role,
                 ChangePassword = true,
-                
+
             };
 
             if (userDto.UserImage != null)
@@ -278,9 +278,9 @@ namespace SolexCode.CRM.API.New.Controllers
             await _context.SaveChangesAsync();
 
             // If IsSendViaEmail is true, send login details email
-            
-                await _emailController.SendLoginDetails(userDto.Email, temporaryPassword);
-            
+
+            await _emailController.SendLoginDetails(userDto.Email, temporaryPassword);
+
 
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }

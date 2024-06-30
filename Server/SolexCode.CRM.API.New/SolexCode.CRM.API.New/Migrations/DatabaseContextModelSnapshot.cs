@@ -200,10 +200,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("AnnualRevenue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -233,10 +229,6 @@ namespace SolexCode.CRM.API.New.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumberOfEmployees")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonalPhone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
