@@ -28,23 +28,12 @@ const LeadForm1 = () => {
     };
 
     useEffect(() => {
-        updateLeadStatus();
+        setLeadStatus(prevStatus => {
+            let newStatus = prevStatus.filter(status => status === 'Web' || status === 'Mobile');
+            newStatus.push(calculatePriorityStatus(startDate, endDate));
+            return newStatus;
+        });
     }, [startDate, endDate]);
-
-    const updateLeadStatus = () => {
-        const monthsDiff = endDate.diff(startDate, 'month');
-        let newStatus = [];
-
-        if (monthsDiff >= 12) {
-            newStatus.push('Low');
-        } else if (monthsDiff >= 6) {
-            newStatus.push('Medium');
-        } else {
-            newStatus.push('High');
-        }
-
-        setLeadStatus(newStatus);
-    };
 
     const validateForm = () => {
         let formErrors = {};
@@ -56,7 +45,7 @@ const LeadForm1 = () => {
         if (startDate && startDate.isBefore(today)) formErrors.startDate = "Start Date cannot be in the past";
         if (!endDate) formErrors.endDate = "End Date is required";
         if (!salesPipeline) formErrors.salesPipeline = "Pipeline Stage is required";
-        if (!leadStatus.length) formErrors.leadStatus = "Lead Status is required";
+        if (!leadStatus === 0) formErrors.leadStatus = "Lead Status is required";
         if (!userFullName) formErrors.userFullName = "User Full Name is required";
         if (!userEmail) formErrors.userEmail = "User Email is required";
         if (userEmail && !/\S+@\S+\.\S+/.test(userEmail)) formErrors.userEmail = "Email is invalid";
@@ -86,6 +75,9 @@ const LeadForm1 = () => {
             userEmail
         };
 
+        console.log('Sending data:', JSON.stringify(leadData, null, 2));
+
+
         try {
             const response = await axios.post('https://localhost:7143/api/Lead', leadData);
             console.log('Data Submitted successfully', response.data);
@@ -110,13 +102,31 @@ const LeadForm1 = () => {
 
     const handleLeadStatusChange = (status) => {
         setLeadStatus(prevStatus => {
-            if (prevStatus.includes(status)) {
-                return prevStatus.filter(s => s !== status);
+            let newStatus = [...prevStatus];
+            if (newStatus.includes(status)) {
+                newStatus = newStatus.filter(s => s !== status);
             } else {
-                return [...prevStatus.filter(s => s !== 'Low' && s !== 'Medium' && s !== 'High'), status];
+                newStatus.push(status);
             }
+            // Always keep only one of Low, Medium, or High
+            newStatus = newStatus.filter(s => s !== 'Low' && s !== 'Medium' && s !== 'High');
+            newStatus.push(calculatePriorityStatus(startDate, endDate));
+            return newStatus;
         });
     };
+
+    const calculatePriorityStatus = (start, end) => {
+        const monthsDiff = end.diff(start, 'month');
+        if (monthsDiff >= 12) {
+            return 'Low';
+        } else if (monthsDiff >= 6) {
+            return 'Medium';
+        } else {
+            return 'High';
+        }
+    };
+
+
 
     return (
         <div>
@@ -208,42 +218,39 @@ const LeadForm1 = () => {
                             </div>
                         </div>
 
+
+
                         <div className="mt-5">
-                            <label htmlFor="status" className="flex text-sm font-medium text-gray-600 mr-80">Status:</label>
+                            <label className="flex text-sm font-medium text-gray-600 mr-80">Lead Status:</label>
                             <div className="mt-2">
-                                <input
-                                    type="checkbox"
-                                    id="status"
-                                    name="status"
-                                    value="Low"
-                                    checked={leadStatus.includes('Low')}
-                                    onChange={() => handleLeadStatusChange('Low')}
-                                    className="mr-1"
-                                />
-                                <label htmlFor="status" className="mr-5">Low</label>
-                                <input
-                                    type="checkbox"
-                                    id="status"
-                                    name="status"
-                                    value="Medium"
-                                    checked={leadStatus.includes('Medium')}
-                                    onChange={() => handleLeadStatusChange('Medium')}
-                                    className="mr-1"
-                                />
-                                <label htmlFor="status" className="mr-5">Medium</label>
-                                <input
-                                    type="checkbox"
-                                    id="status"
-                                    name="status"
-                                    value="High"
-                                    checked={leadStatus.includes('High')}
-                                    onChange={() => handleLeadStatusChange('High')}
-                                    className="mr-1"
-                                />
-                                <label htmlFor="status">High</label>
-                                {errors.leadStatus && <p className="text-red-500 text-xs mt-1">{errors.leadStatus}</p>}
+                                {['Low', 'Medium', 'High'].map((status) => (
+                                    <label key={status} className="inline-flex items-center mr-4">
+                                        <input
+                                            type="checkbox"
+                                            value={status}
+                                            checked={leadStatus.includes(status)}
+                                            disabled={true}
+                                            className="form-checkbox h-5 w-5 text-blue-600"
+                                        />
+                                        <span className="ml-2 text-gray-700">{status}</span>
+                                    </label>
+                                ))}
+                                {['Web', 'Mobile'].map((status) => (
+                                    <label key={status} className="inline-flex items-center mr-4">
+                                        <input
+                                            type="checkbox"
+                                            value={status}
+                                            checked={leadStatus.includes(status)}
+                                            onChange={() => handleLeadStatusChange(status)}
+                                            className="form-checkbox h-5 w-5 text-blue-600"
+                                        />
+                                        <span className="ml-2 text-gray-700">{status}</span>
+                                    </label>
+                                ))}
                             </div>
+                            {errors.leadStatus && <p className="text-red-500 text-xs mt-1">{errors.leadStatus}</p>}
                         </div>
+
 
                         <div className="mt-5">
                             <label htmlFor="full-name" className="flex text-sm font-medium text-gray-600 mr-80">Full Name :</label>
@@ -261,10 +268,12 @@ const LeadForm1 = () => {
                             </div>
                         </div>
 
-                        <div className="mt-10">
-                            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Lead</button>
-                        </div>
+
                     </div>
+                </div>
+                <div className="mt-6 flex items-center justify-center gap-x-80 ml-96 py-10">
+                    <button type="button" className="rounded-md bg-slate-400 px-10 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
+                    <button type="submit" className="rounded-md bg-slate-400 px-10 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create</button>
                 </div>
             </form>
         </div>
@@ -272,3 +281,7 @@ const LeadForm1 = () => {
 };
 
 export default LeadForm1;
+
+
+
+

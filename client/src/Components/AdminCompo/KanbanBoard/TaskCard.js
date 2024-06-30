@@ -234,7 +234,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
 
             <p className="card-text mt-2">
               {taskData.leadStatus.split(',').map((status, index) => (
-                <span key={index} className={`ml-1 text-xs text-start rounded-full py-1 px-3 border ${statusColors[status.trim()]} mr-1`}>
+                <span key={index} className={`ml-1 text-xs text-start rounded-full py-1 px-3 border ${statusColors[status.trim()]} `}>
                   {status.trim()}
                 </span>
               ))}
