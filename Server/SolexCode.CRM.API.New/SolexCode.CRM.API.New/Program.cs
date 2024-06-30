@@ -13,9 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
-builder.Services.AddDbContext<DatabaseContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("Solex")));
+/*builder.Services.AddDbContext<DatabaseContext>(d => d.UseSqlServer(builder.Configuration.GetConnectionString("Solex")));
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();*/
 
 
 // Load JWT configuration values
