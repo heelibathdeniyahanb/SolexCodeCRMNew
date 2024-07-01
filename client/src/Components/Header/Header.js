@@ -12,8 +12,27 @@ const Header = () => {
     const [notifications, setNotifications] = useState([]);
     const [unreadNotificationCount, setUnreadNotificationCount] = useState(0);
     const [hubConnection, setHubConnection] = useState(null);
-   
+    const { userData } = useUser();
+    const [imageSrc, setImageSrc] = useState(null);
     const [error, setError] = useState(null);
+   
+    useEffect(() => {
+        const fetchImage = async () => {
+            if (!userData || !userData.id) return;
+            try {
+                const response = await axios.get(`https://localhost:7143/api/user/GetUserImage/${userData.id}/GetUserImage`, {
+                    responseType: 'blob'
+                });
+                const imageUrl = URL.createObjectURL(response.data);
+                setImageSrc(imageUrl);
+            } catch (err) {
+                console.error("Error fetching image", err);
+                setError("Failed to load image");
+            }
+        };
+
+        fetchImage();
+    }, [userData]);
    
 
    
@@ -63,7 +82,7 @@ const Header = () => {
 
     return (
         <header className='bg-gray-100 h-16 flex justify-end items-center px-6 drop-shadow-lg'>
-            {error && <div>Error loading image: {error}</div>}
+             {error && <div className="text-red-600">{error}</div>}
             <div className='header-left flex gap-4'>
                 <button className='text-gray-600 relative' onClick={toggleNotificationDropdown}>
                     <BsFillBellFill />
@@ -76,13 +95,16 @@ const Header = () => {
                 </a>
                 <div className="relative">
                     <button className='text-gray-600' onClick={toggleProfileDropdown}>
-                      <BsPersonCircle/>
+                        <img
+                            src={imageSrc || '/default-profile-image.jpg'} // Use a default image if imageSrc is null
+                            alt="Profile"
+                            className="w-8 h-8 rounded-full object-cover"
+                        />
                     </button>
                     {showProfileDropdown && (
                         <ul className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1">
                             <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <Link to='/my-profile'>My Profile</Link>
-                                
+                                <Link to='/user-profile'>My Profile</Link>
                             </li>
                             <li className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                                 <a href="/">Log Out</a>

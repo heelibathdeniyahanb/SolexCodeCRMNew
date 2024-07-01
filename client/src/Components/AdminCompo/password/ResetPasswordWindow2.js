@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useUser } from '../../login/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,9 +13,12 @@ const ResetPasswordWindow2 = () => {
     const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
     const navigate = useNavigate();
     const { userData } = useUser();
+    const location = useLocation();
 
-    // Retrieve userId from session storage
-    const userId = sessionStorage.getItem('UserId');
+// Retrieve userId from session storage if available
+const userIdFromSession = sessionStorage.getItem('UserId');
+const userIdFromState = location.state?.userId;
+const userId = userIdFromSession || userIdFromState;
 
     const handleNewPasswordChange = (e) => {
         setNewPassword(e.target.value);
@@ -51,30 +54,8 @@ const ResetPasswordWindow2 = () => {
                     setConfirmNewPassword('');
                     toast.success('Password Reset successful!');
                     setTimeout(() => {
-                        if (userData && userData.role) {
-                            switch (userData.role) {
-                              case 'Admin':
-                                navigate('/admin-reset-password-window-3');
-                                break;
-                              case 'Client'  :
-                                navigate('/client-reset-password-window-3');
-                                break;
-                              case 'Sales Leader'  :
-                                navigate ('/salesrep-reset-password-window-3');
-                                break;
-                              case 'Customer Supporter'  :
-                                navigate ('/customersupporter-reset-password-window-3');
-                                break;
-                                default:
-                                  navigate('/default-reset-password-window-3');  
-                              } }
-                          else {
-                                navigate('/default-reset-password-window-3');
-                              }
-                            
-                        }, 6000);
-                     
-                    
+                        navigate('/reset-password-window-3');
+                      }, 2000);
                 }
             }
         } catch (error) {

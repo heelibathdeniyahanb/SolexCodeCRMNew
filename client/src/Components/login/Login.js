@@ -86,6 +86,11 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  // forget password navigate
+  const handleForgetPassword =() =>{
+    navigate('/forgot-password');
+}
+
   return (
     <div className="flex">
       <div className="relative h-screen">
@@ -123,6 +128,13 @@ const Login = () => {
               {showPassword ? <FaEye /> : <FaEyeSlash />}
             </div>
             <RiLockPasswordFill className="absolute mt-2 text-gray-800 left-3 top-4" />
+          </div>
+
+           {/* Forget Password */}
+           <div className="flex justify-start mb-4">
+            <span className="font-bold text-teal-700 cursor-pointer hover:text-teal-900" onClick={handleForgetPassword}>
+              Forget password?
+            </span>
           </div>
 
           <div className="flex items-center justify-center">
