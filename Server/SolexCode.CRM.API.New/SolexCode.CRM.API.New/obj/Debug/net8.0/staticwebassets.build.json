@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AmS4Gj2JU6FnrdZS9x4av2yivhm+7NiXQTLUvwUf4/Q=",
+  "Hash": "j3kh/4GAyVyY/3hn32lC0BHeGe54Varfyg4FB1lUTsk=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "SolexCode.CRM.API.New\\wwwroot",
       "Source": "SolexCode.CRM.API.New",
-      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\fathi\\Documents\\CRMClone\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\me.jpg",
+      "Identity": "C:\\Users\\fathi\\Documents\\CRMClone\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\me.jpg",
       "SourceId": "SolexCode.CRM.API.New",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\fathi\\Documents\\CRMClone\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
       "RelativePath": "upload/image/me.jpg",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\upload\\image\\me.jpg"
     },
     {
-      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",
+      "Identity": "C:\\Users\\fathi\\Documents\\CRMClone\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",
       "SourceId": "SolexCode.CRM.API.New",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\fathi\\Documents\\CRMClone\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
       "RelativePath": "upload/image/OIP.jpg",
       "AssetKind": "All",
