@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z5bBVcFNCbdRW1M90yqSyN2vVOZeY4HdCc8DZtW2EnM=",
+  "Hash": "AmS4Gj2JU6FnrdZS9x4av2yivhm+7NiXQTLUvwUf4/Q=",
   "Source": "SolexCode.CRM.API.New",
   "BasePath": "_content/SolexCode.CRM.API.New",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\logo1.png",
+      "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\me.jpg",
       "SourceId": "SolexCode.CRM.API.New",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\",
       "BasePath": "_content/SolexCode.CRM.API.New",
-      "RelativePath": "upload/image/logo1.png",
+      "RelativePath": "upload/image/me.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,7 +33,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\upload\\image\\logo1.png"
+      "OriginalItemSpec": "wwwroot\\upload\\image\\me.jpg"
     },
     {
       "Identity": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\wwwroot\\upload\\image\\OIP.jpg",

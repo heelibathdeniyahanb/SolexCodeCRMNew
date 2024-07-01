@@ -12,7 +12,7 @@ const handleResetPasswordClick = () => {
   toast.success('Password Reset successful! Back to Login');
   setTimeout(() => {
       navigate('/');
-    }, 6000);
+    }, 2000);
     };
   return (
     <div className="flex bg-gray-200 bg-opacity-20 h-screen">

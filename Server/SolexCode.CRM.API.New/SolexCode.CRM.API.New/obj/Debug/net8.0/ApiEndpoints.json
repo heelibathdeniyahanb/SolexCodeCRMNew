@@ -369,6 +369,28 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.EmailController",
+    "Method": "SendDeletionNotification",
+    "RelativePath": "api/Email/SendDeletionNotification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.EmailController",
     "Method": "SendLeadAssignmentEmail",
     "RelativePath": "api/Email/SendLeadAssignmentDetails",
     "HttpMethod": "POST",
@@ -1171,14 +1193,14 @@
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
     "Method": "GenerateOtp",
-    "RelativePath": "api/user/GenerateOtp/{userId}/GenerateOtp",
+    "RelativePath": "api/user/GenerateOtp/GenerateOtp",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
+        "Name": "emailRequest",
+        "Type": "SolexCode.CRM.API.New.Controllers.UserController\u002BEmailRequest",
         "IsRequired": true
       }
     ],
@@ -1255,14 +1277,19 @@
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
     "Method": "UpdateUser",
-    "RelativePath": "api/user/UpdateUser",
+    "RelativePath": "api/user/UpdateUser/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "SolexCode.CRM.API.New.Models.User",
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userUpdateDto",
+        "Type": "SolexCode.CRM.API.New.Dtos.UserUpdateDto",
         "IsRequired": true
       }
     ],
@@ -1363,19 +1390,14 @@
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",
     "Method": "VerifyOtp",
-    "RelativePath": "api/user/VerifyOtp/{userId}/VerifyOtp",
+    "RelativePath": "api/user/VerifyOtp/VerifyOtp",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "otpCode",
-        "Type": "System.String",
+        "Name": "otpVerificationRequest",
+        "Type": "SolexCode.CRM.API.New.Controllers.UserController\u002BOtpVerificationRequest",
         "IsRequired": true
       }
     ],

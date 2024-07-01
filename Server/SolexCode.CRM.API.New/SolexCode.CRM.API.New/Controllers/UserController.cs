@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System;
 using SolexCode.CRM.API.New.Data;
 using static System.Net.WebRequestMethods;
+using SolexCode.CRM.API.New.Dtos;
 
 namespace SolexCode.CRM.API.New.Controllers
 {
@@ -42,10 +43,18 @@ namespace SolexCode.CRM.API.New.Controllers
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        [HttpPost("{userId}/GenerateOtp")]
-        public async Task<IActionResult> GenerateOtp(int userId)
+        // Generate OTP and send to user's email
+        [HttpPost("GenerateOtp")]
+        public async Task<IActionResult> GenerateOtp([FromBody] EmailRequest emailRequest)
         {
-            var user = await _context.Users.FindAsync(userId);
+            string email = emailRequest.Email;
+
+            if (string.IsNullOrEmpty(email))
+            {
+                return BadRequest("Email is required.");
+            }
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
                 return NotFound("User not found.");
@@ -54,10 +63,11 @@ namespace SolexCode.CRM.API.New.Controllers
             var otpCode = new Random().Next(100000, 999999).ToString(); // Generate a 6-digit OTP
             var otp = new Otp
             {
-                UserId = userId,
+                UserId = user.Id,
                 Code = otpCode,
                 GeneratedAt = DateTime.Now,
-                ExpiresAt = DateTime.Now.AddMinutes(10) // OTP valid for 10 minutes
+                ExpiresAt = DateTime.Now.AddMinutes(10), // OTP valid for 10 minutes
+                IsVerified = false
             };
 
             _context.Otps.Add(otp);
@@ -70,11 +80,21 @@ namespace SolexCode.CRM.API.New.Controllers
         }
 
 
-        [HttpPost("{userId}/VerifyOtp")]
-        public async Task<IActionResult> VerifyOtp(int userId, [FromBody] string otpCode)
+        // Verify OTP
+        [HttpPost("VerifyOtp")]
+        public async Task<IActionResult> VerifyOtp([FromBody] OtpVerificationRequest otpVerificationRequest)
         {
+            string email = otpVerificationRequest.Email;
+            string otpCode = otpVerificationRequest.OtpCode;
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
             var otp = await _context.Otps
-                .Where(o => o.UserId == userId && o.Code == otpCode && o.ExpiresAt > DateTime.UtcNow && !o.IsVerified)
+                .Where(o => o.UserId == user.Id && o.Code == otpCode && o.ExpiresAt > DateTime.UtcNow && !o.IsVerified)
                 .FirstOrDefaultAsync();
 
             if (otp == null)
@@ -86,7 +106,20 @@ namespace SolexCode.CRM.API.New.Controllers
             _context.Otps.Update(otp);
             await _context.SaveChangesAsync();
 
-            return Ok("OTP verified.");
+            // Return the userId along with the message
+            return Ok(new { message = "OTP verified.", userId = user.Id });
+        }
+
+        //Email Request
+        public class EmailRequest
+        {
+            public string Email { get; set; }
+        }
+        // Otp Verification Request
+        public class OtpVerificationRequest
+        {
+            public string Email { get; set; }
+            public string OtpCode { get; set; }
         }
 
 
@@ -183,8 +216,8 @@ namespace SolexCode.CRM.API.New.Controllers
                 );
 
                 // Optionally manage sessions (consider JWT stateless approach)
-                // HttpContext.Session.SetString("UserId", user.Id.ToString());
-                // HttpContext.Session.SetString("LoggedIn", "true");
+                HttpContext.Session.SetString("UserId", user.Id.ToString());
+                HttpContext.Session.SetString("LoggedIn", "true");
 
                 return Ok(new
                 {
@@ -297,41 +330,102 @@ namespace SolexCode.CRM.API.New.Controllers
         }
 
         // Update User
-        [HttpPut]
-        public async Task<IActionResult> UpdateUser(User user)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserUpdateDto userUpdateDto)
         {
-            if (user == null)
+            if (userUpdateDto == null)
             {
-                return BadRequest("User is null");
+                return BadRequest("User data is null");
             }
 
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
-
-        // Delete User
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound("User not found");
             }
 
-            if (!string.IsNullOrEmpty(user.ImagePath))
+            // Update only the fields that are allowed to be updated
+            user.FullName = userUpdateDto.FullName;
+            user.BirthDate = DateOnly.FromDateTime(userUpdateDto.BirthDate);
+            user.MobileNumber = userUpdateDto.MobileNumber;
+            user.CompanyName = userUpdateDto.CompanyName;
+            user.Continent = userUpdateDto.Continent;
+            user.Country = userUpdateDto.Country;
+            user.Industry = userUpdateDto.Industry;
+            user.Role = userUpdateDto.Role;
+
+            // Do not update sensitive fields like Password or Email here
+
+            try
             {
-                var imagePath = Path.Combine(_environment.WebRootPath, user.ImagePath);
-                if (System.IO.File.Exists(imagePath))
+                await _context.SaveChangesAsync();
+                return Ok(user);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
                 {
-                    System.IO.File.Delete(imagePath);
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
                 }
             }
+        }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return Ok("User deleted successfully");
+        private bool UserExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
+        }
+
+        // Delete User
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                var user = await _context.Users.FindAsync(id);
+                if (user == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                // Store the user's email before deletion
+                string userEmail = user.Email;
+
+                // Delete related ChatMessages
+                var relatedMessages = await _context.ChatMessages
+                    .Where(m => m.SenderId == id || m.ReceiverId == id)
+                    .ToListAsync();
+                _context.ChatMessages.RemoveRange(relatedMessages);
+
+                // Delete user's image if exists
+                if (!string.IsNullOrEmpty(user.ImagePath))
+                {
+                    var imagePath = Path.Combine(_environment.WebRootPath, user.ImagePath);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+
+                // Delete user
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+                // Send email notification to the user
+        await _emailController.SendDeletionNotification(userEmail);
+                return Ok("User and related data deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return StatusCode(500, $"An error occurred while deleting the user: {ex.Message}");
+            }
         }
 
         // Method to get the image by user ID

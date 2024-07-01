@@ -148,6 +148,14 @@ namespace SolexCode.CRM.API.New.Controllers
 
             return Ok();
         }
+        [HttpPost]
+        [Route("SendDeletionNotification")]
+        public async System.Threading.Tasks.Task SendDeletionNotification(string email)
+        {
+            string subject = "Account Deletion Notification";
+            string body = "Your data has been deleted from the system. Thank you for using SolexCode.";
 
+            await SendEmail(subject, body, new string[] { email }, new List<IFormFile>());
+        }
     }
 }

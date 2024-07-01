@@ -118,6 +118,11 @@ import ClientPaymentView1 from './Pages/Client/ClientPaymentPage';
 import SalesRefSummeryView from './Pages/SalesRep/SalesRefSummeryView';
 import ClientForm from './Components/Client/ClientSales/ClientForm';
 import Navbar from './Components/Client/ClientSales/Navbar';
+import ForgotPassword from './Components/AdminCompo/password/ForgotPassword';
+import VerifyResetCode from './Components/AdminCompo/password/VerifyResetCode';
+import ResetPasswordWindow2 from './Components/AdminCompo/password/ResetPasswordWindow2';
+import ResetPasswordWindow3 from './Components/AdminCompo/password/ResetPasswordWindow3';
+import UserProfile from './Components/UserProfile';
 
 
 
@@ -141,6 +146,10 @@ function App() {
          <Route path='/client-verify-otp' element={<ClientVerifyOtp/>}></Route>
          <Route path='/salesrep-verify-otp' element={<SalesRepVerifyOtp/>}></Route>
          <Route path='/customersupporter-verify-otp'element={<CustomerSupporterVerifyOtp/>}></Route>
+         <Route path='/forgot-password' element={<ForgotPassword/>}></Route>
+         <Route path='/verify-reset-code' element={<VerifyResetCode/>}></Route>
+         <Route path='/reset-password-window-2' element={<ResetPasswordWindow2/>}></Route>
+         <Route path='/reset-password-window-3' element={<ResetPasswordWindow3/>}></Route>
 
          <Route path='/admin-settings' element={<AdminSettings/>}></Route>
          <Route path='/client-settings' element={<ClientSettings/>}></Route>
@@ -173,6 +182,7 @@ function App() {
 
          <Route path='adduser' element={<AddUsers/>}></Route>
          <Route path='/adduserpage' element={<AddUserPage/>}></Route>
+         <Route path='/user-profile' element={<UserProfile/>}></Route>
          <Route path='/users' element={<Users/>}></Route>
          <Route path='/image' element={<Image/>}></Route>
           <Route path='/salesrepcalendar' element={<SalesRepCalendar/>}></Route>
