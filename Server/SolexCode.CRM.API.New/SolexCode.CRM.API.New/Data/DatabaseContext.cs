@@ -29,6 +29,9 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<ClientLead> ClientLead { get; set; }
         public DbSet<Invoice> Invoice { get; set; }
         public DbSet<Company> Company { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<TicketAttachment> TicketAttachment { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -121,6 +124,13 @@ namespace SolexCode.CRM.API.New.Data
                .WithOne(nl => nl.User)
                .HasForeignKey(nl => nl.UserId)
                .OnDelete(DeleteBehavior.Cascade);
+
+            //Ticket Attachments Configuration
+            modelBuilder.Entity<Ticket>()
+               .HasMany(e => e.Attachments)
+               .WithOne(a => a.Ticket)
+               .HasForeignKey(a => a.TicketId);
+
 
 
             base.OnModelCreating(modelBuilder);
