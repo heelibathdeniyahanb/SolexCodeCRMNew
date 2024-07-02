@@ -37,13 +37,15 @@ export default function SalesRepNavBar() {
                         </li>
                     </Link>
 
-
+                    <Link to='/salesrefkanbanview'>
                     <li>
                         <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                             <div className='mr-8'><GoProjectSymlink size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                             <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Sales & Lead</label></div>
                         </div>
                     </li>
+                    </Link>
+                    
                     <Link to='/salesrepcalendar'>
                         <li>
                             <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>

@@ -23,6 +23,7 @@ const statusColors = {
 
 
 function TaskCard({ task, deleteTask, updateTask }) {
+  console.log("Taskcard receive task:",task)
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);

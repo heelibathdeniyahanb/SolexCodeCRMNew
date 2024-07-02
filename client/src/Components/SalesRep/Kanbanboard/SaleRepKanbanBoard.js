@@ -1,6 +1,5 @@
 // KanbanBoard component
-import React, { useEffect, useMemo, useState } from "react";
-import ColumnContainer from "./ColumnContainer";
+import React, { useEffect, useState } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -10,14 +9,16 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
-import TaskCard from "./TaskCard";
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import WonKanbanBoard from "./WonKanbanBoard";
-import LossKanbanBoard from "./LossKanbanBoard";
+import ColumnContainer from "../../AdminCompo/KanbanBoard/ColumnContainer";
+import TaskCard from "../../AdminCompo/KanbanBoard/TaskCard";
+import WonKanbanBoard from "../Kanbanboard/SalesRefWonKanbanBoard";
+import LostKanbanBoard from "../Kanbanboard/SalesRefLossKanbanBoard";
+import { useUser } from '../../login/UserContext';
 
-function KanbanBoard() {
+function SaleRepKanbanBoard() {
   const [showWonBoard, setShowWonBoard] = useState(false);
   const [showLostBoard, setShowLostBoard] = useState(false);
   const [wonTasks, setWonTasks] = useState([]);
@@ -30,24 +31,63 @@ function KanbanBoard() {
     { id: "Close-won", title: "Close-won" },
   ]);
   const [tasks, setTasks] = useState([]);
+  const { userData } = useUser();
+
 
   useEffect(() => {
-    axios
-      .get(`https://localhost:7143/api/Lead`)
+    
+    if (userData && userData.id) {
+      fetchLeads(userData.id); // Fetch leads when userData is available
+    }
+  }, [userData]);
+
+  
+
+  const fetchLeads = (id) => {
+    axios.get(`https://localhost:7143/api/Lead/manager/${id}`)
       .then((response) => {
         const taskData = response.data;
         const formatData = taskData.map((data) => ({
           ...data,
+          id: data.leadId, // Ensure each task has an id property
           columnId: data.salesPipeline,
         })); 
         setTasks(formatData);
         console.log("Fetched tasks:", formatData);
       })
-      .catch((error) => {
-        console.error("Error fetching tasks:", error);
-        toast.error("Failed to fetch tasks. Please try again later.");
+      .catch(error => {
+        console.error('Error fetching leads:', error);
       });
-  }, []);
+  };
+
+  
+
+  
+
+  
+  // useEffect(() => {
+  //   console.log(userData.leadManagerId);
+  //   if(userData){
+
+  //   const id=userData.leadManagerId;
+    
+  //   axios
+  //     .get(`https://localhost:7143/api/Lead/manager/${id}`) 
+  //     .then((response) => {
+  //       const taskData = response.data;
+  //       const formatData = taskData.map((data) => ({
+  //         ...data,
+  //         columnId: data.salesPipeline,
+  //       })); 
+  //       setTasks(formatData);
+  //       console.log("Fetched tasks:", formatData);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching tasks:", error);
+  //       toast.error("Failed to fetch tasks. Please try again later.");
+  //     });
+  //   }
+  // }, []);
   
 
   const sensors = useSensors(
@@ -245,9 +285,9 @@ function KanbanBoard() {
       </DndContext>
 
       {showWonBoard && <WonKanbanBoard tasks={wonTasks} />}
-      {showLostBoard && <LossKanbanBoard tasks={lostTasks} />}
+      {showLostBoard && <LostKanbanBoard tasks={lostTasks} />}
     </div>
   );
 }
 
-export default KanbanBoard;
+export default SaleRepKanbanBoard;

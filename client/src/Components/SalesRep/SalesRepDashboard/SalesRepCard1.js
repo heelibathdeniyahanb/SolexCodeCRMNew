@@ -8,6 +8,7 @@ export default function SalesRepCard1() {
   const { userData } = useUser(); // Assumed to provide user context including id
 
   useEffect(() => {
+    
     if (userData && userData.id) {
       fetchLeads(userData.id); // Fetch leads when userData is available
     }

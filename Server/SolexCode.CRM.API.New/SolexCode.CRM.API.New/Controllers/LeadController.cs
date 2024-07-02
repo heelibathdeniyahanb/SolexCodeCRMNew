@@ -1,6 +1,5 @@
 ﻿using SolexCode.CRM.API.New.Data;
 using SolexCode.CRM.API.New.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -349,28 +348,29 @@ namespace SolexCode.CRM.API.New.Controllers
             }
         }
 
-        // PUT: api/lead/{id}
+        // Get Leads by SalesRepId
+
+
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLead(int id, NewLead lead)
+        public async Task<IActionResult> UpdateLead(int id, [FromBody] UpdateLeadDto leadUpdateDto)
         {
-            if (id != lead.Id)
+            var existingLead = await _context.NewLeads.FindAsync(id);
+
+            if (existingLead == null)
             {
-                return BadRequest("Mismatched id in request.");
+                return NotFound("Lead not found.");
             }
 
-            // Check if the lead exists
-            if (!LeadExists(id))
-            {
-                return NotFound();
-            }
-
-            // Check model state and validation errors
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Entry(lead).State = EntityState.Modified;
+            // Update only the lead-specific properties
+            existingLead.LeadName = leadUpdateDto.LeadName;
+            existingLead.CompanyName = leadUpdateDto.CompanyName;
+            existingLead.StartDate = leadUpdateDto.StartDate;
+            existingLead.EndDate = leadUpdateDto.EndDate;
+            existingLead.SalesRep = leadUpdateDto.SalesRep;
+            existingLead.SalesPipeline = leadUpdateDto.SalesPipeline;
+            existingLead.LeadStatus = leadUpdateDto.LeadStatus;
+            existingLead.IsWon = leadUpdateDto.IsWon;
 
             try
             {
@@ -389,11 +389,6 @@ namespace SolexCode.CRM.API.New.Controllers
             }
 
             return NoContent();
-        }
-
-        private bool LeadExists(int id)
-        {
-            return _context.NewLeads.Any(e => e.Id == id);
         }
 
         [HttpPut("UpdatePipeline/{id}/{pipelineName}")]
@@ -427,6 +422,7 @@ namespace SolexCode.CRM.API.New.Controllers
             return NoContent();
         }
 
+
         private async Task<User> AssignLeadManager()
         {
             var leadManagers = await _context.Users
@@ -440,5 +436,69 @@ namespace SolexCode.CRM.API.New.Controllers
 
             return sortedManager;
         }
+
+
+        // Lead Status Change Function
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateLeadStatus(int id, [FromQuery] bool isWon)
+        {
+            var lead = await _context.NewLeads.FindAsync(id);
+            if (lead == null)
+            {
+                return NotFound();
+            }
+
+            lead.IsWon = isWon;
+            _context.Entry(lead).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LeadExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
+        }
+
+        // GET Not Won Lead
+        [HttpGet("notwon")]
+        public ActionResult<IEnumerable<NewLead>> GetNotWonLeads()
+        {
+            var notwonLeads = _context.NewLeads
+                .Include(lead => lead.SalesRep)
+                .Where(lead => lead.IsWon == false)
+                .ToList();
+
+            return notwonLeads;
+        }
+
+        // GET  Won Lead
+        [HttpGet("won")]
+        public ActionResult<IEnumerable<NewLead>> GetWonLeads()
+        {
+            var wonLeads = _context.NewLeads
+                .Include(lead => lead.SalesRep)
+                .Where(lead => lead.IsWon == true)
+                .ToList();
+
+            return wonLeads;
+        }
+
+        private bool LeadExists(int id)
+        {
+            return _context.NewLeads.Any(e => e.Id == id);
+        }
+
+
     }
 }
