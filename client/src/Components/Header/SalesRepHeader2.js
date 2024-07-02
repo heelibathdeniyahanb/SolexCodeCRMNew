@@ -7,7 +7,7 @@ import list from '../../Images/list.png';
 import lost from '../../Images/lost.png';
 import overall from '../../Images/overall.png';
 
-const Header2 = () => {
+const SalesRepHeader2 = () => {
   return (
     <header className="bg-white xl:ml-72 flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 py-8">
       <div className="header2-left flex flex-col sm:flex-row gap-4 mb-4 sm:mb-0">
@@ -27,13 +27,11 @@ const Header2 = () => {
         <button className="w-8 h-8 bg-gray-300 rounded-md">
           <img src={analysis} alt="analysis" />
         </button>
-
-        <Link to='/adminwonkanbanview'>
+        <Link to='/salesrefwonkanbanview'>
         <button className="w-8 h-8 bg-gray-300 rounded-md">
           <img src={won} alt="won" />
         </button>
         </Link>
-
 
         <button className="w-8 h-8 bg-gray-300 rounded-md">
           <Link to="/listTable">
@@ -41,22 +39,15 @@ const Header2 = () => {
           </Link>
         </button>
 
-        <Link to='/adminlosskanbanview'>
+        <Link to='/salesreflosskanbanview'>
         <button className="w-8 h-8 bg-gray-300 rounded-md">
           <img src={lost} alt="lost" />
         </button>
         </Link>
 
-
         <button className="w-8 h-8 bg-gray-300 rounded-md">
           <Link to="/Pages/Pages/salesRefSummeryView">
             <img src={overall} alt="overall" />
-          </Link>
-        </button>
-
-        <button className="w-auto h-8 bg-teal-700 bg-opacity-70 rounded-lg text-cyan-200 ml-auto">
-          <Link to="/addLeadForm" className="px-4">
-            +Lead
           </Link>
         </button>
       </div>
@@ -64,4 +55,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default SalesRepHeader2;

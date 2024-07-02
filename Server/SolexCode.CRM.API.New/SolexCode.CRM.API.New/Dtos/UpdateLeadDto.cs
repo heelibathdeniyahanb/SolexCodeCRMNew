@@ -14,10 +14,6 @@ namespace SolexCode.CRM.API.New.Dtos
         public string SalesPipeline { get; set; }
         public string LeadStatus { get; set; }
         public bool IsWon { get; set; }
-        public List<TaskDto> Tasks { get; set; }
-        public int UserId { get; set; }
-        public string UserFullName { get; set; }
-        public string UserEmail { get; set; }
     }
 
 }

@@ -1,24 +1,31 @@
-// ColumnContainer.jsx
-import { useSortable } from "@dnd-kit/sortable";
+
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useMemo } from "react";
+import React ,{ useMemo, useState } from "react";
 import TaskCard from "./TaskCard";
 
-function NewColumnContainer({ column, tasks, isReadOnly }) {
-  const tasksIds = useMemo(() => {
-    return tasks.map((task) => task.id);
-  }, [tasks]);
 
-  const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable(
-    {
-      id: column.id,
-      data: {
-        type: "Column",
-        column,
-      },
-      disabled: isReadOnly, // Disable drag and drop if isReadOnly is true
-    }
-  );
+function ColumnContainer({
+  column,
+  deleteColumn,
+  updateColumn,
+  createTask,
+  tasks,
+  deleteTask,
+  updateTask,
+}) {
+  const [editMode, setEditMode] = useState(false);
+
+  const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
+
+  const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
+    id: column.id,
+    data: {
+      type: "Column",
+      column,
+    },
+    disabled: editMode,
+  });
 
   const style = {
     transition,
@@ -30,18 +37,7 @@ function NewColumnContainer({ column, tasks, isReadOnly }) {
       <div
         ref={setNodeRef}
         style={style}
-        className="
-          bg-columnBackgroundColor
-          opacity-40
-          border-2
-          border-gray-500
-          w-350px
-          h-200px
-          max-h-[500px]
-          rounded-md
-          flex
-          flex-col
-        "
+        className="bg-columnBackgroundColor opacity-40 border-2 border-teal-700 w-[3500px] h-[300px] rounded-md flex flex-col"
       ></div>
     );
   }
@@ -50,47 +46,53 @@ function NewColumnContainer({ column, tasks, isReadOnly }) {
     <div
       ref={setNodeRef}
       style={style}
-      className="
-        bg-columnBackgroundColor
-        w-[200px]
-        h-[600px]
-        max-h-[500px]
-        rounded-md
-        flex
-        flex-col
-      "
+      className="bg-columnBackgroundColor w-[214px] h-screen rounded-md flex flex-col overflow-y-hidden"
     >
       {/* Column title */}
       <div
         {...attributes}
         {...listeners}
-        className="
-          bg-cyan-900
-          text-md
-          h-[60px]
-          rounded-lg
-          rounded-b-none
-          p-3
-          font-bold
-          border-cyan-700
-          border-4
-          flex
-          items-center
-          justify-center
-          text-zinc-100
-        "
+        onClick={() => setEditMode(true)}
+        className="bg-teal-700 text-md h-[50px] cursor-grab rounded-lg rounded-b-none p-3 font-bold border-teal-700 border-4 flex items-center justify-center text-white"
       >
-        {column.title}
+        <div className="flex gap-2">
+          <div className="flex justify-center items-center bg-columnBackgroundColor px-1 py-1 text-sm rounded-full"></div>
+          {!editMode && column.title}
+          {editMode && (
+            <input
+              className="bg-teal-900 focus:border-rose-100 border"
+              value={column.title}
+              onChange={(e) => updateColumn(column.id, e.target.value)}
+              autoFocus
+              onBlur={() => setEditMode(false)}
+              onKeyDown={(e) => {
+                if (e.key !== "Enter") return;
+                setEditMode(false);
+              }}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Column task container */}
-      <div className="flex flex-grow flex-col gap-4 p-2 overflow-x-hidden overflow-y-auto">
-        {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} isReadOnly={isReadOnly} />
-        ))}
+          {/* Column task container */}
+          <div className="flex flex-grow flex-col gap-4 p-2 overflow-x-hidden overflow-y-auto">
+        <SortableContext items={tasksIds}>
+          {tasks && tasks.length > 0 ? (
+            tasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                deleteTask={deleteTask}
+                updateTask={updateTask}
+              />
+            ))
+          ) : (
+            <p className="text-center text-gray-500">No tasks in this column</p>
+          )}
+        </SortableContext>
       </div>
     </div>
   );
 }
 
-export default NewColumnContainer;
+export default ColumnContainer;

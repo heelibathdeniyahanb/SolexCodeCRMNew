@@ -25,3 +25,4 @@ const AdminLossKanbanView = () => {
 };
 
 export default AdminLossKanbanView;
+

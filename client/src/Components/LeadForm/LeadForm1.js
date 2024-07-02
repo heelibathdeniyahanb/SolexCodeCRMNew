@@ -72,7 +72,8 @@ const LeadForm1 = () => {
             salesPipeline,
             leadStatus: leadStatus.join(', '),
             userFullName,
-            userEmail
+            userEmail,
+
         };
 
         console.log('Sending data:', JSON.stringify(leadData, null, 2));
