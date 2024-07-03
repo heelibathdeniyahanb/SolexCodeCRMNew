@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUser } from '../login/UserContext';
+import EventDetailsModal from './EventDetailsModal';
 
 export default function AdminDashboardScheduledEventsTasks() {
   const [events, setEvents] = useState([]);
   const { userData } = useUser();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     if (userData && userData.id) {
@@ -20,6 +23,11 @@ export default function AdminDashboardScheduledEventsTasks() {
       .catch(error => {
         console.error('Error fetching events:', error);
       });
+  };
+
+  const handleViewEvent = (event) => {
+    setSelectedEvent(event);
+    setShowModal(true);
   };
 
   return (
@@ -55,6 +63,7 @@ export default function AdminDashboardScheduledEventsTasks() {
                         {priority ? 'High' : 'Normal'} Priority
                       </span>
                     </div>
+                    <button onClick={() => handleViewEvent(event)} className="ml-4 text-sm text-blue-500 hover:text-blue-700 focus:outline-none">View</button>
                   </div>
                 </li>
               );
@@ -62,6 +71,13 @@ export default function AdminDashboardScheduledEventsTasks() {
           </ul>
         </div>
       </div>
+
+      {showModal && selectedEvent && (
+        <EventDetailsModal
+          event={selectedEvent}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }

@@ -123,6 +123,13 @@ import VerifyResetCode from './Components/AdminCompo/password/VerifyResetCode';
 import ResetPasswordWindow2 from './Components/AdminCompo/password/ResetPasswordWindow2';
 import ResetPasswordWindow3 from './Components/AdminCompo/password/ResetPasswordWindow3';
 import UserProfile from './Components/UserProfile';
+import SalesRepKanbanView from './Pages/SalesRep/SalesRepKanbanView';
+import SalesRefWonKanbanView from './Pages/SalesRep/SalesRefWonKanbanView';
+import SalesRefLossKanbanView from './Pages/SalesRep/SalesRefLossKanbanView';
+import SalesRefWonKanbanBoard from './Components/SalesRep/Kanbanboard/SalesRefWonKanbanBoard';
+import SalesRefLossKanbanBoard from './Components/SalesRep/Kanbanboard/SalesRefLossKanbanBoard';
+import SalesRepHeader2 from './Components/Header/SalesRepHeader2';
+import Landingpage from './Pages/Landingpage';
 
 
 
@@ -138,8 +145,8 @@ function App() {
       <UserProvider>
 
         <Routes>
-        
-         <Route path='/' element={<Login/>}></Route>
+        <Route path='/' element={<Landingpage/>}></Route>
+         <Route path='/login' element={<Login/>}></Route>
          <Route path='/rootpage' element={<RootPage/>}></Route>
 
          <Route path='/admin-verify-otp' element={<VerifyOtpAdmin/>}></Route>
@@ -267,6 +274,14 @@ function App() {
           <Route path='/navbar' element={<Navbar/>}></Route>
           <Route path='/clientForm' element={<ClientForm/>}></Route>
           <Route path='/navbar' element={<Navbar/>}></Route>
+
+          <Route path='/salesrefkanbanview' element={<SalesRepKanbanView/>}></Route>
+          <Route path='/salesrefwonkanbanview' element={<SalesRefWonKanbanView/>}></Route>
+          <Route path='/salesreflosskanbanview' element={<SalesRefLossKanbanView/>}></Route>
+          <Route path='/salesrefkanbanboard' element={<SalesRepKanbanView/>}></Route>
+          <Route path='/salesrepwonkanbandboard' element={<SalesRefWonKanbanBoard/>}></Route>
+          <Route path='/salesreflosskanbardboard' element={<SalesRefLossKanbanBoard/>}></Route>
+          <Route path='/salesrefheader2' element={<SalesRepHeader2/>}></Route>
         </Routes>
         </UserProvider>
        

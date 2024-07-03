@@ -13,6 +13,7 @@ import { chatConnection, notificationConnection } from '../../Components/Chat/Co
 import axios from 'axios';
 import Chat from '../../Components/Chat/Chat';
 import { useUser } from '../../Components/login/UserContext';
+import AdminDashboardNewUsers from '../../Components/AdminCompo/AdminDashboardNewUsers';
 
 
 export default function AdminDashboard() {
@@ -77,7 +78,7 @@ export default function AdminDashboard() {
           </div>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-3">
             <AdminDashboardSheduledEventsTasks />
-            <AdminDashboardRevenue />
+            <AdminDashboardNewUsers/>
           </div>
         </div>
       </div>

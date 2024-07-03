@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCircleNotch, FaTrash } from "react-icons/fa";
+import { FaCircleNotch, FaTrash ,FaEye} from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -10,6 +10,10 @@ import LeadStatusModel from "./LeadStatusModel";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ButtonPopupModel from "./ButtonPopupModel";
+import EventForm from "../../Events/EventForm";
+import TaskForm from "../../Task/TaskForm";
+import ViewEvents from "./ViewEvents";
+import ViewTasks from "./ViewTasks";
 
 
 
@@ -28,19 +32,24 @@ function TaskCard({ task, deleteTask, updateTask }) {
   const [editMode, setEditMode] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [taskData, setTaskData] = useState(task);
-  const [isButtonPopupModel, setIsButtonPopupModel] = useState(false);
+  const [showTaskList, setShowTaskList] = useState(false);
+  const [showEventList, setShowEventList] = useState(false);
+  const [showUpdateTaskModal, setShowUpdateTaskModal] = useState(false);
+  const [showUpdateEventModal, setShowUpdateEventModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [showEventForm, setShowEventForm] = useState(false);
 
 
   const handleCardClick = (e) => {
     // Only open the popup if the click wasn't on a button or the edit icon
     if (!e.target.closest('button') && !e.target.closest('.edit-icon') && !e.target.closest('.update-modal')) {
-      setIsButtonPopupModel(true);
+      
     }
   };
 
-  const handleBUttonPopupModelClose = () => {
-    setIsButtonPopupModel(false);
-  }
+ 
 
   const handleCloseModal = () => {
     setShowUpdateModal(false);
@@ -93,7 +102,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       type: "Task",
       task,
     },
-    disabled: editMode,
+    disabled: editMode || showTaskForm || showEventForm ||showUpdateTaskModal || showTaskList ||  showUpdateModal  ||showUpdateEventModal ||showEventList,
   });
 
   const style = {
@@ -140,7 +149,40 @@ function TaskCard({ task, deleteTask, updateTask }) {
       ...updatedData
     }));
   };
+ 
 
+  
+  const handleTaskButtonClick = () => {
+    setShowTaskForm(true);
+  };
+
+  const handleEventButtonClick = () => {
+    setShowEventForm(true);
+  };
+
+  const closeTaskForm = () => {
+    setShowTaskForm(false);
+  };
+
+  const closeEventForm = () => {
+    setShowEventForm(false);
+  };
+
+  const handleViewTasks = () => {
+    setShowTaskList(true);
+  };
+
+  const handleViewEvents = () => {
+    setShowEventList(true);
+  };
+
+  const handleUpdateTask = () => {
+    setShowUpdateTaskModal(true);
+  };
+
+  const handleUpdateEvent = () => {
+    setShowUpdateEventModal(true);
+  };
 
   if (isDragging) {
     return (
@@ -158,7 +200,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       style={style}
       {...attributes}
       {...listeners}
-      className="bg-gray-300 h-[230px] min-h-[230px] text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-gray-400 cursor-grab relative task "
+      className="bg-gray-300 h-[350px] min-h-[230px] text-left rounded-xl hover:ring-2 hover:ring-inset hover:ring-gray-400 cursor-grab relative task "
       onMouseEnter={() => setMouseIsOver(true)}
       onMouseLeave={() => setMouseIsOver(false)}
       onClick={handleCardClick}
@@ -251,6 +293,19 @@ function TaskCard({ task, deleteTask, updateTask }) {
               <span className="text-gray-500 ml-1 text-xs text-start"> <Avatar src="https://source.unsplash.com/random/100x100" size="32" round={true} /> {taskData.salesRep}</span>
             </p>
 
+            <div className="flex  mt-4">
+            <button onClick={handleTaskButtonClick} className="bg-blue-500 text-white py-2 px-4 rounded">Task</button>
+            <button onClick={handleEventButtonClick} className="bg-green-500 text-white py-2 px-4 rounded">Event</button>
+          </div>
+          <div className="flex  mt-2">
+            <button onClick={handleViewTasks} className="bg-blue-300 text-white py-2 px-2 rounded flex items-center">
+              <FaEye className="mr-2" />  Tasks
+            </button>
+            <button onClick={handleViewEvents} className="bg-green-300 text-white py-2 px-2 rounded flex items-center">
+              <FaEye className="mr-2" />  Events
+            </button>
+          </div>
+
 
           </div>
         </div>
@@ -278,6 +333,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
      </button>
       )}
 
+
       {showUpdateModal && (
         <div className="update-modal">
         <UpdateTaskModal
@@ -288,10 +344,61 @@ function TaskCard({ task, deleteTask, updateTask }) {
       </div>
       )}
 
-      <ButtonPopupModel
-        isOpen={isButtonPopupModel}
-        onClose={handleBUttonPopupModelClose}
-      />
+{showModal && (
+        <UpdateTaskModal
+          task={task}
+          onUpdate={handleUpdate}
+          onClose={handleCloseModal}
+        />
+      )}
+
+      {showTaskForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <TaskForm
+              onClose={closeTaskForm}
+              leadName={task.leadName}
+              leadId={task.id}
+            />
+          </div>
+        </div>
+      )}
+
+      {showEventForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <EventForm onClose={closeEventForm} leadId={task.id} />
+          </div>
+        </div>
+      )}
+
+      {showTaskList && (
+        <ViewTasks leadId={task.id} onClose={() => setShowTaskList(false)} />
+      )}
+
+      {showEventList && (
+        <ViewEvents leadId={task.id} onClose={() => setShowEventList(false)} />
+      )}
+
+      {showUpdateTaskModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <h2 className="text-2xl font-bold mb-4">Update Task</h2>
+            {/* Add your update task form component here */}
+            <button onClick={() => setShowUpdateTaskModal(false)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+          </div>
+        </div>
+      )}
+
+      {showUpdateEventModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <h2 className="text-2xl font-bold mb-4">Update Event</h2>
+            {/* Add your update event form component here */}
+            <button onClick={() => setShowUpdateEventModal(false)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+          </div>
+        </div>
+      )}
       <ToastContainer />
     </div>
   );

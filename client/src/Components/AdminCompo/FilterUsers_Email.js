@@ -11,8 +11,21 @@ const FilterUsers = ({ setRecipients }) => {
     { value: '', label: 'Select a field' },
     { value: 'Information Technology(IT)', label: 'Information Technology(IT)' },
     { value: 'Education', label: 'Education' },
-    { value: 'Textile', label: 'Textile' },
-    // Add more options as needed
+    { value: 'Retail', label: 'Retail' },
+    {value:'Healthcare',label: 'Healthcare'},
+    { value: 'Finance and Banking', label: 'Finance and Banking' },
+    { value: 'Retail', label: 'Retail' },
+    {value:'Automotive',label: 'Automotive'},
+    { value: 'Tourism and Hospitality', label: 'Tourism and Hospitality' },
+    { value: 'Energy', label: 'Energy' },
+    {value:'Agriculture',label: 'Agriculture'},
+    { value: 'Media and Entertainment', label: 'Media and Entertainment' },
+    { value: 'Media and Entertainment', label: 'Media and Entertainment' },
+    {value:'Construction',label: 'Construction'},
+    {value:'Other',label: 'Other'},
+
+
+     
   ];
 
   const roleOptions = [

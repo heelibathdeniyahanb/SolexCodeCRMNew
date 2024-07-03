@@ -31,6 +31,7 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Company> Company { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<TicketAttachment> TicketAttachment { get; set; }
+        public DbSet<UnRegisteredUser> UnRegisteredUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

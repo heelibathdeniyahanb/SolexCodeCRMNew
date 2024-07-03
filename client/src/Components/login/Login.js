@@ -9,6 +9,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { useUser } from './UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UnRegister from '../UnRegisterdUsers/UnRegister';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const { setUserData } = useUser();
   const [showPassword, setShowPassword] = useState(false);
+  const [showUnRegister, setShowUnRegister] = useState(false);
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -91,6 +94,14 @@ const Login = () => {
     navigate('/forgot-password');
 }
 
+const handleCreateNewAccount = () => {
+  setShowUnRegister(true);
+};
+
+const handleCloseUnRegister = () => {
+  setShowUnRegister(false);
+};
+
   return (
     <div className="flex">
       <div className="relative h-screen">
@@ -136,6 +147,12 @@ const Login = () => {
               Forget password?
             </span>
           </div>
+          <div className="flex justify-start mb-4">
+            <span className="font-bold text-teal-700 cursor-pointer hover:text-teal-900" onClick={handleCreateNewAccount}>
+         
+              Create New Account
+            </span>
+          </div>
 
           <div className="flex items-center justify-center">
             <button type="submit" onClick={handleLogin} className="p-2 mt-4 bg-teal-800 border border-gray-300 hover:bg-teal-600 hover:text-black w-36 h-14 rounded-xl">
@@ -144,6 +161,20 @@ const Login = () => {
           </div>
         </form>
       </div>
+
+      {showUnRegister && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <button 
+              onClick={handleCloseUnRegister}
+              className="float-right text-gray-600 hover:text-gray-800"
+            >
+              ✕
+            </button>
+            <UnRegister />
+          </div>
+        </div>
+      )}
       <ToastContainer />
     </div>
   );
