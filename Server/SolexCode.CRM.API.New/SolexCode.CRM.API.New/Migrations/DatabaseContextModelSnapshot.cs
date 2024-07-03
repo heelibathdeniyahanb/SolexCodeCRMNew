@@ -493,6 +493,9 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
 
+                    b.Property<bool?>("IsWon")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("LeadManagerId")
                         .HasColumnType("int");
 
@@ -807,6 +810,50 @@ namespace SolexCode.CRM.API.New.Migrations
                     b.HasIndex("TicketId");
 
                     b.ToTable("TicketAttachment");
+                });
+
+            modelBuilder.Entity("SolexCode.CRM.API.New.Models.UnRegisteredUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Continent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Industry")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegisteredDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UnRegisteredUsers");
                 });
 
             modelBuilder.Entity("SolexCode.CRM.API.New.Models.User", b =>

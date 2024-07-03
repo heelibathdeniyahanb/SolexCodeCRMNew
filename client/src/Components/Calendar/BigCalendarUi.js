@@ -16,9 +16,7 @@ const BigCalendarUi = () => {
 
     useEffect(() => {
         fetchTasks();
-        if (userData) {
-            fetchEvents();
-        }
+       
     }, [userData]);
 
     const fetchTasks = () => {
@@ -31,15 +29,7 @@ const BigCalendarUi = () => {
             });
     }
 
-    const fetchEvents = () => {
-        axios.get('https://localhost:7143/api/Event')
-            .then(response => {
-                setEvents(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching events:', error);
-            });
-    }
+   
 
     const getTasksForDate = (date) => {
         if (!userData) return [];
@@ -48,21 +38,21 @@ const BigCalendarUi = () => {
         );
     };
 
-    const getEventsForDate = (date) => {
-        if (!userData) return [];
+    // const getEventsForDate = (date) => {
+    //     if (!userData) return [];
 
-        // Filter events where the host is the current user
-        const hostEvents = events.filter(event =>
-            dayjs(event.date).isSame(date, 'day') && event.host === userData.fullName
-        );
+    //     // Filter events where the host is the current user
+    //     const hostEvents = events.filter(event =>
+    //         dayjs(event.date).isSame(date, 'day') && event.host === userData.fullName
+    //     );
 
-        // Filter events where the current user is a participant
-        const participantEvents = events.filter(event =>
-            dayjs(event.date).isSame(date, 'day') && event.participants.some(participant => participant.email === userData.email)
-        );
+    //     // Filter events where the current user is a participant
+    //     const participantEvents = events.filter(event =>
+    //         dayjs(event.date).isSame(date, 'day') && event.participants.some(participant => participant.email === userData.email)
+    //     );
 
-        return [...hostEvents, ...participantEvents];
-    };
+    //     return [...hostEvents, ...participantEvents];
+    // };
 
     const goToPreviousMonth = () => {
         setToday(today.subtract(1, 'month'));
@@ -112,9 +102,7 @@ const BigCalendarUi = () => {
                                         {getTasksForDate(date).map(task => (
                                             <div key={task.id} className='bg-green-500'>{task.taskName}</div>
                                         ))}
-                                        {getEventsForDate(date).map(event => (
-                                            <div key={event.id} className='bg-blue-500'>{event.eventName}</div>
-                                        ))}
+                                       
                                     </div>
                                 </div>
                             ))}

@@ -15,6 +15,7 @@ namespace SolexCode.CRM.API.New.Models
         public int? LeadManagerId { get; set; }
         public string SalesPipeline { get; set; }
         public string LeadStatus { get; set; }
+        public bool? IsWon { get; set; }
 
         public ICollection<Task> Tasks { get; set; } = new List<Task>();
         [JsonIgnore]

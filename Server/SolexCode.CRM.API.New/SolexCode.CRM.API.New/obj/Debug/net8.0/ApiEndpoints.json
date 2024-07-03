@@ -897,9 +897,30 @@
         "IsRequired": true
       },
       {
-        "Name": "lead",
-        "Type": "SolexCode.CRM.API.New.Models.NewLead",
+        "Name": "leadUpdateDto",
+        "Type": "SolexCode.CRM.API.New.Dtos.UpdateLeadDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "UpdateLeadStatus",
+    "RelativePath": "api/Lead/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isWon",
+        "Type": "System.Boolean",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -978,6 +999,26 @@
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetNotWonLeads",
+    "RelativePath": "api/Lead/notwon",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
     "Method": "UpdatePipeline",
     "RelativePath": "api/Lead/UpdatePipeline/{id}/{pipelineName}",
     "HttpMethod": "PUT",
@@ -1011,6 +1052,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.LeadController",
+    "Method": "GetWonLeads",
+    "RelativePath": "api/Lead/won",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.NewLead, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -1131,6 +1192,237 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TicketsController",
+    "Method": "GetTickets",
+    "RelativePath": "api/Tickets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.Ticket, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TicketsController",
+    "Method": "PostTicket",
+    "RelativePath": "api/Tickets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TicketName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tracker",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CustomerSupporterName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TicketsController",
+    "Method": "GetTicket",
+    "RelativePath": "api/Tickets/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.Models.Ticket",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TicketsController",
+    "Method": "PutTicket",
+    "RelativePath": "api/Tickets/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "TicketName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tracker",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CustomerSupporterName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.TicketsController",
+    "Method": "DeleteTicket",
+    "RelativePath": "api/Tickets/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UnRegisteredUsersController",
+    "Method": "PostUnRegisteredUser",
+    "RelativePath": "api/UnRegisteredUsers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "unRegisteredUser",
+        "Type": "SolexCode.CRM.API.New.Models.UnRegisteredUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.Models.UnRegisteredUser",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UnRegisteredUsersController",
+    "Method": "GetUnRegisteredUsers",
+    "RelativePath": "api/UnRegisteredUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SolexCode.CRM.API.New.Models.UnRegisteredUser, SolexCode.CRM.API.New, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SolexCode.CRM.API.New.Controllers.UnRegisteredUsersController",
+    "Method": "GetUnRegisteredUser",
+    "RelativePath": "api/UnRegisteredUsers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SolexCode.CRM.API.New.Models.UnRegisteredUser",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "SolexCode.CRM.API.New.Controllers.UserController",

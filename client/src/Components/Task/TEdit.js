@@ -84,9 +84,9 @@ export default function TEdit({ visible, taskId, onClose }) {
 
   return (
     <>
-      {visible &&
-        <div className='fixed inset-0 flex justify-center items-center bg-black bg-opacity-10'>
-          <div className='border w-96 bg-white p-8 rounded-lg'>
+      {visible && (
+        <div className='fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50'>
+          <div className='relative bg-white w-full max-w-md p-8 rounded-lg shadow-lg'>
             <h1 className='text-lg font-semibold mb-4'>Modify/Update Task</h1>
             <form>
               <div className='mb-4'>
@@ -141,12 +141,12 @@ export default function TEdit({ visible, taskId, onClose }) {
                   required
                 />
                </div>
-               <div className='status'> {/* Corrected className */}
-                <label htmlFor="status">Status</label>
+               <div className='status mb-4'>
+                <label htmlFor="status" className='block text-sm font-medium mb-1'>Status</label>
                 <select
                   name='status'
                   id='status'
-                  className='mx-12 border px-5 rounded-md h-10 border-green-700 w-300'
+                  className='border px-3 py-2 w-full rounded-md focus:outline-none focus:border-green-700'
                   value={editTaskStatus}
                   onChange={(e) => setEditTaskStatus(e.target.value)}
                 >
@@ -183,11 +183,11 @@ export default function TEdit({ visible, taskId, onClose }) {
               <button onClick={onClose} className='text-gray-600 hover:text-gray-800 font-medium focus:outline-none'>Close</button>
               <button onClick={handleUpdate} className='bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md focus:outline-none'>
                 Update
-               </button>
+              </button>
             </div>
           </div>
         </div>
-      }
+      )}
       <ToastContainer />
     </>
   );

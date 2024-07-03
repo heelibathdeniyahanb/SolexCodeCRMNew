@@ -97,70 +97,72 @@ namespace SolexCode.CRM.API.New.Controllers
         [HttpPost("send")]
         public async Task<ActionResult> SendMessage([FromBody] ChatMessageDto messageDto)
         {
-            try { 
-
-            // Check if a chat exists between the sender and receiver
-            var chat = await _context.Chats
-                .Where(c => c.Participants.Any(p => p.UserId == messageDto.SenderId))
-                .Where(c => c.Participants.Any(p => p.UserId == messageDto.ReceiverId))
-                .FirstOrDefaultAsync();
-
-            // If chat doesn't exist, create a new one
-            if (chat == null)
-            {
-                // If chat doesn't exist, create a new one
-                var participantIds = new List<int> { messageDto.SenderId, messageDto.ReceiverId };
-                var newChatId = await _chatService.CreateNewChat(participantIds);
-                messageDto.ChatId = newChatId; // Set the chatId in the messageDto
-            }
-            else
-            {
-                // If chat exists, set the chatId in the messageDto
-                messageDto.ChatId = chat.Id;
-            }
-
-            // Check if Sender and Receiver exist
-            var senderExists = await _context.Users.AnyAsync(u => u.Id == messageDto.SenderId);
-            var receiverExists = await _context.Users.AnyAsync(u => u.Id == messageDto.ReceiverId);
-
-            if (!senderExists)
-            {
-                return BadRequest("Sender does not exist.");
-            }
-
-            if (!receiverExists)
-            {
-                return BadRequest("Receiver does not exist.");
-            }
-
-            // Create new ChatMessage
-            var chatMessage = new ChatMessage
-            {
-                SenderId = messageDto.SenderId,
-                ReceiverId = messageDto.ReceiverId,
-                Content = messageDto.Content,
-                Timestamp = messageDto.Timestamp,
-                ChatId = messageDto.ChatId
-            };
-
-            _context.ChatMessages.Add(chatMessage);
-
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                // Log the exception and return a 500 error
-                // You can also inspect ex.InnerException for more details
-                return StatusCode(500, "An error occurred while saving the message. See the inner exception for details.");
-            }
+                // Check if Sender and Receiver exist
+                var sender = await _context.Users.FindAsync(messageDto.SenderId);
+                var receiver = await _context.Users.FindAsync(messageDto.ReceiverId);
 
-            return Ok();
-        }
+                if (sender == null)
+                {
+                    return BadRequest("Sender does not exist.");
+                }
+
+                if (receiver == null)
+                {
+                    return BadRequest("Receiver does not exist.");
+                }
+
+                // Check if both sender and receiver are clients
+                if (sender.Role == "Client" && receiver.Role == "Client")
+                {
+                    return BadRequest("Client-to-client chat is not allowed.");
+                }
+
+                // Check if a chat exists between the sender and receiver
+                var chat = await _context.Chats
+                    .Where(c => c.Participants.Any(p => p.UserId == messageDto.SenderId))
+                    .Where(c => c.Participants.Any(p => p.UserId == messageDto.ReceiverId))
+                    .FirstOrDefaultAsync();
+
+                // If chat doesn't exist, create a new one
+                if (chat == null)
+                {
+                    var participantIds = new List<int> { messageDto.SenderId, messageDto.ReceiverId };
+                    var newChatId = await _chatService.CreateNewChat(participantIds);
+                    messageDto.ChatId = newChatId; // Set the chatId in the messageDto
+                }
+                else
+                {
+                    // If chat exists, set the chatId in the messageDto
+                    messageDto.ChatId = chat.Id;
+                }
+
+                // Create new ChatMessage
+                var chatMessage = new ChatMessage
+                {
+                    SenderId = messageDto.SenderId,
+                    ReceiverId = messageDto.ReceiverId,
+                    Content = messageDto.Content,
+                    Timestamp = messageDto.Timestamp,
+                    ChatId = messageDto.ChatId
+                };
+
+                _context.ChatMessages.Add(chatMessage);
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    return StatusCode(500, "An error occurred while saving the message. See the inner exception for details.");
+                }
+
+                return Ok();
+            }
             catch (Exception ex)
             {
-                // Log and handle exceptions appropriately
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
