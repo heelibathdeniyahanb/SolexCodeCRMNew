@@ -23,38 +23,39 @@ const Header2 = () => {
         </form>
       </div>
 
-      <div className="header2-right flex flex-wrap justify-center sm:justify-end gap-2 sm:gap-4">
-        <button className="w-8 h-8 bg-gray-300 rounded-md">
+      <div className="header2-right flex flex-wrap justify-center sm:justify-end gap-2 sm:gap-4 ">
+
+        <button className="w-8 h-8 bg-gray-300 rounded-md hover:bg-slate-400  focus:bg-slate-400 focus:ring focus:ring-slate-200 ">
           <img src={analysis} alt="analysis" />
         </button>
 
         <Link to='/adminwonkanbanview'>
-        <button className="w-8 h-8 bg-gray-300 rounded-md">
+        <button className="w-8 h-8 bg-gray-300 rounded-md hover:bg-slate-400 focus:bg-slate-400 focus:ring focus:ring-slate-200">
           <img src={won} alt="won" />
         </button>
         </Link>
 
 
-        <button className="w-8 h-8 bg-gray-300 rounded-md">
+        <button className="w-8 h-8 bg-gray-300 rounded-md hover:bg-slate-400 focus:bg-slate-400 focus:ring focus:ring-slate-200">
           <Link to="/listTable">
             <img src={list} alt="list" />
           </Link>
         </button>
 
         <Link to='/adminlosskanbanview'>
-        <button className="w-8 h-8 bg-gray-300 rounded-md">
+        <button className="w-8 h-8 bg-gray-300 rounded-md hover:bg-slate-400 focus:bg-slate-400 focus:ring focus:ring-slate-200">
           <img src={lost} alt="lost" />
         </button>
         </Link>
 
 
-        <button className="w-8 h-8 bg-gray-300 rounded-md">
+        <button className="w-8 h-8 bg-gray-300 rounded-md hover:bg-slate-400 focus:bg-slate-400 focus:ring focus:ring-slate-200">
           <Link to="/Pages/Pages/salesRefSummeryView">
             <img src={overall} alt="overall" />
           </Link>
         </button>
 
-        <button className="w-auto h-8 bg-teal-700 bg-opacity-70 rounded-lg text-cyan-200 ml-auto">
+        <button className="w-auto h-8 bg-teal-700 bg-opacity-70 rounded-lg text-cyan-200 ml-auto hover:bg-teal-500">
           <Link to="/addLeadForm" className="px-4">
             +Lead
           </Link>

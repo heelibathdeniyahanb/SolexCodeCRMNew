@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
@@ -9,9 +8,9 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
   const [editLeadStatus, setEditLeadStatus] = useState('');
   const [editStartDate, setEditStartDate] = useState('');
   const [editEndDate, setEditEndDate] = useState('');
-  const [editSalesRep, setEditSalesRep] = useState('');
   const [editSalesPipeline, setEditSalesPipeline] = useState('');
   const [editIsWon, setEditIsWon] = useState(false);
+
 
   useEffect(() => {
     setEditLeadName(task.leadName);
@@ -19,60 +18,27 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
     setEditLeadStatus(task.leadStatus);
     setEditStartDate(task.startDate.split('T')[0]);
     setEditEndDate(task.endDate.split('T')[0]);
-    setEditSalesRep(task.salesRep);
     setEditSalesPipeline(task.salesPipeline);
     setEditIsWon(task.isWon || false);
+
   }, [task]);
-
-  const handleChangeLeadName = (e) => {
-    setEditLeadName(e.target.value);
-  };
-
-  const handleChangeCompanyName = (e) => {
-    setEditCompanyName(e.target.value);
-  };
-
-  const handleChangeLeadStatus = (e) => {
-    setEditLeadStatus(e.target.value);
-  };
-
-  const handleChangeStartDate = (e) => {
-    const formattedDate = e.target.value.split('T')[0];
-    setEditStartDate(formattedDate);
-  };
-
-  const handleChangeEndDate = (e) => {
-    const formattedDate = e.target.value.split('T')[0];
-    setEditEndDate(formattedDate);
-  };
-
-  const handleChangeSalesRep = (e) => {
-    setEditSalesRep(e.target.value);
-  };
-
-  const handleChangeSalesPipeline = (e) => {
-    setEditSalesPipeline(e.target.value);
-  };
-
-  const handleChangeIsWon = (e) => {
-    setEditIsWon(e.target.checked);
-  };
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    const url = `https://localhost:7143/api/Lead/${task.id}`;  //https://localhost:7143/api/Lead/1
+    const url = `https://localhost:7143/api/Lead/${task.id}`;
     const data = {
       id: task.id,
       leadName: editLeadName,
       companyName: editCompanyName,
-      leadStatus: editLeadStatus,
       startDate: editStartDate,
       endDate: editEndDate,
-      salesRep: editSalesRep,
       salesPipeline: editSalesPipeline,
+      leadStatus: editLeadStatus,
       isWon: editIsWon
     };
+
+    console.log("Payload:", data); 
 
     axios
       .put(url, data, {
@@ -90,13 +56,13 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error:", error.response ? error.response.data : error.message);
         toast.error('An error occurred while updating the task.');
       });
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50 update-modal">
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
         <h2 className="text-xl font-bold text-teal-700 mb-4">Update Task</h2>
         <form onSubmit={handleUpdate}>
@@ -109,7 +75,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               id="leadName"
               name="leadName"
               value={editLeadName}
-              onChange={handleChangeLeadName}
+              onChange={(e) => setEditLeadName(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
           </div>
@@ -122,7 +88,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               id="companyName"
               name="companyName"
               value={editCompanyName}
-              onChange={handleChangeCompanyName}
+              onChange={(e) => setEditCompanyName(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
           </div>
@@ -130,19 +96,13 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
             <label htmlFor="leadStatus" className="block font-semibold">
               Lead Status
             </label>
-            <select
+            <input
               id="leadStatus"
               name="leadStatus"
               value={editLeadStatus}
-              onChange={handleChangeLeadStatus}
+              onChange={(e) => setEditLeadStatus(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
-            >
-              <option value="Mobile">Mobile</option>
-              <option value="Web">Web</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
+            />
           </div>
           <div className="mb-4">
             <label htmlFor="startDate" className="block font-semibold">
@@ -153,7 +113,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               id="startDate"
               name="startDate"
               value={editStartDate}
-              onChange={handleChangeStartDate}
+              onChange={(e) => setEditStartDate(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
           </div>
@@ -166,23 +126,36 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               id="endDate"
               name="endDate"
               value={editEndDate}
-              onChange={handleChangeEndDate}
+              onChange={(e) => setEditEndDate(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="salesRep" className="block font-semibold">
-              Sales Rep
+          {/* <div className="mb-4">
+            <label htmlFor="salesRepId" className="block font-semibold">
+              Sales Rep ID
             </label>
             <input
-              type="text"
-              id="salesRep"
-              name="salesRep"
-              value={editSalesRep}
-              onChange={handleChangeSalesRep}
+              type="number"
+              id="salesRepId"
+              name="salesRepId"
+              value={editSalesRepId}
+              onChange={(e) => setEditSalesRepId(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
-          </div>
+          </div> */}
+          {/* <div className="mb-4">
+            <label htmlFor="userId" className="block font-semibold">
+              User ID
+            </label>
+            <input
+              type="number"
+              id="userId"
+              name="userId"
+              value={editUserId}
+              onChange={(e) => setEditUserId(e.target.value)}
+              className="w-full border border-gray-300 rounded p-2"
+            />
+          </div> */}
           <div className="mb-4">
             <label htmlFor="salesPipeline" className="block font-semibold">
               Sales Pipeline
@@ -192,7 +165,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               id="salesPipeline"
               name="salesPipeline"
               value={editSalesPipeline}
-              onChange={handleChangeSalesPipeline}
+              onChange={(e) => setEditSalesPipeline(e.target.value)}
               className="w-full border border-gray-300 rounded p-2"
             />
           </div>
@@ -202,7 +175,7 @@ const UpdateTaskModal = ({ task, onClose, onUpdate }) => {
               <input
                 type="checkbox"
                 checked={editIsWon}
-                onChange={handleChangeIsWon}
+                onChange={(e) => setEditIsWon(e.target.checked)}
                 className="ml-2"
               />
             </label>

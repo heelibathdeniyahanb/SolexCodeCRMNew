@@ -22,6 +22,7 @@ namespace SolexCode.CRM.API.New.Models
         public ICollection<Events> Events { get; set; } = new List<Events>();
         [JsonIgnore]
         public ICollection<NewTask> NewTasks { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
 
         // Foreign key to User
 

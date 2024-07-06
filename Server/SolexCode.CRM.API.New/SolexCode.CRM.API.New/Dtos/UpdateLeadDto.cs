@@ -9,7 +9,7 @@ namespace SolexCode.CRM.API.New.Dtos
         public string CompanyName { get; set; }
         public DateOnly StartDate { get; set; }
         public DateOnly EndDate { get; set; }
-        public string SalesRep { get; set; }
+       //public string SalesRep { get; set; }
         public int LeadManagerId { get; set; }
         public string SalesPipeline { get; set; }
         public string LeadStatus { get; set; }
