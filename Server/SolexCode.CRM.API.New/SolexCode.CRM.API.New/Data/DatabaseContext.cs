@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using SolexCode.CRM.API.New.Models;
 using CRMTask = SolexCode.CRM.API.New.Models.Task;
 
@@ -36,6 +37,9 @@ namespace SolexCode.CRM.API.New.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+
+
             // Email Attachments Configuration
             modelBuilder.Entity<Email>()
                .HasMany(e => e.Attachments)
@@ -63,6 +67,14 @@ namespace SolexCode.CRM.API.New.Data
                .WithOne(nt => nt.NewLead)
                .HasForeignKey(nt => nt.NewLeadId)
                .IsRequired(false);
+
+
+            //invoice and newlead
+            modelBuilder.Entity<NewLead>()
+                .HasMany(lead => lead.Invoices)
+                .WithOne(i => i.NewLead)
+                .HasForeignKey(i => i.NewLeadId)
+                .IsRequired(false);
 
 
             // Configure the one-to-many relationship user-company

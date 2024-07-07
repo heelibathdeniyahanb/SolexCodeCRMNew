@@ -3,31 +3,22 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const LeadStatusModel = ({ taskId, onClose, onDelete }) => {
+const LeadStatusModel = ({ taskId, onClose, onDelete,onStatusUpdate  }) => {
     const [isWon, setIsWon] = useState(null);
   
     const handleStatusChange = (value) => {
       setIsWon(value);
-      console.log(`Lead status changed to ${value ? 'Won' : 'Lost'}`);
     };
   
     const handleSubmit = async () => {
       try {
-        // Send a PUT request to update the lead status with isWon as query parameter
         await axios.put(`https://localhost:7143/api/Lead/${taskId}/status?isWon=${isWon}`);
-        
-        // Show success message
         toast.success('Lead status updated successfully');
-
-        // Call the onDelete callback to delete the task card
-        onDelete(taskId);
+        onStatusUpdate(taskId, isWon);
       } catch (error) {
         console.error('Error updating lead status:', error);
-
-        // Show error message
         toast.error('Failed to update lead status');
       } finally {
-        // Close the modal after submitting
         onClose();
       }
     };

@@ -367,7 +367,7 @@ namespace SolexCode.CRM.API.New.Controllers
             existingLead.CompanyName = leadUpdateDto.CompanyName;
             existingLead.StartDate = leadUpdateDto.StartDate;
             existingLead.EndDate = leadUpdateDto.EndDate;
-            existingLead.SalesRep = leadUpdateDto.SalesRep;
+           // existingLead.SalesRep = leadUpdateDto.SalesRep;
             existingLead.SalesPipeline = leadUpdateDto.SalesPipeline;
             existingLead.LeadStatus = leadUpdateDto.LeadStatus;
             existingLead.IsWon = leadUpdateDto.IsWon;
@@ -475,7 +475,7 @@ namespace SolexCode.CRM.API.New.Controllers
         public ActionResult<IEnumerable<NewLead>> GetNotWonLeads()
         {
             var notwonLeads = _context.NewLeads
-                .Include(lead => lead.SalesRep)
+                //.Include(lead => lead.SalesRep)
                 .Where(lead => lead.IsWon == false)
                 .ToList();
 
@@ -487,7 +487,7 @@ namespace SolexCode.CRM.API.New.Controllers
         public ActionResult<IEnumerable<NewLead>> GetWonLeads()
         {
             var wonLeads = _context.NewLeads
-                .Include(lead => lead.SalesRep)
+               // .Include(lead => lead.SalesRep)
                 .Where(lead => lead.IsWon == true)
                 .ToList();
 

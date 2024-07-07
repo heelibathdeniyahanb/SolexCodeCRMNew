@@ -26,7 +26,7 @@ import AdminEvent from './Pages/Admin/AdminEvent';
 import AdminTask from './Pages/Admin/AdminTask';
 import ClientLeadProgress from './Pages/Client/ClientLeadProgress';
 import AdminCalendar from './Pages/Admin/AdminCalendar';
-import Login from './Components/login/Login'
+import Login from './Components/login/Login';
 
 import TicketingSystem from './Pages/Client/TicketingSystem';
 import QuickGuide from './Pages/Client/QuickGuide';
@@ -80,7 +80,6 @@ import Invoice from './Components/AdminCompo/AdminInvoice/Invoice';
 import InvoiceForm from './Components/AdminCompo/AdminInvoice/InvoiceForm';
 import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
 import ClientLeadForm from './Pages/Client/ClientLeadForm';
-import SalesRepInvoice from './Pages/SalesRep/SalesRepInvoice';
 import AdminInvoice from './Pages/Admin/AdminInvoice';
 
 import VerifyOtpAdmin from './Pages/Admin/VerifyOtpAdmin';
@@ -130,6 +129,14 @@ import SalesRefWonKanbanBoard from './Components/SalesRep/Kanbanboard/SalesRefWo
 import SalesRefLossKanbanBoard from './Components/SalesRep/Kanbanboard/SalesRefLossKanbanBoard';
 import SalesRepHeader2 from './Components/Header/SalesRepHeader2';
 import Landingpage from './Pages/Landingpage';
+
+import SalesInvoiceView from './Pages/SalesRep/SalesInvoiceView';
+import InvoiceManagement from './Components/SalesRep/SalesInvoice/InvoiceManagement ';
+import SalesInvoiceCard from './Components/SalesRep/SalesInvoice/SalesInvoiceCard';
+import SalesInvoiceForm from './Components/SalesRep/SalesInvoice/SalesInvoiceForm';
+import ParentComponent from './Components/SalesRep/SalesInvoice/ParentComponent ';
+import SalesCreateInvoice from './Components/SalesRep/SalesInvoice/SalesCreateInvoice';
+import SalesInvoice from './Components/SalesRep/SalesInvoice/SalesInvoice';
 
 
 
@@ -256,7 +263,6 @@ function App() {
           <Route path='/invoiceform' element={<InvoiceForm/>}></Route>
           <Route path='/clientviewsaleslead' element={<ClientViewSalesLead/>}></Route>
           <Route path='/clientleadform' element={<ClientLeadForm/>}></Route>
-          <Route path='/salesrepinvoice' element={<SalesRepInvoice/>}></Route>
           <Route path='/admininvoice' element={<AdminInvoice/>}></Route>
 
           <Route path='/adminsummerytable' element={<SummeryTables/>}></Route>
@@ -269,7 +275,6 @@ function App() {
           <Route path='/adminwonkanbanview' element={<AdminWonKanbanView/>}></Route>
           <Route path='/adminsalessummeryview' element={<AdminSalesSummeryView/>}></Route>
           <Route path='/salesrefsummeryview' element={<SalesRefSummeryView/>}></Route>
-          <Route path='/salesrepInvoice' element={<SalesRepInvoice/>}></Route>
           <Route path='/clientpayment' element={<ClientPaymentView1/>}></Route>
           <Route path='/navbar' element={<Navbar/>}></Route>
           <Route path='/clientForm' element={<ClientForm/>}></Route>
@@ -282,6 +287,15 @@ function App() {
           <Route path='/salesrepwonkanbandboard' element={<SalesRefWonKanbanBoard/>}></Route>
           <Route path='/salesreflosskanbardboard' element={<SalesRefLossKanbanBoard/>}></Route>
           <Route path='/salesrefheader2' element={<SalesRepHeader2/>}></Route>
+
+          <Route path='/salesrepinvoiceview' element={<SalesInvoiceView/>}></Route>
+          <Route path='/invoicemanagement' element={<InvoiceManagement/>}></Route>
+          <Route path='/parentcomponent' element={<ParentComponent/>}></Route>
+          <Route path='/salescreateinvoice' element={<SalesCreateInvoice/>}></Route>
+          <Route path='/SalesInvoice' element={<SalesInvoice/>}></Route>
+          <Route path='/salesinvoicecard' element={<SalesInvoiceCard/>}></Route>
+          <Route path='/salesinvoiceform' element={<SalesInvoiceForm/>}></Route>
+
         </Routes>
         </UserProvider>
        

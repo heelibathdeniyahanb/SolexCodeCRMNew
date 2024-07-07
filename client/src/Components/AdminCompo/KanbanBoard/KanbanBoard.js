@@ -193,6 +193,19 @@ function KanbanBoard() {
   const [activeColumn, setActiveColumn] = useState(null);
   const [activeTask, setActiveTask] = useState(null);
 
+  function handleStatusUpdate(taskId, isWon) {
+    const taskToMove = tasks.find(task => task.id === taskId);
+    if (taskToMove) {
+      if (isWon) {
+        setWonTasks(prevTasks => [...prevTasks, taskToMove]);
+      } else {
+        setLostTasks(prevTasks => [...prevTasks, taskToMove]);
+      }
+      // Remove the task from the main board
+      setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+    }
+  }
+
   return (
     <div className="-m-3 flex m-h-screen w-full items-center overflow-x-auto overflow-y-hidden px-[40px] -mt-2">
       <DndContext
@@ -244,8 +257,9 @@ function KanbanBoard() {
         )}
       </DndContext>
 
-      {showWonBoard && <WonKanbanBoard tasks={wonTasks} />}
-      {showLostBoard && <LossKanbanBoard tasks={lostTasks} />}
+      <WonKanbanBoard tasks={wonTasks} />
+      <LossKanbanBoard tasks={lostTasks} />
+
     </div>
   );
 }

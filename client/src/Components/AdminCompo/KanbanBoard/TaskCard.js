@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCircleNotch, FaTrash ,FaEye} from "react-icons/fa";
+import { FaCircleNotch, FaTrash, FaEye } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -14,6 +14,7 @@ import EventForm from "../../Events/EventForm";
 import TaskForm from "../../Task/TaskForm";
 import ViewEvents from "./ViewEvents";
 import ViewTasks from "./ViewTasks";
+import { FaFileInvoice } from "react-icons/fa";
 
 
 
@@ -27,7 +28,7 @@ const statusColors = {
 
 
 function TaskCard({ task, deleteTask, updateTask }) {
-  console.log("Taskcard receive task:",task)
+  console.log("Taskcard receive task:", task)
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -37,19 +38,26 @@ function TaskCard({ task, deleteTask, updateTask }) {
   const [showUpdateTaskModal, setShowUpdateTaskModal] = useState(false);
   const [showUpdateEventModal, setShowUpdateEventModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  
+
   const [showTaskForm, setShowTaskForm] = useState(false);
   const [showEventForm, setShowEventForm] = useState(false);
+
+  const [showStatusModal, setShowStatusModal] = useState(false);
+
+  const handleStatusUpdate = (taskId, isWon) => {
+    deleteTask(taskId, isWon ? 'won' : 'lost');
+    setShowStatusModal(false);
+  };
 
 
   const handleCardClick = (e) => {
     // Only open the popup if the click wasn't on a button or the edit icon
     if (!e.target.closest('button') && !e.target.closest('.edit-icon') && !e.target.closest('.update-modal')) {
-      
+
     }
   };
 
- 
+
 
   const handleCloseModal = () => {
     setShowUpdateModal(false);
@@ -102,7 +110,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       type: "Task",
       task,
     },
-    disabled: editMode || showTaskForm || showEventForm ||showUpdateTaskModal || showTaskList ||  showUpdateModal  ||showUpdateEventModal ||showEventList,
+    disabled: editMode || showTaskForm || showEventForm || showUpdateTaskModal || showTaskList || showUpdateModal || showUpdateEventModal || showEventList,
   });
 
   const style = {
@@ -149,9 +157,9 @@ function TaskCard({ task, deleteTask, updateTask }) {
       ...updatedData
     }));
   };
- 
 
-  
+
+
   const handleTaskButtonClick = () => {
     setShowTaskForm(true);
   };
@@ -294,21 +302,37 @@ function TaskCard({ task, deleteTask, updateTask }) {
             </p>
 
             <div className="flex  mt-4">
-            <button onClick={handleTaskButtonClick} className="bg-blue-500 text-white py-2 px-4 rounded">Task</button>
-            <button onClick={handleEventButtonClick} className="bg-green-500 text-white py-2 px-4 rounded">Event</button>
-          </div>
-          <div className="flex  mt-2">
-            <button onClick={handleViewTasks} className="bg-blue-300 text-white py-2 px-2 rounded flex items-center">
-              <FaEye className="mr-2" />  Tasks
-            </button>
-            <button onClick={handleViewEvents} className="bg-green-300 text-white py-2 px-2 rounded flex items-center">
-              <FaEye className="mr-2" />  Events
-            </button>
-          </div>
-
+              <button onClick={handleTaskButtonClick} className="bg-blue-500 text-white py-0 px-2 rounded">Task</button>
+              <button onClick={handleEventButtonClick} className="bg-green-500 text-white py-0 px-2 ml-1 rounded">Event</button>
+            </div>
+            <div className="flex  mt-2">
+              <button onClick={handleViewTasks} className="bg-blue-300 text-white py-0 px-1 rounded flex items-center">
+                <FaEye className="mr-2" />  Tasks
+              </button>
+              <button onClick={handleViewEvents} className="bg-green-300 text-white py-0 px-1 ml-1 rounded flex items-center">
+                <FaEye className="mr-2" />  Events
+              </button>
+            </div>
+            
+            <div className="flex ">
+              <button className="bg-fuchsia-500 text-white py-0 px-1 mt-2 rounded flex items-center">
+                <FaFileInvoice className="mr-1 h-4" /> Invoice
+              </button>
+              <button onClick={() => setShowStatusModal(true)} className="bg-slate-400 px-3 text-white ml-1 mt-2 rounded ">Status</button>
+            </div>
 
           </div>
         </div>
+      )}
+
+      
+
+      {showStatusModal && (
+        <LeadStatusModel
+          taskId={task.id}
+          onClose={() => setShowStatusModal(false)}
+          onStatusUpdate={handleStatusUpdate}
+        />
       )}
 
       {mouseIsOver && (
@@ -322,29 +346,29 @@ function TaskCard({ task, deleteTask, updateTask }) {
 
 
       {!editMode && (
-       <button 
-       onClick={(e) => {
-         e.stopPropagation();
-         handleOpenModal();
-       }} 
-       className="absolute bottom-4 right-2 bottom-2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100"
-     >
-       <MdEdit />
-     </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleOpenModal();
+          }}
+          className="absolute bottom-4 right-2 bottom-2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100"
+        >
+          <MdEdit />
+        </button>
       )}
 
 
       {showUpdateModal && (
         <div className="update-modal">
-        <UpdateTaskModal
-          task={task}
-          onUpdate={handleUpdate}
-          onClose={handleCloseModal}
-        />
-      </div>
+          <UpdateTaskModal
+            task={task}
+            onUpdate={handleUpdate}
+            onClose={handleCloseModal}
+          />
+        </div>
       )}
 
-{showModal && (
+      {showModal && (
         <UpdateTaskModal
           task={task}
           onUpdate={handleUpdate}
@@ -383,7 +407,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       {showUpdateTaskModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-4">Update Task</h2>
+            <h2 className="text-xl font-bold mb-4">Update Task</h2>
             {/* Add your update task form component here */}
             <button onClick={() => setShowUpdateTaskModal(false)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
           </div>
@@ -393,7 +417,7 @@ function TaskCard({ task, deleteTask, updateTask }) {
       {showUpdateEventModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-4 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-4">Update Event</h2>
+            <h2 className="text-xl font-bold mb-4">Update Event</h2>
             {/* Add your update event form component here */}
             <button onClick={() => setShowUpdateEventModal(false)} className="mt-4 bg-red-500 text-white py-2 px-4 rounded">Close</button>
           </div>

@@ -7,19 +7,19 @@ import LossKanbanBoard from '../../Components/AdminCompo/KanbanBoard/LossKanbanB
 
 const AdminLossKanbanView = () => {
     return (
-        <div className='relative'>
-           
+        <div className='flex flex-col h-screen'>
             <Header/>
             <Header2/>
-          
-            <div className='absolute top-0 z-20 bg-fixed h-screen'>
-                <Sidebar/>
+            
+            <div className='flex flex-1 overflow-hidden'>
+                <div className='fixed top-0 left-0 h-full z-20'>
+                    <Sidebar/>
+                </div>
+                
+                <div className='flex-1 ml-72 overflow-auto'>
+                    <LossKanbanBoard />
+                </div>
             </div>
-
-             <div className='ml-72 flex  mr-2 h-full'>
-            <LossKanbanBoard />
-                 </div>  
-                 
         </div>
     );
 };
