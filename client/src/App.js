@@ -24,7 +24,7 @@ import AdminAddTask from './Pages/Admin/AdminAddTask';
 
 import AdminEvent from './Pages/Admin/AdminEvent';
 import AdminTask from './Pages/Admin/AdminTask';
-import ClientLeadProgress from './Pages/Client/ClientLeadProgress';
+// import ClientLeadProgress from './Pages/Client/ClientLeadProgress';
 import AdminCalendar from './Pages/Admin/AdminCalendar';
 import Login from './Components/login/Login';
 
@@ -78,7 +78,7 @@ import AdminCreateInvoice from './Components/AdminCompo/AdminInvoice/AdminCreate
 import AdminInvoiceCard from './Components/AdminCompo/AdminInvoice/AdminInvoiceCard';
 import Invoice from './Components/AdminCompo/AdminInvoice/Invoice';
 import InvoiceForm from './Components/AdminCompo/AdminInvoice/InvoiceForm';
-import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
+// import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
 import ClientLeadForm from './Pages/Client/ClientLeadForm';
 import AdminInvoice from './Pages/Admin/AdminInvoice';
 
@@ -113,7 +113,6 @@ import WonKanbanBoard from './Components/AdminCompo/KanbanBoard/WonKanbanBoard';
 import AdminLossKanbanView from './Pages/Admin/AdminLossKanbanView';
 import AdminWonKanbanView from './Pages/Admin/AdminWonKanbanView';
 import AdminSalesSummeryView from './Pages/Admin/AdminSalesSummeryView';
-import ClientPaymentView1 from './Pages/Client/ClientPaymentPage';
 import SalesRefSummeryView from './Pages/SalesRep/SalesRefSummeryView';
 import ClientForm from './Components/Client/ClientSales/ClientForm';
 import Navbar from './Components/Client/ClientSales/Navbar';
@@ -137,6 +136,14 @@ import SalesInvoiceForm from './Components/SalesRep/SalesInvoice/SalesInvoiceFor
 import ParentComponent from './Components/SalesRep/SalesInvoice/ParentComponent ';
 import SalesCreateInvoice from './Components/SalesRep/SalesInvoice/SalesCreateInvoice';
 import SalesInvoice from './Components/SalesRep/SalesInvoice/SalesInvoice';
+
+import ClientPaymentPage from './Pages/Client/ClientPaymentPage';
+import ClientPaymentView1 from './Pages/Client/ClientPaymentView1';
+import ClientProjectView from './Components/Client/ClientSales/ClientProjectView';
+import ClientViewCard from './Components/Client/ClientSales/ClientViewCard';
+import ClientViewTable from './Components/Client/ClientSales/ClientViewTable';
+// import ClientDetails from './Components/Client/ClientSales/ClientDetails';
+import ClientViewSalesLead from './Pages/Client/ClientViewSalesLead';
 
 
 
@@ -228,7 +235,7 @@ function App() {
           <Route path='event' element = {<Event/>}></Route>
 
           <Route path='/clientcall' element={<ClientCall/>}></Route>
-          <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route>
+          {/* <Route path='/clientleadprogress' element={<ClientLeadProgress/>}></Route> */}
           <Route path='/clientevent' element={<ClientEvent/>}></Route>
           <Route path='myprojects' element={<MyProjects/>}></Route>
 
@@ -261,7 +268,7 @@ function App() {
           <Route path='/admininvoicecard' element={<AdminInvoiceCard/>}></Route>
           <Route path='/invoice' element={<Invoice/>}></Route>
           <Route path='/invoiceform' element={<InvoiceForm/>}></Route>
-          <Route path='/clientviewsaleslead' element={<ClientViewSalesLead/>}></Route>
+          {/* <Route path='/clientviewsaleslead' element={<ClientViewSalesLead/>}></Route> */}
           <Route path='/clientleadform' element={<ClientLeadForm/>}></Route>
           <Route path='/admininvoice' element={<AdminInvoice/>}></Route>
 
@@ -275,7 +282,6 @@ function App() {
           <Route path='/adminwonkanbanview' element={<AdminWonKanbanView/>}></Route>
           <Route path='/adminsalessummeryview' element={<AdminSalesSummeryView/>}></Route>
           <Route path='/salesrefsummeryview' element={<SalesRefSummeryView/>}></Route>
-          <Route path='/clientpayment' element={<ClientPaymentView1/>}></Route>
           <Route path='/navbar' element={<Navbar/>}></Route>
           <Route path='/clientForm' element={<ClientForm/>}></Route>
           <Route path='/navbar' element={<Navbar/>}></Route>
@@ -295,6 +301,14 @@ function App() {
           <Route path='/SalesInvoice' element={<SalesInvoice/>}></Route>
           <Route path='/salesinvoicecard' element={<SalesInvoiceCard/>}></Route>
           <Route path='/salesinvoiceform' element={<SalesInvoiceForm/>}></Route>
+
+          <Route path='clientpaymentpage' element={<ClientPaymentPage/>}></Route>
+          <Route path='/clientpaymentview1' element={<ClientPaymentView1/>}></Route>
+          {/* <Route path='/clientdetails' element={<ClientDetails/>}></Route> */}
+          <Route path='/clientprojectview' element={<ClientProjectView/>}></Route>
+          <Route path='/clientviewcard' element={<ClientViewCard/>}></Route>
+          <Route path='/clientviewtable' element={<ClientViewTable/>}></Route>
+          <Route path='/clientLeadView' element={<ClientViewSalesLead/>}></Route>
 
         </Routes>
         </UserProvider>
