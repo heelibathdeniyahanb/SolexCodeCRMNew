@@ -14,7 +14,7 @@ const SalesInvoiceView = () => {
     return (
         <div className='relative'>
 
-            <SalesRefHeader />
+            {/* <SalesRefHeader /> */}
 
 
             <div className='absolute top-0 z-20 bg-fixed h-screen'>

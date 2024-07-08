@@ -47,7 +47,7 @@ export default function ClientSideNavBar() {
                </Link>
                 
 
-                <Link to='/clientviewsaleslead'>
+                <Link to='/clientLeadView'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><AiFillFileAdd size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
@@ -84,7 +84,7 @@ export default function ClientSideNavBar() {
                     </div>
                 </li>
 
-                <Link to='/clientpayment'>
+                <Link to='/clientpaymentview1'>
                 <li>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><MdPayments size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
