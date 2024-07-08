@@ -2,10 +2,10 @@
 using SolexCode.CRM.API.New.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SolexCode.CRM.API.New.Dtos;
 
 namespace SolexCode.CRM.API.New.Controllers
 {
@@ -22,13 +22,18 @@ namespace SolexCode.CRM.API.New.Controllers
 
         // GET: api/Invoice
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices(int? leadId = null)
+        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices(int? userId = null)
         {
             IQueryable<Invoice> invoices = _context.Invoice;
 
-            if (leadId != null)
+            if (userId != null)
             {
-                invoices = invoices.Where(i => i.NewLeadId == leadId);
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null || user.Role != "LeadManager")
+                {
+                    return BadRequest("Invalid user or user is not a LeadManager");
+                }
+                invoices = invoices.Where(i => i.UserId == userId);
             }
 
             return await invoices.ToListAsync();
@@ -41,12 +46,18 @@ namespace SolexCode.CRM.API.New.Controllers
             return await _context.Invoice.ToListAsync();
         }
 
-        // GET: api/Invoice/5?leadId={leadId}
+        // GET: api/Invoice/5?userId={userId}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id, int leadId)
+        public async Task<ActionResult<Invoice>> GetInvoice(int id, int userId)
         {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null || user.Role != "LeadManager")
+            {
+                return BadRequest("Invalid user or user is not a LeadManager");
+            }
+
             var invoice = await _context.Invoice
-                .FirstOrDefaultAsync(i => i.Id == id && i.NewLeadId == leadId);
+                .FirstOrDefaultAsync(i => i.Id == id && i.UserId == userId);
 
             if (invoice == null)
             {
@@ -56,31 +67,45 @@ namespace SolexCode.CRM.API.New.Controllers
             return invoice;
         }
 
-        // Create Invoice
-        [HttpPost("CreateInvoiceForLead/{leadId}")]
-        public async Task<ActionResult<Invoice>> CreateInvoiceForLead(int leadId, [FromBody] Invoice invoice, [FromQuery] string userEmail)
+        //Create Invoice
+        [HttpPost("CreateInvoiceForLeadManager/{userId}")]
+        public async Task<ActionResult<Invoice>> CreateInvoiceForLeadManager(int userId, [FromBody] InvoiceCreateDto invoiceDto)
         {
             try
             {
-                var lead = await _context.NewLeads.FindAsync(leadId);
-                if (lead == null)
+                var user = await _context.Users.FindAsync(userId);
+
+                if (user == null || user.Role != "LeadManager")
                 {
-                    return NotFound("Lead not found.");
+                    return BadRequest("Invalid user or user is not a LeadManager");
                 }
 
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
-                if (user == null)
+                var invoice = new Invoice
                 {
-                    return NotFound("User not found.");
-                }
-
-                invoice.NewLeadId = leadId;
-                invoice.UserId = user.Id;
+                    InvoiceNo = invoiceDto.InvoiceNo,
+                    Date = invoiceDto.Date,
+                    DueDate = invoiceDto.DueDate,
+                    ClientName = invoiceDto.ClientName,
+                    ClientEmail = invoiceDto.ClientEmail,
+                    ClientCompany = invoiceDto.ClientCompany,
+                    ClientPost = invoiceDto.ClientPost,
+                    Subtotal = invoiceDto.Subtotal,
+                    Discount = invoiceDto.Discount,
+                    Total = invoiceDto.Total,
+                    Pipeline = invoiceDto.Pipeline,
+                    Description = invoiceDto.Description,
+                    Price = invoiceDto.Price,
+                    Quantity = invoiceDto.Quantity,
+                    TotalPrice = invoiceDto.TotalPrice,
+                    LastInvoiceNumber = invoiceDto.LastInvoiceNumber,
+                    UserId = userId,
+                    NewLeadId = invoiceDto.NewLeadId
+                };
 
                 _context.Invoice.Add(invoice);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetInvoice), new { id = invoice.Id, leadId = invoice.NewLeadId, userId = invoice.UserId }, invoice);
+                return CreatedAtAction(nameof(GetInvoice), new { id = invoice.Id, userId = invoice.UserId }, invoice);
             }
             catch (Exception ex)
             {
@@ -88,19 +113,20 @@ namespace SolexCode.CRM.API.New.Controllers
             }
         }
 
-        // GET: api/Invoice/GetInvoicesByUserId/{userId}
-        [HttpGet("GetInvoicesByUserId/{userId}")]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoicesByUserId(int userId)
+      
+        // GET: api/Invoice/GetInvoicesByClientEmail/{email}
+        [HttpGet("GetInvoicesByClientEmail/{email}")]
+        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoicesByClientEmail(string email)
         {
             try
             {
                 var invoices = await _context.Invoice
-                    .Where(i => i.UserId == userId)
+                    .Where(i => i.ClientEmail == email)
                     .ToListAsync();
 
                 if (invoices == null || invoices.Count == 0)
                 {
-                    return NotFound("No invoices found for the user.");
+                    return NotFound("No invoices found for the client.");
                 }
 
                 return Ok(invoices);
@@ -111,13 +137,19 @@ namespace SolexCode.CRM.API.New.Controllers
             }
         }
 
-        // PUT: api/Invoice/5?leadId={leadId}
+        // PUT: api/Invoice/5?userId={userId}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInvoice(int id, int leadId, [FromBody] Invoice invoice)
+        public async Task<IActionResult> UpdateInvoice(int id, int userId, [FromBody] Invoice invoice)
         {
-            if (id != invoice.Id || leadId != invoice.NewLeadId)
+            if (id != invoice.Id || userId != invoice.UserId)
             {
                 return BadRequest();
+            }
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null || user.Role != "LeadManager")
+            {
+                return BadRequest("Invalid user or user is not a LeadManager");
             }
 
             _context.Entry(invoice).State = EntityState.Modified;

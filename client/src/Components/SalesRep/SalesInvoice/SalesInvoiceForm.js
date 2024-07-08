@@ -3,6 +3,8 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUser } from '../../login/UserContext';
+
 
 const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
     const [lastInvoiceNumber, setLastInvoiceNumber] = useState(() => {
@@ -15,6 +17,18 @@ const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
         }
         return 0;
     });
+
+    const { userData } = useUser();
+    const [userId, setUserId] = useState('');
+    const [userFullName, setUserFullName] = useState('');
+
+    useEffect(() => {
+        if (userData && userData.id) {
+            setUserId(userData.id);
+            setUserFullName(userData.fullName || ''); // Assuming the user data includes a fullName field
+        }
+    }, [userData]);
+
 
     const generateInvoiceId = useCallback((lastNumber) => {
         const currentDate = dayjs().format('YYYY-MM-DD');
@@ -36,6 +50,7 @@ const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
     const [quantity, setQuantity] = useState('');
     const [discount, setDiscount] = useState('');
     const [errors, setErrors] = useState({});
+
 
     useEffect(() => {
         if (invoiceData) {
@@ -79,7 +94,7 @@ const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
         return newErrors;
     };
 
-    const saleRefId = 6; // Sales Ref number in create invoice
+    //const saleRefId = 6; // Sales Ref number in create invoice
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -100,8 +115,8 @@ const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
             totalPrice: calculateTotalPrice(),
             subtotal: calculateSubtotal(),
             SalesRep: {
-                Id: saleRefId,
-                Name: ''
+                Id: userId,
+                Name: 'userFullName'
             },
             User: {
                 FullName: '',
@@ -122,7 +137,7 @@ const SalesInvoiceForm = ({ onSubmit, fetchInvoiceData, invoiceData }) => {
         try {
             console.log("Submitting leadFormData:", invoiceData);
             const response = await axios.post(
-                `https://localhost:7143/api/Invoice/CreateInvoiceForSalesRep/${saleRefId}?userEmail=${encodeURIComponent(clientEmail)}`,
+                `https://localhost:7143/api/Invoice/CreateInvoiceForLeadManager/${userId}`,
                 invoiceData,
                 {
                     headers: {

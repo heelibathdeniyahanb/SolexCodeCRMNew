@@ -33,7 +33,7 @@ namespace SolexCode.CRM.API.New.Data
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<TicketAttachment> TicketAttachment { get; set; }
         public DbSet<UnRegisteredUser> UnRegisteredUsers { get; set; }
-
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -69,12 +69,17 @@ namespace SolexCode.CRM.API.New.Data
                .IsRequired(false);
 
 
-            //invoice and newlead
-            modelBuilder.Entity<NewLead>()
-                .HasMany(lead => lead.Invoices)
-                .WithOne(i => i.NewLead)
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.User)
+                .WithMany()
+                .HasForeignKey(i => i.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.NewLead)
+                .WithMany()
                 .HasForeignKey(i => i.NewLeadId)
-                .IsRequired(false);
+                .OnDelete(DeleteBehavior.SetNull);
 
 
             // Configure the one-to-many relationship user-company
