@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OCV65BMutGDwY+pui66ZuBGF8V+VTWV7zEQmIYD2TseNDD/h34FfOHF/bRNked/52pNgjjmR023LoGKhVAOIgA==",
+  "dgSpecHash": "YSZSdUp9B63NPfrQShUuGtvUssoIJ0IX6OGyV3Mtq0nLDeMTY3brXUnJPRYxY7cWUqbCFXKcmjCH15wmUKM1Sg==",
   "success": true,
   "projectFilePath": "C:\\Users\\LAPMART\\Documents\\NimashabhNewCloneFolder\\SolexCodeCRMNew\\Server\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New\\SolexCode.CRM.API.New.csproj",
   "expectedPackageFiles": [
@@ -78,9 +78,10 @@
     "C:\\Users\\LAPMART\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\mimekit\\4.6.0\\mimekit.4.6.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
-    "C:\\Users\\LAPMART\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\LAPMART\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\stackexchange.redis\\2.7.27\\stackexchange.redis.2.7.27.nupkg.sha512",
+    "C:\\Users\\LAPMART\\.nuget\\packages\\stripe.net\\45.3.0\\stripe.net.45.3.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\LAPMART\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

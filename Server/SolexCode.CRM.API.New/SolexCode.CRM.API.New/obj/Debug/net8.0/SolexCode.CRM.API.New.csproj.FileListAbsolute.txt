@@ -1014,3 +1014,4 @@ C:\Users\fathi\Documents\CRMClone\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\S
 C:\Users\fathi\Documents\CRMClone\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.pdb
 C:\Users\fathi\Documents\CRMClone\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\SolexCode.CRM.API.New.genruntimeconfig.cache
 C:\Users\fathi\Documents\CRMClone\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\obj\Debug\net8.0\ref\SolexCode.CRM.API.New.dll
+C:\Users\LAPMART\Documents\NimashabhNewCloneFolder\SolexCodeCRMNew\Server\SolexCode.CRM.API.New\SolexCode.CRM.API.New\bin\Debug\net8.0\Stripe.net.dll
