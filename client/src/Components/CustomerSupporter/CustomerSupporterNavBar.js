@@ -38,7 +38,7 @@ export default function CustomerSupporterNavBar() {
                 </li>
                </Link>
                
-                <Link to='/'>
+                <Link to='/viewticketpage'>
                 <li className=''>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10 dark:hover:text-neutral-300'>
                         <div className='mr-8'><GrTicket size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
@@ -79,11 +79,11 @@ export default function CustomerSupporterNavBar() {
                     </div>
                 </li>
 
-                <li>
+                <li><Link to='/'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><CiLogout  size={20} className="opacity-25 sm:w-6 sm:h-6 hover:text-white" /></div>
                         <div><label className='text-white opacity-25 hover:text-white' style={{ fontSize: '18px' }}>Logout</label></div>
-                    </div>
+                    </div></Link>
                 </li>
                 
                

@@ -3,13 +3,14 @@ import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 //import Ticketpage1 from '../../Components/Client/TicketPage';
 import Header from '../../Components/Header/Header';
 import ViewTicket from '../../Components/Client/Ticket/ViewTicket';
+import CustomerSupporterNavBar from '../../Components/CustomerSupporter/CustomerSupporterNavBar';
 
 const ViewTicketPage = () => {
   return (
     <div className='flex h-screen'>
      
       <div className='flex-shrink-0 h-full '>
-         <SideNav/>
+        <CustomerSupporterNavBar/>
       </div>
       
      

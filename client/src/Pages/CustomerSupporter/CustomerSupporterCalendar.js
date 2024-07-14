@@ -5,6 +5,7 @@ import BigCalendarUi from '../../Components/Calendar/BigCalendarUi';
 import SalesRepCalendarLogin from '../../Components/CustomerSupporter/SalesRepCalendarLogin';
 import SideNav from '../../Components/Client/Ticket/TicketSideNav';
 import Header from '../../Components/Header/Header';
+import CustomerSupporterNavBar from '../../Components/CustomerSupporter/CustomerSupporterNavBar';
 
 
 const CustomerSupporterCalendar = () => {
@@ -12,7 +13,7 @@ const CustomerSupporterCalendar = () => {
         <div className='width-full'>
           <Header/>
           <SalesRepCalendarLogin/>
-          <div className='flex'><SideNav/>
+          <div className='flex'><CustomerSupporterNavBar/>
          
           <div className='w-full lg:w-4/5 overflow-y-auto'>
                     <BigCalendarUi />

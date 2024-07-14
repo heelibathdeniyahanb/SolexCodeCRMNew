@@ -7,6 +7,7 @@ import Header from './Header/Header';
 import AdminSideNavBar from '../Pages/Admin/AdminSideNavBar';
 import SalesRepNavBar from './SalesRep/SalesRepNavBar';
 import CustomerSupporterNavBar from './CustomerSupporter/CustomerSupporterNavBar';
+import ClientSideNavBar from './Client/ClientSideNavBar';
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState('personal');
@@ -104,6 +105,8 @@ const UserProfile = () => {
         return <SalesRepNavBar/>;
       case 'CustomerSupport':
         return <CustomerSupporterNavBar/>;
+      case 'Client':
+        return <ClientSideNavBar/>;
       default:
         return null; // Or a default sidebar for other roles
     }

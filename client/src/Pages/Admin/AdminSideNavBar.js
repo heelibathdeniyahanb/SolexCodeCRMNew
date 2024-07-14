@@ -83,10 +83,11 @@ export default function AdminSideNavBar() {
                     </div></Link>
                 </li>
                 <li>
+                    <Link to='/admininvoice'>
                     <div className='flex items-center py-3 pl-8 hover:bg-gray-100 hover:bg-opacity-10'>
                         <div className='mr-8'><FaFileInvoiceDollar size={20} className="opacity-25 sm:w-6 sm:h-6" /></div>
                         <div><label className='text-white opacity-25' style={{ fontSize: '18px' }}>Invoice</label></div>
-                    </div>
+                    </div></Link>
                 </li>
                 
                 <li>
